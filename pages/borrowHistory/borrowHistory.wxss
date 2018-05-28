@@ -1,0 +1,36 @@
+@import "../../template/cell_history_template.wxss";
+
+.container {
+  align-items: flex-start;
+  padding-top: 20px;
+  overflow: scroll;
+} 
+.mine_title {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 20px;
+  color: #999999;
+  font-size: 14px;
+}
+.mine_tips {
+  align-self: center;
+  color: #444444;
+  font-size: 16px;
+}
+.book_btn {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  height: 50px;
+  background-color: #4A89DC;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 16px;
+  line-height: 50px;
+}
+.mine_tips {
+  text-align: center;
+  color: #444444;
+  font-size: 16px;
+  flex-shrink: 0;
+}

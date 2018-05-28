@@ -1,0 +1,60 @@
+<!--shelf.wxml-->
+<import src="../../template/cell_template.wxml"/>
+<view class="container">
+  <view class="search_btn">
+    <text bindtap="toggleDialog">筛选</text>
+    <image src="/image/search.png"></image> 
+  </view>
+  <view class="book_list">
+    <block wx:for="{{bookList}}" 
+    wx:for-item="item" 
+    wx:key="item.bookId" >
+      <template is="cell" data="{{...item}}"/>
+    </block>
+    <view wx:if="{{bookList.length == 0}}" class="mine_tips">
+      <text>没有相关记录</text>
+    </view>
+    <view wx:if="{{bookList.length == null}}" class="mine_tips">
+      <text>载入中...</text>
+    </view>
+  </view>
+</view>
+<view class="zan-dialog {{ showDialog ? 'zan-dialog--show' : '' }}">
+  <view class="zan-dialog__mask" bindtap="toggleDialog" />
+  <view class="zan-dialog__container popcon">
+    <view class="book_name">
+      <input placeholder='书名' bindinput="bookNameSearchInput"></input>
+    </view>
+    <text>类型</text>
+    <view class="book_propties">
+      <view class="{{bookType!='0'&&bookType!='1'?'focus':''}}"
+      bindtap='changeBookType'
+      data-booktype="">
+      <text>全部</text></view>
+      <view class="{{bookType=='0'?'focus':''}}"
+      bindtap='changeBookType'
+      data-booktype="0">
+      <text>党建</text></view>
+      <view class="{{bookType=='1'?'focus':''}}"
+      bindtap='changeBookType'
+      data-booktype="1">
+      <text>技术</text></view>
+    </view>
+    <text>状态</text>
+    <view class="book_propties">
+      <view class="{{bookStatus!='0'&&bookStatus!='1'?'focus':''}}"
+      bindtap='changeBookStatus'
+      data-bookstatus="">
+      <text>全部</text></view>
+      <view class="{{bookStatus=='0'?'focus':''}}"
+      bindtap='changeBookStatus'
+      data-bookstatus="0">
+      <text>借出</text></view>
+      <view class="{{bookStatus=='1'?'focus':''}}"
+      bindtap='changeBookStatus'
+      data-bookstatus="1">
+      <text>在库</text></view>
+    </view>
+    <button class="confirm_btn" bindtap="searchBookList">确定</button>
+  </view>
+</view>

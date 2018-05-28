@@ -1,0 +1,19 @@
+<!--cell_history_template.wxml-->
+<template name="history">
+  <block>
+    <view class="history_item">
+      <view class="history_left">
+        <view class="history_title">
+          <text>{{userName}}</text>
+        </view>
+      </view>
+      <view wx:if="{{bookStatus=='0'}}" class="history_right">
+        <text class='green'>已借出</text>
+        <text>{{borrowTime}}</text>
+      </view>
+      <view wx:else class="history_right">
+        <text>归还日期：{{returnTime}}</text>
+      </view>
+    </view>   
+  </block>
+</template>

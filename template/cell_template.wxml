@@ -1,0 +1,23 @@
+<!--cell_template.wxml-->
+<template name="cell">
+  <block>
+    <view class="cell_item" 
+    bindtap="gotoDetail"
+    data-bookId="{{bookId}}">
+      <view class="cell_left">
+        <image class="img_book"
+        src="{{bookImage}}"
+        ></image>
+      </view>
+      <view class="cell_right">
+        <view class="cell_title">
+          <text>{{bookName}}</text>
+        </view>
+        <view wx:if="{{bookStatus}}" class="cell_sub_title" 
+        style="color:{{bookStatus==0? '#999999':'#37BC9B'}};">
+          <text>{{bookStatus==0? "已借出":"在库"}}</text>
+        </view>
+      </view>
+    </view>   
+  </block>
+</template>

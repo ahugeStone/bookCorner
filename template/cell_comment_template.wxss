@@ -1,0 +1,38 @@
+.comment_item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 66px;
+  background-color: #FFF;
+  width: 100%;
+  margin: 0 auto;
+  border-bottom: 1px solid #F3F3F3;
+  flex-shrink: 0;
+}
+.comment_left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 5%;
+}
+.comment_right {
+  display: flex;
+  margin-left: 5%;
+  margin-right: 5%;
+  color: #777777;
+  font-size: 14px;
+}
+.comment_title {
+  display: flex;
+  font-size: 16px;
+  color: #222222;
+  width: 100%;
+}
+.comment_sub_title {
+  display: flex;
+  font-size: 14px;
+  color: #999999;
+  width:100%;
+}
+

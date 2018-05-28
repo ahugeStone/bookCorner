@@ -1,0 +1,28 @@
+<!--result.wxml-->
+<view class="container">
+  <view wx:if="{{success == 'true'}}" class="result_msg">
+    <image src="/image/success.png"></image>
+    <view>
+      <text wx:if="{{action=='borrow'}}">借阅成功！</text>
+      <text wx:if="{{action=='return'}}">归还成功！</text>
+      <text>请爱护我们的书籍，方便小伙伴们传阅学习。</text>
+    </view>
+  </view>
+  <view wx:else class="result_msg">
+    <image src="/image/failed.png"></image>
+    <view>
+      <text wx:if="{{action=='borrow'}}">借阅未成功！</text>
+      <text wx:if="{{action=='return'}}">归还未成功！</text>
+      <text>不可抗力让你没有借到书，再试试吧！</text>
+    </view>
+  </view>
+  <view wx:if="{{success == 'true'}}" class="result_btn"
+  bindtap='gotoMine'>
+    <text>查看我的书架</text>
+    <image src="/image/right-arrow.png"></image>
+  </view>
+  <view class="result_btn" bindtap='gotoShelf'>
+    <text>返回首页</text>
+    <image src="/image/right-arrow.png"></image>
+  </view>
+</view>

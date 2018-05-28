@@ -1,0 +1,18 @@
+<!--comment.wxml-->
+<import src="../../template/cell_history_template.wxml"/>
+<view class="container">
+  <view class="title">
+    <text>{{bookName}}</text>
+  </view>
+  <block wx:for="{{borrowHistoryList}}" 
+      wx:for-item="item" 
+      wx:key="item.openid">
+        <template is="history" data="{{...item}}"/>
+  </block>
+  <view wx:if="{{borrowHistoryList && borrowHistoryList.length==0}}" class="mine_tips">
+    <text>暂无借阅记录</text>
+  </view>
+  <view wx:if="{{borrowHistoryList==null}}" class="mine_tips">
+    <text>载入中...</text>
+  </view>
+</view>

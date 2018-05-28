@@ -1,0 +1,80 @@
+/**index.wxss**/
+.container {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #F3F3F3;
+  height:100vh;
+  padding:0px 0;
+} 
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
+.userinfo-avatar {
+  width: 188rpx;
+  height: 188rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+.userinfo-nickname {
+  color: #aaa;
+}
+.usermotto {
+  margin-top: 200px;
+}
+.user_input {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 70%;
+  margin-top: 50px;
+  /* flex-grow: 1; */
+}
+.user_input input {
+  width: 100%;
+  height: 45px;
+  margin-bottom: 20px;
+  background-color: #FFF;
+  border: 0.5px solid #DEDEDE;
+}
+.psection { 
+  text-align: center;
+  font-size: 16px;
+  color: #CCC;
+}
+.login_btn {
+  width: 100%;
+  background-color: #4A89DC;
+  color: #FFF;
+  border-radius: 3px;
+}
+.logo {
+  width: 100%;
+  height: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 50px;
+}
+.logo1 {
+  height: 30px;
+  width: 100px;
+}
+.logo2 {
+  width: 32.2px;
+  height: 30px;
+}
+.slip {
+  width: 0px;
+  height: 21px;
+  margin-left: 10px;
+  margin-right: 10px;
+  border-left: 1px solid #D7D7D7;
+}

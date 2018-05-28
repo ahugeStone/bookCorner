@@ -1,0 +1,83 @@
+/**bookDetail.wxss**/
+@import "../../template/cell_nopic_template.wxss";
+@import "../../template/cell_comment_template.wxss";
+.container {
+  display: flex;
+  flex-direction: column;
+}
+.section {
+  /* max-height: 100px; */
+  overflow: scroll;
+}
+.book_pic {
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  width: 100%; 
+  height: 170px;
+  background-color: #FFFFFF;
+  border-bottom: 1px solid #F3F3F3;
+  flex-shrink: 0;
+}
+.book_pic image {
+  width: 50%;
+  height: 100%;
+  background-color: #333333;
+}
+.book_detail {
+  display: flex;
+  flex-direction: column;
+  padding-left: 5%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 16px;
+  color: #777777;
+  background-color: #FFFFFF;
+  border-bottom: 1px solid #F3F3F3;
+}
+.book_history {
+  align-self: center;
+  color: #4A89DC;
+  font-size: 14px;
+  height: 30px;
+  width: 100%;
+  text-align: center;
+  padding-top: 10px;
+  background-color: #FFFFFF;
+}
+.book_propties {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  height: 40px;
+  margin-top: 10px;
+  color: #777777;
+  background-color: #FFFFFF;
+  border-bottom: 1px solid #F3F3F3;
+  font-size: 14px;
+}
+.book_propties image {
+  width: 19px;
+  height: 16px;
+  margin-left: 5%;
+}
+.book_propties text {
+  margin-left: 10px;
+}
+.book_btn {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  height: 50px;
+  background-color: #4A89DC;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 16px;
+  line-height: 50px;
+}
+.img_book {
+  background-image: url(https://shanximokey.cn/images/book.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}

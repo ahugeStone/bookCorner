@@ -1,0 +1,39 @@
+<!--comment.wxml-->
+<import src="../../template/cell_comment_template.wxml"/>
+<view class="container">
+  <block wx:for="{{commentHistoryList}}" 
+      wx:for-item="item" 
+      wx:key="item.openid">
+        <template is="comment" data="{{...item}}"/>
+  </block>
+  <view wx:if="{{commentHistoryList.length == 0}}" class="mine_tips">
+    <text>暂无评论</text>
+  </view>
+  <view wx:if="{{commentHistoryList==null}}" class="mine_tips">
+    <text>载入中...</text>
+  </view>
+  <view class='comment_item' style="background: #F3F3F3;"></view>
+  <view bindtap="toggleDialog" class="book_btn">
+    <text>我有话说</text>
+  </view>
+</view>
+<view class="zan-dialog {{ showDialog ? 'zan-dialog--show' : '' }}">
+  <view class="zan-dialog__mask" bindtap="toggleDialog" />
+  <view class="zan-dialog__container popcon">
+    <textarea 
+    maxlength="200"
+    placeholder="请输入评论内容" 
+    placeholder-class="pholder"
+    value="{{commentText}}"
+    bindinput="oninput"/>
+    <text class="counter">{{commentText.length}}/200</text>
+    <view>
+      <view class="comment_btn cancel" bindtap="toggleDialog">
+      取消
+      </view>
+      <view class="comment_btn confirm" bindtap="commitComment">
+      提交
+      </view>
+    </view>  
+  </view>
+</view>

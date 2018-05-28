@@ -1,0 +1,36 @@
+<!--mine.wxml-->
+<import src="../../template/cell_template.wxml"/>
+<view class="container">
+  <view class="mine_title">
+    <text>在读</text>
+  </view>
+  <view wx:if="{{readingList.length > 0}}" style="width:100%;">
+    <block wx:for="{{readingList}}" 
+    wx:for-item="item" 
+    wx:key="item.bookId" >
+      <template is="cell" data="{{...item}}"/>
+    </block>
+  </view>
+  <view wx:if="{{readingList.length==0}}" class="mine_tips">
+    <text>暂无在读图书</text>
+  </view>
+  <view wx:if="{{readingList==null}}" class="mine_tips">
+    <text>载入中...</text>
+  </view>
+  <view class="mine_title">
+    <text>借阅历史</text>
+  </view>
+  <view wx:if="{{historyList.length > 0}}" style="width:100%;">
+    <block wx:for="{{historyList}}" 
+    wx:for-item="item" 
+    wx:key="item.bookId" >
+      <template is="cell" data="{{...item}}"/>
+    </block>
+  </view>
+  <view wx:if="{{historyList.length == 0}}" class="mine_tips">
+    <text>暂无借阅纪录</text>
+  </view>
+  <view wx:if="{{historyList==null}}" class="mine_tips">
+    <text>载入中...</text>
+  </view>
+</view>

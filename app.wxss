@@ -1,0 +1,14 @@
+/**app.wxss**/
+.container {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+  background-color: #F3F3F3;
+  padding:0px 0;
+  height: 100vh;
+} 
+.page {
+  background-color: #F3F3F3;
+}

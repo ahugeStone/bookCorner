@@ -1,0 +1,38 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/comment/comment",
+    "pages/shelf/shelf",
+    "pages/borrowHistory/borrowHistory",
+    "pages/bookDetail/bookDetail",
+    "pages/result/result",
+    "pages/mine/mine", 
+    "pages/logs/logs"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#F9F9F9",
+    "navigationBarTitleText": "开发二部图书角",
+    "navigationBarTextStyle":"black",
+    "backgroundColor":"#F9F9F9"
+  },
+  "tabBar":{
+    "color": "#666666",
+    "selectedColor":"#FF7878",
+    "backgroundColor":"#F9F9F9",
+    "borderStyle":"black",
+    "position": "bottom",
+    "list":[{
+      "pagePath":"pages/shelf/shelf",
+      "text":"书架",
+      "iconPath":"/image/shelf_black.png",
+      "selectedIconPath":"/image/shelf_red.png"
+    },{
+      "pagePath": "pages/mine/mine",
+      "text": "我的",
+      "iconPath": "/image/mine_black.png",
+      "selectedIconPath": "/image/mine_red.png"
+    }]
+  },
+  "debug": false
+}

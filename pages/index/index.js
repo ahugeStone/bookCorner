@@ -105,31 +105,31 @@ Page({
       //     } 
       //   }
       // })
-      wx.authorize({
-        scope: 'scope.userInfo',
-        success() {
-          // 用户已经同意小程序
-          console.log("authorize ok")
-          wx.getUserInfo({
-            success: res => {
-              app.globalData.userInfo = res.userInfo
-              this.setData({
-                userInfo: res.userInfo,
-                hasUserInfo: true
-              })
-              this.gotoIsBinded()
-              // console.log("onLoad3", this.data.userInfo)
-            }
-          })
-        },
-        fail() {
-          wx.showModal({
-            title: '提示',
-            content: "请点击上方按钮授权",
-            showCancel: false
-          })
-        }
-      })
+      // wx.authorize({
+      //   scope: 'scope.userInfo',
+      //   success() {
+      //     // 用户已经同意小程序
+      //     console.log("authorize ok")
+      //     wx.getUserInfo({
+      //       success: res => {
+      //         app.globalData.userInfo = res.userInfo
+      //         this.setData({
+      //           userInfo: res.userInfo,
+      //           hasUserInfo: true
+      //         })
+      //         this.gotoIsBinded()
+      //         // console.log("onLoad3", this.data.userInfo)
+      //       }
+      //     })
+      //   },
+      //   fail() {
+      //     wx.showModal({
+      //       title: '提示',
+      //       content: "请点击上方按钮授权",
+      //       showCancel: false
+      //     })
+      //   }
+      // })
     }
   },
   onShow: function () {
@@ -144,17 +144,17 @@ Page({
   //       }
   //     }
   //   })
-    wx.getUserInfo({
-      success: res => {
-        app.globalData.userInfo = res.userInfo
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-        this.gotoIsBinded()
-        // console.log("onLoad3", this.data.userInfo)
-      }
-    })
+    // wx.getUserInfo({
+    //   success: res => {
+    //     app.globalData.userInfo = res.userInfo
+    //     this.setData({
+    //       userInfo: res.userInfo,
+    //       hasUserInfo: true
+    //     })
+    //     this.gotoIsBinded()
+    //     // console.log("onLoad3", this.data.userInfo)
+    //   }
+    // })
   },
   gotoIsBinded: function() {
     if (app.globalData.isBinded) {

@@ -90,7 +90,8 @@ const post = function (method, param, options) {
       method: 'POST',
       // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT  
       header: {
-        'content-type': 'application/x-www-form-urlencoded'
+        'content-type': 'application/x-www-form-urlencoded',
+        'Cookie': getApp().globalData.sessionId // 设置sessionid，保持会话
       }, // 设置请求的 header  
       success: function (res) {
         console.info("success")
@@ -101,7 +102,10 @@ const post = function (method, param, options) {
       },
       complete: function (res) {
         console.info("complete")
-        // console.info(e)
+        if (res.header['Set-Cookie']) {// 如果服务器需要设置会话
+          getApp().globalData.sessionId = res.header['Set-Cookie']//保存sessionid
+          console.info("set-cookie:" + getApp().globalData.sessionId)          
+        }
       }
     })
   }

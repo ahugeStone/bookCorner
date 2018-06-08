@@ -62,9 +62,10 @@ const post = function (method, param, options) {
       "cipherType": "0"
     }
   }
-  var json = {
-    json: JSON.stringify(data)
-  }
+  // var json = {
+  //   json: JSON.stringify(data)
+  // }
+  var json = JSON.stringify(data)
   console.log("request body", json)
   log("request body:" + JSON.stringify(json))
   var requestPromisified = wxPromisify(wx.request)
@@ -90,7 +91,7 @@ const post = function (method, param, options) {
       method: 'POST',
       // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT  
       header: {
-        'content-type': 'application/x-www-form-urlencoded',
+        'content-type': 'application/json',//application/x-www-form-urlencoded;
         'Cookie': getApp().globalData.sessionId // 设置sessionid，保持会话
       }, // 设置请求的 header  
       success: function (res) {

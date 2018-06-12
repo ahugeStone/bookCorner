@@ -172,5 +172,6 @@ Page({
       hasUserInfo: true
     })
     console.log("getUserInfo",this.data.userInfo)
+    this.gotoIsBinded()
   }
 })

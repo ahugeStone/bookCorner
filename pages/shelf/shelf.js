@@ -14,7 +14,7 @@ Page({
     showDialog: false
   },
   onLoad() {
-    this.searchBookList()
+    // this.searchBookList()
   },
   onShow() {
     this.searchBookList()

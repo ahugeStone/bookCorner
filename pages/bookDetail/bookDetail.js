@@ -16,6 +16,12 @@ Page({
     this.setData({
       bookId: parseInt(options.bookId)
     })
+    // this.searchBookDetail()
+  },
+  onShow: function () {
+    this.searchBookDetail()
+  },
+  searchBookDetail: function () {
     util.post("CustQueryBookDetail", {
       openid: app.globalData.openid,
       bookId: this.data.bookId

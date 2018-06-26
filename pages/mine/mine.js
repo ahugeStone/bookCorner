@@ -1,6 +1,7 @@
 //mine.js
 const app = getApp()
 const util = require('../../utils/util.js')
+import env from '../../utils/env.js'
 
 Page({
   data: {
@@ -18,6 +19,7 @@ Page({
       this.data.historyList = []
       this.data.readingList = []
       for (var el of res.result.borrowRecordList) {
+        el.bookImage = env.imgurl + el.bookId + '.png'
         if (el.borrowStatus == "0") {
           el.bookStatus = null
           this.data.readingList.push(el)

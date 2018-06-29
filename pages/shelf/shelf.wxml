@@ -5,19 +5,23 @@
     <text bindtap="toggleDialog">筛选</text>
     <image src="/image/search.png"></image> 
   </view>
-  <view class="book_list">
+  <scroll-view style="height: 100vh;" scroll-y scroll-with-animation="true" enable-back-to-top="true" class="book_list" bindscrolltolower="showMore">
     <block wx:for="{{bookList}}" 
     wx:for-item="item" 
     wx:key="item.bookId" >
       <template is="cell" data="{{...item}}"/>
     </block>
-    <view wx:if="{{bookList.length == 0}}" class="mine_tips">
+    <view wx:if="{{!loading && bookList.length == 0}}" class="mine_tips">
       <text>没有相关记录</text>
     </view>
-    <view wx:if="{{bookList.length == null}}" class="mine_tips">
+    <view wx:if="{{isLastPage == false}}" class="mine_tips">
+      <image class="loading" src='../../image/loading.gif'/>
       <text>载入中...</text>
     </view>
-  </view>
+    <view wx:if="{{isLastPage == true && bookList.length > 0}}" class="mine_tips">
+      <text>我是有底线的</text>
+    </view>
+  </scroll-view>
 </view>
 <view class="zan-dialog {{ showDialog ? 'zan-dialog--show' : '' }}">
   <view class="zan-dialog__mask" bindtap="toggleDialog" />
@@ -55,6 +59,6 @@
       data-bookstatus="1">
       <text>在库</text></view>
     </view>
-    <button class="confirm_btn" bindtap="searchBookList">确定</button>
+    <button class="confirm_btn" bindtap="resetBookList">确定</button>
   </view>
 </view>

@@ -31,6 +31,17 @@ function wxPromisify(fn) {
         if(!res._isException_) {
           resolve(res)
         } else {
+          if (res.code =='not Login!') {
+            console.info("没有登陆或登陆超时")
+            // wx.navigateTo({
+            //   url: '/pages/index/index',
+            // })
+            wx.showModal({
+              title: '失败',
+              content: "登陆超时，请重新进入",
+              showCancel: false
+            })
+          }
           reject(res)
         }     
       }
@@ -85,7 +96,7 @@ const post = function (method, param, options) {
       }
       hideLoading()
     })
-  } else {// 否则使用真是环境
+  } else {// 否则使用springboot环境
     var url = env.springboot ? env.url[1] : env.url[0]
 
     return requestPromisified({

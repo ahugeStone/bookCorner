@@ -1,4 +1,5 @@
 const url = ['https://shanximokey.cn/CustApp/_bfwajax.do',
+// 'https://cvm.ahuangtongxue.cn/bookCorner/',
 'http://localhost:8080/bookCorner/']
 const imgurl = 'https://shanximokey.cn/images/'
 const debug = "false" // 是否跳过腾讯oauth

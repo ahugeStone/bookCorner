@@ -96,7 +96,7 @@ const post = function (method, param, options) {
       }
       hideLoading()
     })
-  } else {// 否则使用springboot环境
+  } else {// 否则使用后台环境
     var url = env.springboot ? env.url[1] : env.url[0]
 
     return requestPromisified({
@@ -128,6 +128,64 @@ const post = function (method, param, options) {
   }
 }
 
+const rest = function (method, resource, param, options) {
+  var data = param
+  var json = JSON.stringify(data)
+
+  console.log("request body", json)
+  log("request body:" + JSON.stringify(json))
+  var requestPromisified = wxPromisify(wx.request)
+  showLoading()
+  // 如果是挡板调试模式，则接口调用使用挡板
+  if (env.demo) {
+    return new Promise((resolve, reject) => {
+      var result = mock.mock[method];
+      console.log("response body(mock)", result)
+      log("response body(mock):" + JSON.stringify(result))
+      if (!result._isException_) {
+        resolve(result)
+      } else {
+        reject(result)
+      }
+      hideLoading()
+    })
+  } else {// 否则使用后台环境
+    var url = env.url[2] + resource
+
+    return requestPromisified({
+      url: url,
+      //上线的话必须是https，没有appId的本地请求貌似不受影响  
+      data: data,
+      method: method,
+      // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT  
+      header: {
+        'content-type': 'application/json',
+        'Cookie': getApp().globalData.sessionId, // 设置sessionid，保持会话
+        'Authorization': 'Bearer ' + getApp().globalData.token// 设置token
+      }, // 设置请求的 header  
+      success: function (res) {
+        console.info("success")
+      },
+      fail: function (e) {
+        console.error("fail")
+        console.error(e)
+      },
+      complete: function (res) {
+        console.info("complete")
+        if (res.header['Set-Cookie']) {// 如果服务器需要设置会话
+          getApp().globalData.sessionId = res.header['Set-Cookie']//保存sessionid
+          console.info("set-cookie:" + getApp().globalData.sessionId)
+        }
+        if ('token' == resource) {
+          // console.info('token' + res)
+          getApp().globalData.token = res.data.token//保存token
+          console.info("token:" + getApp().globalData.token)
+        }
+      }
+    })
+  }
+}
+
 const log = function(logText) {
   var logs = wx.getStorageSync('logs') || []
   while(logs.length > 100) {
@@ -151,9 +209,10 @@ const hideLoading = function() {
 }
 
 module.exports = {
-  formatTime: formatTime,
-  formatNumber: formatNumber,
+  formatTime,
+  formatNumber,
   // wxPromisify: wxPromisify,
-  post: post,
-  log: log
+  post,
+  log,
+  rest
 }

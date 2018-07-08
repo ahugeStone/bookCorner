@@ -22,22 +22,21 @@ Page({
     this.searchBookDetail()
   },
   searchBookDetail: function () {
-    util.post("CustQueryBookDetail", {
-      openid: app.globalData.openid,
-      bookId: this.data.bookId
+    util.rest("GET", "books/" + this.data.bookId,{
+      // openid: app.globalData.openid,
+      // bookId: this.data.bookId
     }).then(res => {
-      var data = res.result
+      var data = res
       data.bresource = this.getSource(data.bookBuyer, data.bookSource)
       data.bookImage = env.imgurl + data.bookId + '.png'
       this.setData({
         bookInfo: data
       })
     })
-    util.post("CustQueryBookCommentHistory", {
-      openid: app.globalData.openid,
+    util.rest("GET", "comments", {
       bookId: this.data.bookId
     }).then(res => {
-      var data = res.result
+      var data = res
       this.setData({
         commentHistoryList: data.commentHistoryList
       })

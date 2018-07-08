@@ -41,14 +41,14 @@ Page({
     this.setData({
       loading: true //正在加载
     })
-    return util.post("CustQueryBookList", {
-      openid: app.globalData.openid,
+    return util.rest("GET", "books", {
+      // openid: app.globalData.openid,
       bookName: this.data.bookNameSearch,
       bookType: this.data.bookType,
       bookStatus: this.data.bookStatus,
       num: this.data.nextNum
     }, null).then(res => {
-      var data = res.result
+      var data = res
       for(var book of data.bookList) {
         book.bookImage = env.imgurl + book.bookId + '.png'
       }

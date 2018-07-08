@@ -18,15 +18,15 @@ App({
         // console.log(res)
         var that = this
         wx.setStorageSync('code', res.code)
-        util.post("CustQueryIsBinded", {
+        util.rest("GET", "token", {
           code: res.code,
           debug: env.debug
         }, null).then(res => {
-          var data = res.result
+          var data = res
           // console.log(res)
           // console.log(that.globalData)
-          wx.setStorageSync('openid', data.openid)
-          that.globalData.openid = data.openid
+          //wx.setStorageSync('openid', data.openid)
+          //that.globalData.openid = data.openid
           if(data.isBinded == "1") {
             console.info('ISBINDED')
             wx.switchTab({

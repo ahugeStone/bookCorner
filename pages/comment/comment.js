@@ -24,11 +24,7 @@ Page({
       })
       return
     }
-    util.post("CustCommentBook", {
-      openid: app.globalData.openid,
-      bookId: this.data.bookId,
-      headImageUrl: app.globalData.userInfo.avataUrl,
-      userName: app.globalData.userName,
+    util.rest("POST", "books/" + this.data.bookId + "/comments",{
       comment: this.data.commentText
     }).then(res => {
       wx.showToast({
@@ -62,11 +58,9 @@ Page({
     this.getComments()
   },
   getComments: function() {
-    util.post("CustQueryBookCommentHistory", {
-      openid: app.globalData.openid,
-      bookId: this.data.bookId
+    util.rest("GET", "books/" + this.data.bookId + "/comments", {
     }).then(res => {
-      var data = res.result
+      var data = res
       this.setData({
         commentHistoryList: data.commentHistoryList
       })

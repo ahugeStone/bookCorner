@@ -159,7 +159,7 @@ const rest = function (method, resource, param, options) {
       method: method,
       // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT  
       header: {
-        'content-type': 'application/json',
+        'content-type': 'application/x-www-form-urlencoded',
         'Cookie': getApp().globalData.sessionId, // 设置sessionid，保持会话
         'Authorization': 'Bearer ' + getApp().globalData.token// 设置token
       }, // 设置请求的 header  
@@ -176,9 +176,12 @@ const rest = function (method, resource, param, options) {
           getApp().globalData.sessionId = res.header['Set-Cookie']//保存sessionid
           console.info("set-cookie:" + getApp().globalData.sessionId)
         }
-        if ('token' == resource) {
+        if (res.data.token) {
           // console.info('token' + res)
           getApp().globalData.token = res.data.token//保存token
+          getApp().globalData.userName = res.data.userName // 员工姓名
+          getApp().globalData.userNo = res.data.userNo //员工号
+          // getApp().globalData.isBinded = true
           console.info("token:" + getApp().globalData.token)
         }
       }

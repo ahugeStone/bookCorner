@@ -13,12 +13,11 @@ Page({
   },
   onShow: function () {
     // console.log("show mine")
-    util.post("CustQueryBookBorrowRecord", {
-      openid: app.globalData.openid
+    util.rest("GET", "users/" + + app.globalData.userNo + "/history" , {
     }).then(res => {
       this.data.historyList = []
       this.data.readingList = []
-      for (var el of res.result.borrowRecordList) {
+      for (var el of res.borrowRecordList) {
         el.bookImage = env.imgurl + el.bookId + '.png'
         if (el.borrowStatus == "0") {
           el.bookStatus = null

@@ -33,8 +33,7 @@ Page({
         bookInfo: data
       })
     })
-    util.rest("GET", "comments", {
-      bookId: this.data.bookId
+    util.rest("GET", "books/" + this.data.bookId + "/comments", {
     }).then(res => {
       var data = res
       this.setData({
@@ -46,9 +45,8 @@ Page({
     if (this.data.bookInfo.isLiked == "1") {
       return
     }
-    util.post("CustLikeBook", {
-      openid: app.globalData.openid,
-      bookId: this.data.bookId
+    util.rest("POST", "books/" + this.data.bookId, {
+      action: "thumbup"
     }).then(res => {
       this.data.bookInfo.isLiked = "1"
       this.data.bookInfo.bookLikeNum++
@@ -90,7 +88,6 @@ Page({
     // console.log(that.data.bookInfo)
     var action = e.currentTarget.dataset.action
     var tips = action=="borrow"? "借阅":"归还"
-    var method = action == "borrow" ? "CustBorrowBook" : "CustReturnBook"
     wx.showModal({
       title: '提示',
       content: '确认' + tips 
@@ -99,13 +96,8 @@ Page({
         console.log(res)
         if (res.confirm) {
           console.log('用户点击确定')
-          util.post(method, {
-            id: that.data.bookInfo.id,
-            openid: app.globalData.openid,
-            bookId: that.data.bookId,
-            bookName: that.data.bookInfo.bookName,
-            headImageUrl: app.globalData.userInfo.avataUrl,
-            userName: app.globalData.userName,
+          util.rest("POST", "books/" + that.data.bookInfo.bookId, {
+            action: action
           }).then(res => {
             wx.navigateTo({
               url: '../result/result?bookId=' +

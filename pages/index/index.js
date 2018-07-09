@@ -46,11 +46,9 @@ Page({
       })
       return;
     }
-    util.post("CustBind", {
+    util.rest("POST", "users/" + this.data.userNo , {
       userNo: this.data.userNo,
       userName: this.data.userName,
-      code: wx.getStorageSync("code"),
-      openid: app.globalData.openid,
       nickName: app.globalData.userInfo.nickName,
       headImgUrl: app.globalData.userInfo.avatarUrl
     }).then(res => {

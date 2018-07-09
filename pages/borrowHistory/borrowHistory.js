@@ -14,11 +14,9 @@ Page({
       bookId: options.bookId,
       bookName: options.bookName
     })
-    util.post("CustQueryBookBorrowHistory", {
-      openid: app.globalData.openid,
-      bookId: this.data.bookId
+    util.rest("GET", "books/" + this.data.bookId + "/history", {
     }).then(res => {
-      var data = res.result
+      var data = res
       this.setData({
         borrowHistoryList: data.borrowHistoryList
       })

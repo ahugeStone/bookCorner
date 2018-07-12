@@ -46,7 +46,7 @@ Page({
       return
     }
     util.rest("POST", "books/" + this.data.bookId, {
-      action: "thumbup"
+      action: "THUMBUP"
     }).then(res => {
       this.data.bookInfo.isLiked = "1"
       this.data.bookInfo.bookLikeNum++
@@ -97,7 +97,7 @@ Page({
         if (res.confirm) {
           console.log('用户点击确定')
           util.rest("POST", "books/" + that.data.bookInfo.bookId, {
-            action: action
+            action: action.toUpperCase()
           }).then(res => {
             wx.navigateTo({
               url: '../result/result?bookId=' +

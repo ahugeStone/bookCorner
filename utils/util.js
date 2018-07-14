@@ -150,7 +150,7 @@ const rest = function (method, resource, param, options) {
       hideLoading()
     })
   } else {// 否则使用后台环境
-    var url = env.url[2] + resource
+    var url = env.url[0] + resource
 
     return requestPromisified({
       url: url,

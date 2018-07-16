@@ -31,11 +31,11 @@ function wxPromisify(fn) {
         if(!res._isException_) {
           resolve(res)
         } else {
-          wx.showModal({
-            title: '失败',
-            content: res.message || "系统错误，请稍后再试",
-            showCancel: false
-          })
+          // wx.showModal({
+          //   title: '失败',
+          //   content: res.message || "系统错误，请稍后再试",
+          //   showCancel: false
+          // })
           // if (res.code =='not Login!') {
           //   console.info("没有登陆或登陆超时")
           //   // wx.navigateTo({
@@ -176,18 +176,25 @@ const rest = function (method, resource, param, options) {
         console.error(e)
       },
       complete: function (res) {
-        console.info("complete")
-        if (res.header['Set-Cookie']) {// 如果服务器需要设置会话
+        console.info("complete", res)
+        if (res && res.header && res.header['Set-Cookie']) {// 如果服务器需要设置会话
           getApp().globalData.sessionId = res.header['Set-Cookie']//保存sessionid
-          console.info("set-cookie:" + getApp().globalData.sessionId)
+          // console.info("set-cookie:" + getApp().globalData.sessionId)
         }
-        if (res.data.token) {
+        if (res && res.data && res.data.token) {
           // console.info('token' + res)
           getApp().globalData.token = res.data.token//保存token
           getApp().globalData.userName = res.data.userName // 员工姓名
           getApp().globalData.userNo = res.data.userNo //员工号
           // getApp().globalData.isBinded = true
-          console.info("token:" + getApp().globalData.token)
+          // console.info("token:" + getApp().globalData.token)
+        }
+        if (200 != res.statusCode) {
+          wx.showModal({
+            title: '失败',
+            content: (res.data && res.data.message) || "系统错误，请稍后再试",
+            showCancel: false
+          })
         }
       }
     })

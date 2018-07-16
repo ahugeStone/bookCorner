@@ -7,7 +7,7 @@
           <text>{{userName}}</text>
         </view>
       </view>
-      <view wx:if="{{bookStatus=='0'}}" class="history_right">
+      <view wx:if="{{borrowStatus=='0'}}" class="history_right">
         <text class='green'>已借出</text>
         <text>{{borrowTime}}</text>
       </view>

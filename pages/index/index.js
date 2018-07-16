@@ -58,9 +58,10 @@ Page({
         url: '../shelf/shelf'
       })
     }).catch(e => {
+      console.info(e)
       wx.showModal({
         title: '失败',
-        content: "请检查是否授权及输入信息是否有误",
+        content: (e.message && e.message.length < 20 && e.message) || "请检查是否授权及输入信息是否有误",
         showCancel: false
       })
     })

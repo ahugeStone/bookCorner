@@ -2,7 +2,7 @@ const url = [// 只使用第1项环境
 // 'https://shanximokey.cn/CustApp/_bfwajax.do',//老版本后台
 // 'https://cvm.ahuangtongxue.cn/bookCorner/', // 新版本bfw风格接口后台
 // 'https://cvm.ahuangtongxue.cn/bookCornertest/v1/',// 新版本rest风格后台-测试
-'https://cvm.ahuangtongxue.cn/bookCornerprod/v1/',// 新版本rest风格后台-生产
+// 'https://cvm.ahuangtongxue.cn/bookCornerprod/v1/',// 新版本rest风格后台-生产
 // 'http://cvm.ahuangtongxue.cn:18080/bookCorner/v1/',// 新版本rest风格后台-测试非https
 // 'http://cvm.ahuangtongxue.cn:18081/bookCorner/v1/',// 新版本rest风格后台-生产非https
 'http://localhost:8080/bookCorner/v1/'// 本地调试环境

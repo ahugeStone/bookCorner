@@ -20,7 +20,7 @@ Page({
       this.setData({
         borrowHistoryList: data.borrowHistoryList
       })
-      console.log(this.data.borrowHistoryList)
+      // console.log(this.data.borrowHistoryList)
     })
   }
 })

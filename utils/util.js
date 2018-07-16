@@ -31,17 +31,22 @@ function wxPromisify(fn) {
         if(!res._isException_) {
           resolve(res)
         } else {
-          if (res.code =='not Login!') {
-            console.info("没有登陆或登陆超时")
-            // wx.navigateTo({
-            //   url: '/pages/index/index',
-            // })
-            wx.showModal({
-              title: '失败',
-              content: "登陆超时，请重新进入",
-              showCancel: false
-            })
-          }
+          wx.showModal({
+            title: '失败',
+            content: res.message || "系统错误，请稍后再试",
+            showCancel: false
+          })
+          // if (res.code =='not Login!') {
+          //   console.info("没有登陆或登陆超时")
+          //   // wx.navigateTo({
+          //   //   url: '/pages/index/index',
+          //   // })
+          //   wx.showModal({
+          //     title: '失败',
+          //     content: "登陆超时，请重新进入",
+          //     showCancel: false
+          //   })
+          // }
           reject(res)
         }     
       }

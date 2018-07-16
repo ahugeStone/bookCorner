@@ -93,9 +93,9 @@ Page({
       content: '确认' + tips 
       + '《' + that.data.bookInfo.bookName + '》?',
       success: function(res) {
-        console.log(res)
+        // console.log(res)
         if (res.confirm) {
-          console.log('用户点击确定')
+          // console.log('用户点击确定')
           util.rest("POST", "books/" + that.data.bookInfo.bookId, {
             action: action.toUpperCase()
           }).then(res => {

@@ -156,7 +156,7 @@ Page({
   },
   gotoIsBinded: function() {
     if (app.globalData.isBinded) {
-      console.info('ISBINDED2')
+      // console.info('ISBINDED2')
       wx.switchTab({
         url: '/pages/shelf/shelf',
       })
@@ -169,7 +169,7 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
-    console.log("getUserInfo",this.data.userInfo)
+    // console.log("getUserInfo",this.data.userInfo)
     this.gotoIsBinded()
   }
 })

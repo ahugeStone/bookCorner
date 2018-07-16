@@ -64,7 +64,7 @@ Page({
       
       this.toggleDialog(false)
     }).catch(res => {
-      console.error("error", res)
+      // console.error("error", res)
       this.toggleDialog(false)
       this.setData({
         loading: false // 加载完毕

@@ -13,7 +13,7 @@ Page({
   },
   onShow: function () {
     // console.log("show mine")
-    util.rest("GET", "users/" + + app.globalData.userNo + "/history" , {
+    util.rest("GET", "users/" + app.globalData.userNo + "/history" , {
     }).then(res => {
       this.data.historyList = []
       this.data.readingList = []

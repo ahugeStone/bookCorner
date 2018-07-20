@@ -19,8 +19,7 @@ App({
         var that = this
         wx.setStorageSync('code', res.code)
         util.rest("GET", "token", {
-          code: res.code,
-          // debug: env.debug
+          code: res.code
         }, {
           method: "CustQueryIsBinded"
         }).then(res => {

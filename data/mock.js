@@ -31,6 +31,12 @@ const mock = {
   },
   CustQueryBookList: {// 查询图书列表
     "result":{
+      pageSize: 3,
+      startNum: 1,
+      endNum: 3,
+      totalPageNum: 1,
+      currentPageNum:1 ,
+      lastPage: true,
       bookList: [
         {
           bookId: 1,

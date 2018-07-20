@@ -46,11 +46,14 @@ Page({
       })
       return;
     }
+    // 用户绑定验证
     util.rest("POST", "users/" + this.data.userNo , {
       userNo: this.data.userNo,
       userName: this.data.userName,
       nickName: app.globalData.userInfo.nickName,
       headImgUrl: app.globalData.userInfo.avatarUrl
+    }, {
+        method: "CustBind"
     }).then(res => {
       app.globalData.userName = this.data.userName
       // console.log('123123' , app.globalData)

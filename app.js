@@ -20,8 +20,10 @@ App({
         wx.setStorageSync('code', res.code)
         util.rest("GET", "token", {
           code: res.code,
-          debug: env.debug
-        }, null).then(res => {
+          // debug: env.debug
+        }, {
+          method: "CustQueryIsBinded"
+        }).then(res => {
           var data = res
           // console.log(res)
           // console.log(that.globalData)

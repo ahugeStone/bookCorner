@@ -47,7 +47,9 @@ Page({
       bookType: this.data.bookType,
       bookStatus: this.data.bookStatus,
       num: this.data.nextNum
-    }, null).then(res => {
+    }, {
+      method: "CustQueryBookList"
+    }).then(res => {
       var data = res
       for(var book of data.bookList) {
         book.bookImage = env.imgurl + book.bookId + '.png'

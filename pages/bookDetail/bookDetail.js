@@ -25,6 +25,8 @@ Page({
     util.rest("GET", "books/" + this.data.bookId,{
       // openid: app.globalData.openid,
       // bookId: this.data.bookId
+    }, {
+        method: "CustQueryBookDetail"
     }).then(res => {
       var data = res
       data.bresource = this.getSource(data.bookBuyer, data.bookSource)
@@ -34,6 +36,8 @@ Page({
       })
     })
     util.rest("GET", "books/" + this.data.bookId + "/comments", {
+    }, {
+      method: "CustQueryBookCommentHistory"
     }).then(res => {
       var data = res
       this.setData({
@@ -47,6 +51,8 @@ Page({
     }
     util.rest("POST", "books/" + this.data.bookId, {
       action: "THUMBUP"
+    }, {
+      method: "CustLikeBook"
     }).then(res => {
       this.data.bookInfo.isLiked = "1"
       this.data.bookInfo.bookLikeNum++
@@ -98,6 +104,8 @@ Page({
           // console.log('用户点击确定')
           util.rest("POST", "books/" + that.data.bookInfo.bookId, {
             action: action.toUpperCase()
+          }, {
+            method: action == "borrow" ? "CustBorrowBook" :"CustReturnBook"
           }).then(res => {
             wx.navigateTo({
               url: '../result/result?bookId=' +

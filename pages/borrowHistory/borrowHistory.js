@@ -14,7 +14,8 @@ Page({
       bookId: options.bookId,
       bookName: options.bookName
     })
-    util.rest("GET", "books/" + this.data.bookId + "/history", {
+    util.rest("GET", "books/" + this.data.bookId + "/history", {}, {
+      method: "CustQueryBookBorrowHistory"
     }).then(res => {
       var data = res
       this.setData({

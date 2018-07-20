@@ -26,6 +26,8 @@ Page({
     }
     util.rest("POST", "books/" + this.data.bookId + "/comments",{
       comment: this.data.commentText
+    }, {
+      method: "CustCommentBook"
     }).then(res => {
       wx.showToast({
         title: '发布成功',
@@ -59,6 +61,8 @@ Page({
   },
   getComments: function() {
     util.rest("GET", "books/" + this.data.bookId + "/comments", {
+    }, {
+      method: "CustQueryBookCommentHistory"
     }).then(res => {
       var data = res
       this.setData({

@@ -4,6 +4,7 @@ import mock from "../data/mock.js"
 var Promise = require('./bluebird.min')
 var loadingCount = 0
 
+// 格式化时间
 const formatTime = date => {
   const year = date.getFullYear()
   const month = date.getMonth() + 1
@@ -14,7 +15,7 @@ const formatTime = date => {
 
   return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
 }
-
+// 格式化数字
 const formatNumber = n => {
   n = n.toString()
   return n[1] ? n : '0' + n
@@ -28,27 +29,7 @@ function wxPromisify(fn) {
         console.log("response body", res)
         log("response body:" + JSON.stringify(res))
         hideLoading()
-        if(!res._isException_) {
-          resolve(res)
-        } else {
-          // wx.showModal({
-          //   title: '失败',
-          //   content: res.message || "系统错误，请稍后再试",
-          //   showCancel: false
-          // })
-          // if (res.code =='not Login!') {
-          //   console.info("没有登陆或登陆超时")
-          //   // wx.navigateTo({
-          //   //   url: '/pages/index/index',
-          //   // })
-          //   wx.showModal({
-          //     title: '失败',
-          //     content: "登陆超时，请重新进入",
-          //     showCancel: false
-          //   })
-          // }
-          reject(res)
-        }     
+        resolve(res)  
       }
       obj.fail = function (res) {
         console.log("response body fail", res)
@@ -60,7 +41,7 @@ function wxPromisify(fn) {
     })
   }
 }
-
+// 已废弃
 const post = function (method, param, options) {
   var data = {
     method: method,
@@ -132,7 +113,7 @@ const post = function (method, param, options) {
     })
   }
 }
-
+// 调用后台rest方法
 const rest = function (method, resource, param, options) {
   var data = param
   var json = JSON.stringify(data)
@@ -144,13 +125,13 @@ const rest = function (method, resource, param, options) {
   // 如果是挡板调试模式，则接口调用使用挡板
   if (env.demo) {
     return new Promise((resolve, reject) => {
-      var result = mock.mock[method];
-      console.log("response body(mock)", result)
+      var result = mock.mock[options.method];
+      console.log("response body(mock):" + options.method, result)
       log("response body(mock):" + JSON.stringify(result))
       if (!result._isException_) {
-        resolve(result)
+        resolve(result.result)
       } else {
-        reject(result)
+        reject(result.result)
       }
       hideLoading()
     })
@@ -159,13 +140,13 @@ const rest = function (method, resource, param, options) {
 
     return requestPromisified({
       url: url,
-      //上线的话必须是https，没有appId的本地请求貌似不受影响  
+      //上线的话必须是https 
       data: data,
       method: method,
       // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT  
       header: {
         'content-type': 'application/x-www-form-urlencoded',
-        'Cookie': getApp().globalData.sessionId, // 设置sessionid，保持会话
+        'Cookie': getApp().globalData.sessionId, // 设置sessionid，保持会话-已废弃
         'Authorization': 'Bearer ' + getApp().globalData.token// 设置token
       }, // 设置请求的 header  
       success: function (res) {
@@ -173,15 +154,15 @@ const rest = function (method, resource, param, options) {
       },
       fail: function (e) {
         console.error("fail")
-        console.error(e)
       },
       complete: function (res) {
         console.info("complete", res)
-        if (res && res.header && res.header['Set-Cookie']) {// 如果服务器需要设置会话
-          getApp().globalData.sessionId = res.header['Set-Cookie']//保存sessionid
+        if (res && res.header && res.header['Set-Cookie']) {// 如果服务器需要设置会话-已废弃
+          getApp().globalData.sessionId = res.header['Set-Cookie']//保存sessionid-已废弃
           // console.info("set-cookie:" + getApp().globalData.sessionId)
         }
         if (res && res.data && res.data.token) {
+          // 使用token进行用户登陆管理
           // console.info('token' + res)
           getApp().globalData.token = res.data.token//保存token
           getApp().globalData.userName = res.data.userName // 员工姓名
@@ -189,7 +170,8 @@ const rest = function (method, resource, param, options) {
           // getApp().globalData.isBinded = true
           // console.info("token:" + getApp().globalData.token)
         }
-        if (200 != res.statusCode) {
+        if (!res.statusCode || 200 > res.statusCode || 299 < res.statusCode) {
+          // 没有状态码，或者状态码不再2XX范围内的表示错误
           wx.showModal({
             title: '失败',
             content: (res.data && res.data.message) || "系统错误，请稍后再试",

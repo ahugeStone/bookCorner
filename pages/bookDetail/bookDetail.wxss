@@ -1,6 +1,7 @@
 /**bookDetail.wxss**/
 @import "../../template/cell_nopic_template.wxss";
 @import "../../template/cell_comment_template.wxss";
+@import "../../template/cell_history_template.wxss";
 .container {
   display: flex;
   flex-direction: column;
@@ -80,4 +81,26 @@
   background-image: url(https://shanximokey.cn/images/book.png);
   background-repeat: no-repeat;
   background-size: cover;
+}
+.switchTab {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  height: 45px;
+}
+.switchTab view {
+  flex-grow: 1;
+  text-align: center;
+  line-height:37px;
+}
+.activeTab {
+  background-color: #FFF;
+}
+.borrow_history {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: 20px;
+  overflow: scroll;
+  width: 100%;
 }

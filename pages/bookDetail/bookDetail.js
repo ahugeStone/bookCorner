@@ -9,7 +9,10 @@ Page({
   data: {
     bookInfo:{},
     commentHistoryList: [],
-    bookId: null
+    bookId: null,
+    bookName: "",
+    borrowHistoryList: null,
+    activeTab: 1 // 被激活的tab，默认为1
   },
   onLoad: function (options) {
     // console.info(options.bookId)
@@ -20,6 +23,23 @@ Page({
   },
   onShow: function () {
     this.searchBookDetail()
+  },
+  clickTab: function(e) {
+    // console.info(e.currentTarget.dataset.tabId)
+    this.setData({
+      activeTab: e.currentTarget.dataset.tabid
+    })
+    if (3 == e.currentTarget.dataset.tabid) {
+      util.rest("GET", "books/" + this.data.bookId + "/history", {}, {
+        method: "CustQueryBookBorrowHistory"
+      }).then(res => {
+        var data = res
+        this.setData({
+          borrowHistoryList: data.borrowHistoryList
+        })
+        // console.log(this.data.borrowHistoryList)
+      })
+    }
   },
   searchBookDetail: function () {
     util.rest("GET", "books/" + this.data.bookId,{
@@ -32,7 +52,8 @@ Page({
       data.bresource = this.getSource(data.bookBuyer, data.bookSource)
       data.bookImage = env.imgurl + data.bookId + '.png'
       this.setData({
-        bookInfo: data
+        bookInfo: data,
+        bookName: data.bookName
       })
     })
     util.rest("GET", "books/" + this.data.bookId + "/comments", {

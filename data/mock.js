@@ -17,7 +17,7 @@ const mock = {
   },
   CustQueryIsBinded: {// 查询用户是否绑定
     "result": {
-      isBinded: "0",// 0未绑定 1已绑定
+      isBinded: "1",// 0未绑定 1已绑定
       openid: "123123123123123123",
       userName: "老员工",
       userNo: "3693"

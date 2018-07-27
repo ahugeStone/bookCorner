@@ -105,6 +105,7 @@ const mock = {
       isBorrowed: "0", // 0没有借阅 1正在借阅
       isLiked: "0", // 是否点赞 0否 1是
       isCommented: "1", //是否评论 0否1 是
+      bookScore: "9.0",
       id: 100 // 借书id，只有在isBorrowed＝＝1是有此字段
     },
     "_isException_": false,

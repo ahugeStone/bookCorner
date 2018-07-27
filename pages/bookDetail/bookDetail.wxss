@@ -2,6 +2,8 @@
 @import "../../template/cell_nopic_template.wxss";
 @import "../../template/cell_comment_template.wxss";
 @import "../../template/cell_history_template.wxss";
+@import "../comment/comment.wxss";
+@import "../comment/popup.wxss";
 .container {
   display: flex;
   flex-direction: column;
@@ -27,14 +29,69 @@
 }
 .book_detail {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   padding-left: 5%;
+  padding-right:5%;
   padding-top: 10px;
   padding-bottom: 10px;
   font-size: 16px;
-  color: #777777;
+  color: #222222;
   background-color: #FFFFFF;
   border-bottom: 1px solid #F3F3F3;
+  justify-content:space-between;
+}
+.book_detail span {
+  padding-bottom: 20px;
+  font-size: 18px;
+}
+.book_detail .left {
+  display: flex;
+  flex-direction: column;
+}
+.book_detail .right {
+  display: flex;
+  flex-direction: column;
+  width:64px;
+  font-size:11px;
+  height:80px;
+  background: transparent;
+  color: #999999;
+  justify-content:space-between;
+}
+.right .score{
+  display: flex;
+  flex-direction: column;
+  border-radius: 4px;
+  background: #F8F8F8;
+  flex-grow: 1;
+  box-shadow:0px 0px 3px #888888;
+  align-items:center;
+  justify-content:space-around;
+}
+.scorevalue {
+  font-size: 20px;
+  color: #FC720B;
+  text-align: center;
+  line-height: 20px;
+}
+.right .thumbup{
+  display: flex;
+  flex-direction: row;
+  justify-content:center;
+  border-radius: 4px;
+  background: #F8F8F8;
+  box-shadow:0px 1px 3px #888888;
+  align-items:center;
+  height:20px;
+}
+.thumbup span {
+  padding-bottom:0px;
+  font-size:0;
+  margin-left: 3px;
+}
+.thumbup span image{
+  width: 14px;
+  height: 14px;
 }
 .book_history {
   align-self: center;
@@ -52,7 +109,6 @@
   justify-content: flex-start;
   align-items: center;
   height: 40px;
-  margin-top: 10px;
   color: #777777;
   background-color: #FFFFFF;
   border-bottom: 1px solid #F3F3F3;
@@ -64,7 +120,7 @@
   margin-left: 5%;
 }
 .book_propties text {
-  margin-left: 10px;
+  margin-left: 5%;
 }
 .book_btn {
   position: absolute;
@@ -84,23 +140,27 @@
 }
 .switchTab {
   display: flex;
+  background-color: #FFF;
   justify-content: space-around;
   width: 100%;
   height: 45px;
+  border-bottom:1px solid #F3F3F3;
+  font-size:17px;
 }
 .switchTab view {
   flex-grow: 1;
   text-align: center;
-  line-height:37px;
+  line-height:42px;
+  width: 33%;
 }
 .activeTab {
-  background-color: #FFF;
+  color:#4A89DC;
+  border-bottom: solid;
 }
 .borrow_history {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding-top: 20px;
   overflow: scroll;
   width: 100%;
 }

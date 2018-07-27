@@ -4,9 +4,9 @@
 <import src="../../template/cell_history_template.wxml"/>
 <view class="container">
   <view class="switchTab">
-    <view class="{{activeTab==1? 'activeTab':''}}" bindtap='clickTab' data-tabid="{{1}}">详情</view>
-    <view class="{{activeTab==2? 'activeTab':''}}" bindtap='clickTab' data-tabid="{{2}}">评论</view>
-    <view class="{{activeTab==3? 'activeTab':''}}" bindtap='clickTab' data-tabid="{{3}}">历史</view>
+    <view class="{{activeTab==1? 'activeTab':''}}" bindtap='clickTab' data-tabid="{{1}}">图书</view>
+    <view class="{{activeTab==2? 'activeTab':''}}" bindtap='clickTab' data-tabid="{{2}}">评价</view>
+    <view class="{{activeTab==3? 'activeTab':''}}" bindtap='clickTab' data-tabid="{{3}}">借阅历史</view>
   </view>
   <view wx:if="{{activeTab == 1}}" class="section" style="width:100%;">
     <view class="book_pic">
@@ -14,17 +14,31 @@
     </view>
     <view class="section" style="width:100%;">
       <block>
-        <template is="cell" data="{{...bookInfo}}"/>
+        <!-- <template is="cell" data="{{...bookInfo}}"/> -->
         <view class="book_detail">
-          <text>来源：{{bookInfo.bresource}}</text>
-          <text>购买/捐赠时间：{{bookInfo.bookTime}}</text>
-          <text>备注：{{bookInfo.bookRemark}}</text>
+          <view class="left">
+            <span>{{bookInfo.bookName}}</span>
+            <text>作者：{{bookInfo.bookWriter}}</text>
+            <text>来源：{{bookInfo.bookSource}}</text>
+            <text>类型：{{bookInfo.bookType=='0'?'党建':'技术'}}</text>
+            <text>时间：{{bookInfo.bookTime}}</text>
+          </view>
+          <view class="right">
+            <view class="score">
+              <text>图书评分</text>
+              <text class="scorevalue">{{bookInfo.bookScore}}</text>
+            </view>
+            <view class="thumbup">
+              <text>喜欢</text>
+              <span><image bindtap="thumbup" wx:if="{{bookInfo.isLiked == '1'}}"
+        src="/image/thumbup_red.png"></image>
+        <image bindtap="thumbup" wx:if="{{bookInfo.isLiked == '0'}}"
+        src="/image/thumbup_white.png"></image></span>
+            </view>
+          </view>
         </view>
-        <view class="book_history" 
-        bindtap="gotoBorrowHistory"
-        data-bookId="{{bookId}}"
-        data-bookName="{{bookInfo.bookName}}">
-          <text>借阅历史</text>
+        <view class="book_detail">
+          <text>简介：{{bookInfo.bookBrief}}</text>
         </view>
       </block>
     </view>
@@ -32,19 +46,14 @@
   <view wx:if="{{activeTab == 2}}" class="section" style="width:100%;">
     <block>
       <view class="book_propties">
-        <image bindtap="thumbup" wx:if="{{bookInfo.isLiked == '1'}}"
-        src="/image/thumbup_red.png"></image>
-        <image bindtap="thumbup" wx:if="{{bookInfo.isLiked == '0'}}"
-        src="/image/thumbup_white.png"></image>
-        <text bindtap="thumbup">赞({{bookInfo.bookLikeNum}})</text>
-        <image bindtap='gotoComment'
+        <!-- <image bindtap='gotoComment'
         data-bookid="{{bookId}}"
         wx:if="{{bookInfo.isCommented == '1'}}"
         src="/image/comment_red.png"></image>
         <image bindtap='gotoComment'
         data-bookid="{{bookId}}"
         wx:if="{{bookInfo.isCommented == '0'}}"
-        src="/image/comment_white.png"></image>
+        src="/image/comment_white.png"></image> -->
         <text bindtap='gotoComment'
         data-bookid="{{bookId}}">评论({{bookInfo.bookCommentNum}})
         </text>
@@ -58,9 +67,6 @@
     </block>
   </view>
   <view wx:if="{{activeTab == 3}}" class="borrow_history">
-    <view class="title">
-      <text>{{bookName}}</text>
-    </view>
     <block wx:for="{{borrowHistoryList}}" 
         wx:for-item="item" 
         wx:key="item.openid">
@@ -79,14 +85,40 @@
    bindtap='gotoResult' 
    data-bookId="{{bookId}}"
    data-action="borrow"
-   wx:if="{{bookInfo.isBorrowed=='0' && bookInfo.bookStatus=='1'}}">
+   wx:if="{{activeTab==1 && bookInfo.isBorrowed=='0' && bookInfo.bookStatus=='1'}}">
     <text>我要借书</text>
   </view>
   <view class="book_btn" 
    bindtap='gotoResult' 
    data-bookId="{{bookId}}"
    data-action="return"
-   wx:if="{{bookInfo.isBorrowed=='1'}}">
+   wx:if="{{activeTab==1 && bookInfo.isBorrowed=='1'}}">
     <text>我要还书</text>
+  </view>
+  <view class="book_btn" 
+   wx:if="{{activeTab==2}}"
+   bindtap='toggleDialog'
+   data-bookid="{{bookId}}">
+    <text>我有话说</text>
+  </view>
+</view>
+<view class="zan-dialog {{ showDialog ? 'zan-dialog--show' : '' }}">
+  <view class="zan-dialog__mask" bindtap="toggleDialog" />
+  <view class="zan-dialog__container popcon">
+    <textarea 
+    maxlength="200"
+    placeholder="请输入评论内容" 
+    placeholder-class="pholder"
+    value="{{commentText}}"
+    bindinput="oninput"/>
+    <text class="counter">{{commentText.length}}/200</text>
+    <view>
+      <view class="comment_btn cancel" bindtap="toggleDialog">
+      取消
+      </view>
+      <view class="comment_btn confirm" bindtap="commitComment">
+      提交
+      </view>
+    </view>  
   </view>
 </view>

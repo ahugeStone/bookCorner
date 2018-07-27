@@ -2,16 +2,14 @@
 <template name="comment">
   <block>
     <view class="comment_item">
-      <view class="comment_left">
-        <view class="comment_title">
-          <text>{{userName}}</text>
-        </view>
+      <view class="comment_top">
+        <text>{{userName}}</text>
+        <text>{{recTime}}</text>
+      </view>
+      <view class="comment_bottom">
         <view class="comment_sub_title">
           <text>{{comment}}</text>
         </view>
-      </view>
-      <view class="comment_right">
-        <text>{{recTime}}</text>
       </view>
     </view>   
   </block>

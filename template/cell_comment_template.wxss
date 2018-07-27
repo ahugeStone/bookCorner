@@ -1,8 +1,8 @@
 .comment_item {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   min-height: 66px;
   background-color: #FFF;
   width: 100%;
@@ -10,18 +10,24 @@
   border-bottom: 1px solid #F3F3F3;
   flex-shrink: 0;
 }
-.comment_left {
+.comment_bottom {
   display: flex;
+  width: 90%;
   flex-direction: column;
   justify-content: center;
-  margin-left: 5%;
 }
-.comment_right {
+.comment_top {
   display: flex;
+  width: 90%;
   margin-left: 5%;
   margin-right: 5%;
-  color: #777777;
+  margin-top:5px;
+  margin-bottom:5px;
+  color: #222222;
   font-size: 14px;
+}
+.comment_top text {
+  margin-right: 10px;
 }
 .comment_title {
   display: flex;

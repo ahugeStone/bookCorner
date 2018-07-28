@@ -12,33 +12,33 @@
     <view class="book_pic">
       <image class="img_book" src="{{bookInfo.bookImage}}"></image> 
     </view>
-    <view class="section" style="width:100%;">
+    <view class="section" style="width:100%;margin-bottom:50px;">
       <block>
         <!-- <template is="cell" data="{{...bookInfo}}"/> -->
         <view class="book_detail">
           <view class="left">
             <span>{{bookInfo.bookName}}</span>
             <text>作者：{{bookInfo.bookWriter}}</text>
-            <text>来源：{{bookInfo.bookSource}}</text>
+            <text>来源：{{bookInfo.bookBuyer}} {{bookInfo.bookSource==0?'采购':'捐赠'}}</text>
             <text>类型：{{bookInfo.bookType=='0'?'党建':'技术'}}</text>
             <text>时间：{{bookInfo.bookTime}}</text>
           </view>
           <view class="right">
             <view class="score">
               <text>图书评分</text>
-              <text class="scorevalue">{{bookInfo.bookScore}}</text>
+              <text class="scorevalue">{{bookInfo.bookScore? bookInfo.bookScore:'无'}}</text>
             </view>
             <view class="thumbup">
               <text>喜欢</text>
               <span><image bindtap="thumbup" wx:if="{{bookInfo.isLiked == '1'}}"
         src="/image/thumbup_red.png"></image>
-        <image bindtap="thumbup" wx:if="{{bookInfo.isLiked == '0'}}"
+        <image bindtap="thumbup" wx:else
         src="/image/thumbup_white.png"></image></span>
             </view>
           </view>
         </view>
         <view class="book_detail">
-          <text>简介：{{bookInfo.bookBrief}}</text>
+          <text>简介：{{bookInfo.bookBrief? bookInfo.bookBrief:'暂无简介'}}</text>
         </view>
       </block>
     </view>

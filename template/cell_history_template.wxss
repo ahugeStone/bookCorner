@@ -15,18 +15,25 @@
   flex-direction: column;
   justify-content: center;
   margin-left: 5%;
+  flex-grow:1;
+  width:20%;
 }
 .history_right {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   margin-left: 5%;
   margin-right: 5%;
   color: #777777;
   font-size: 14px;
+  flex-grow:1;
+  justify-content:space-between;
 }
 .green {
   color: #37BC9B;
+}
+.oringe {
+  color: #FC720B;
 }
 .history_title {
   display: flex;

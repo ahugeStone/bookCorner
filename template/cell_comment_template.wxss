@@ -15,9 +15,11 @@
   width: 90%;
   flex-direction: column;
   justify-content: center;
+  margin-bottom:8px;
 }
 .comment_top {
   display: flex;
+  justify-content:flex-start;
   width: 90%;
   margin-left: 5%;
   margin-right: 5%;
@@ -28,6 +30,26 @@
 }
 .comment_top text {
   margin-right: 10px;
+}
+.comment_time {
+  font-size:13px;
+  align-self:flex-end;
+  color:#666666;
+}
+.comment_top view {
+  flex-grow:1;
+  justify-content:flex-end;
+  display:flex;
+}
+.comment_top view image{
+  width: 16px;
+  height: 16px;
+}
+.comment_top view text {
+  margin-left:5px;
+  margin-right:0px;
+  font-size:13px;
+  color:#666;
 }
 .comment_title {
   display: flex;

@@ -2,7 +2,6 @@
 @import "popup.wxss";
 .container {
   align-items: flex-start;
-  padding-top: 20px;
   overflow: scroll;
 } 
 .mine_title {

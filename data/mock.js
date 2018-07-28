@@ -92,7 +92,7 @@ const mock = {
       bookId: 3,
       bookName: "党的十九大报告3",
       bookWriter: "习近平",
-      bookBrief: "党的十九大报告简介",
+      bookBrief: "党的十九大报告简介,党的十九大报告简介党的十九大报告简介党的十九大报告简介党的十九大报告简介党的十九大报告简介党的十九大报告简介党的十九大报告简介党的十九大报告简介党的十九大报告简介党的十九大报告简介党的十九大报告简介党的十九大报告简介党的十九大报告简介党的十九大报告简介党的十九大报告简介党的十九大报告简介党的十九大报告简介党的十九大报告简介党的十九大报告简介党的十九大报告简介党的十九大报告简介党的十九大报告简介党的十九大报告简介",
       bookType: "0",// 0党建 1技术
       bookStatus: "1", //0借出 1在库
       bookSource: "党员捐赠", // 图书来源
@@ -121,6 +121,8 @@ const mock = {
           headImageUrl: "111",
           userName: "讲讲啦",
           comment: "学习必备，考试必胜！学习必备，考试必胜！学习必备，考试必胜！学习必备，考试必胜！学习必备，考试必胜！学习必备，考试必胜！学习必备，考试必胜！学习必备，考试必胜！学习必备，考试必胜！学习必备，考试必胜！学习必备，考试必胜！学习必备，考试必胜！学习必备，考试必胜！学习必备，考试必胜！",
+          commentLikeNum: 10,
+          isLiked: '0',
           recTime: "2017-12-04 20:01:13.0"
         }, {
           bookId: 1,
@@ -128,6 +130,8 @@ const mock = {
           headImageUrl: "111",
           userName: "讲讲啦",
           comment: "学习必备，考试必胜！1",
+          commentLikeNum: 10,
+          isLiked: '1',
           recTime: "2017-12-04 20:01:13.0"
         }, {
           bookId: 1,
@@ -135,6 +139,8 @@ const mock = {
           headImageUrl: "111",
           userName: "讲讲啦",
           comment: "学习必备，考试必胜！2",
+          commentLikeNum: 10,
+          isLiked: '1',
           recTime: "2017-12-04 20:01:13.0"
         }, {
           bookId: 1,
@@ -142,6 +148,89 @@ const mock = {
           headImageUrl: "111",
           userName: "讲讲啦",
           comment: "学习必备，考试必胜！3",
+          commentLikeNum: 10,
+          isLiked: '1',
+          recTime: "2017-12-04 20:01:13.0"
+        }, {
+          bookId: 1,
+          openid: "321321321",
+          headImageUrl: "111",
+          userName: "讲讲啦",
+          comment: "学习必备，考试必胜！3",
+          commentLikeNum: 10,
+          isLiked: '1',
+          recTime: "2017-12-04 20:01:13.0"
+        }, {
+          bookId: 1,
+          openid: "321321321",
+          headImageUrl: "111",
+          userName: "讲讲啦",
+          comment: "学习必备，考试必胜！3",
+          commentLikeNum: 10,
+          isLiked: '1',
+          recTime: "2017-12-04 20:01:13.0"
+        }, {
+          bookId: 1,
+          openid: "321321321",
+          headImageUrl: "111",
+          userName: "讲讲啦",
+          comment: "学习必备，考试必胜！3",
+          commentLikeNum: 10,
+          isLiked: '1',
+          recTime: "2017-12-04 20:01:13.0"
+        }, {
+          bookId: 1,
+          openid: "321321321",
+          headImageUrl: "111",
+          userName: "讲讲啦",
+          comment: "学习必备，考试必胜！3",
+          commentLikeNum: 10,
+          isLiked: '1',
+          recTime: "2017-12-04 20:01:13.0"
+        }, {
+          bookId: 1,
+          openid: "321321321",
+          headImageUrl: "111",
+          userName: "讲讲啦",
+          comment: "学习必备，考试必胜！3",
+          commentLikeNum: 10,
+          isLiked: '1',
+          recTime: "2017-12-04 20:01:13.0"
+        }, {
+          bookId: 1,
+          openid: "321321321",
+          headImageUrl: "111",
+          userName: "讲讲啦",
+          comment: "学习必备，考试必胜！3",
+          commentLikeNum: 10,
+          isLiked: '1',
+          recTime: "2017-12-04 20:01:13.0"
+        }, {
+          bookId: 1,
+          openid: "321321321",
+          headImageUrl: "111",
+          userName: "讲讲啦",
+          comment: "学习必备，考试必胜！3",
+          commentLikeNum: 10,
+          isLiked: '1',
+          recTime: "2017-12-04 20:01:13.0"
+        }, {
+          bookId: 1,
+          openid: "321321321",
+          headImageUrl: "111",
+          userName: "讲讲啦",
+          comment: "学习必备，考试必胜！3",
+          commentLikeNum: 10,
+          isLiked: '1',
+          recTime: "2017-12-04 20:01:13.0"
+        }, {
+          bookId: 1,
+          openid: "321321321",
+          headImageUrl: "111",
+          userName: "讲讲啦",
+          comment: "学习必备，考试必胜！3",
+          commentLikeNum: 10,
+          isLiked: '1',
           recTime: "2017-12-04 20:01:13.0"
         }
       ]
@@ -167,6 +256,7 @@ const mock = {
       borrowHistoryList: [{
         bookId: '1',
         bookStatus: '0', //0借出 1在库
+        borrowStatus: '0', // 本条借阅记录状态 0:已借出 1:已归还
         openid: 'adsfasdf',
         headImgUrl: "123",
         userName: '一个借阅人',
@@ -175,6 +265,7 @@ const mock = {
       }, {
         bookId: '1',
         bookStatus: '1', //0借出 1在库
+        borrowStatus: '1', // 本条借阅记录状态 0:已借出 1:已归还
         openid: 'adsfasdf',
         headImgUrl: "123",
         userName: '一个借阅人2',
@@ -183,6 +274,7 @@ const mock = {
       },{
         bookId: '1',
         bookStatus: '1', //0借出 1在库
+        borrowStatus: '1', // 本条借阅记录状态 0:已借出 1:已归还
         openid: 'adsfasdf',
         headImgUrl: "123",
         userName: '一个借阅人3',
@@ -191,6 +283,7 @@ const mock = {
       }, {
         bookId: '1',
         bookStatus: '1', //0借出 1在库
+        borrowStatus: '1', // 本条借阅记录状态 0:已借出 1:已归还
         openid: 'adsfasdf',
         headImgUrl: "123",
         userName: '一个借阅人4',
@@ -199,6 +292,7 @@ const mock = {
       }, {
         bookId: '1',
         bookStatus: '1', //0借出 1在库
+        borrowStatus: '1', // 本条借阅记录状态 0:已借出 1:已归还
         openid: 'adsfasdf',
         headImgUrl: "123",
         userName: '一个借阅人5',

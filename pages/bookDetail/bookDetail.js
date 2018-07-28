@@ -16,33 +16,25 @@ Page({
     borrowHistoryList: null,
     activeTab: 1 // 被激活的tab，默认为1
   },
+  // 获取传入参数
   onLoad: function (options) {
     // console.info(options.bookId)
     this.setData({
       bookId: parseInt(options.bookId)
     })
-    // this.searchBookDetail()
   },
+  // 每次展示刷新图书详情
   onShow: function () {
     this.searchBookDetail()
   },
+  // 切换标签
   clickTab: function(e) {
     // console.info(e.currentTarget.dataset.tabId)
     this.setData({
       activeTab: e.currentTarget.dataset.tabid
     })
-    if (3 == e.currentTarget.dataset.tabid) {
-      util.rest("GET", "books/" + this.data.bookId + "/history", {}, {
-        method: "CustQueryBookBorrowHistory"
-      }).then(res => {
-        var data = res
-        this.setData({
-          borrowHistoryList: data.borrowHistoryList
-        })
-        // console.log(this.data.borrowHistoryList)
-      })
-    }
   },
+  // 获取图书详情
   searchBookDetail: function () {
     util.rest("GET", "books/" + this.data.bookId,{
       // openid: app.globalData.openid,
@@ -58,6 +50,7 @@ Page({
         bookName: data.bookName
       })
     })
+    // 获取图书评论
     util.rest("GET", "books/" + this.data.bookId + "/comments", {
     }, {
       method: "CustQueryBookCommentHistory"
@@ -67,7 +60,18 @@ Page({
         commentHistoryList: data.commentHistoryList
       })
     })
+    // 获取图书评论历史
+    util.rest("GET", "books/" + this.data.bookId + "/history", {}, {
+      method: "CustQueryBookBorrowHistory"
+    }).then(res => {
+      var data = res
+      this.setData({
+        borrowHistoryList: data.borrowHistoryList
+      })
+      // console.log(this.data.borrowHistoryList)
+    })
   },
+  // 图书点赞
   thumbup: function() {
     if (this.data.bookInfo.isLiked == "1") {
       return
@@ -94,6 +98,37 @@ Page({
       })
     })
   },
+  // 评论点赞
+  thumbupComment: function(e) {
+    var commentid = e.target.dataset.commentid
+    util.rest("POST", "books/" + this.data.bookId + "/comments/" + commentid, {
+      action: "THUMBUP"
+    }, {
+        method: "CustLikeComment"
+      }).then(res => {
+        for (var comment of this.data.commentHistoryList) {
+          if (comment.id == commentid) {
+            comment.isLiked = "1"
+            comment.commentLikeNum++
+          }
+        }
+        this.setData({
+          commentHistoryList: this.data.commentHistoryList
+        })
+        wx.showToast({
+          title: '点赞成功',
+          // icon: 'success',
+          duration: 1000
+        })
+      }).catch(e => {
+        wx.showToast({
+          title: '网络卡了',
+          duration: 1000
+        })
+      })
+    console.info(e.target.dataset.commentid)
+  },
+  // 切换到图书历史（废弃）
   gotoBorrowHistory: function(e) {
     wx.navigateTo({
       url: '../borrowHistory/borrowHistory?bookId=' +
@@ -101,17 +136,20 @@ Page({
       '&bookName=' + e.currentTarget.dataset.bookname
     })
   },
+  // 切换到评论（废弃）
   gotoComment: function(e) {
     wx.navigateTo({
       url: '../comment/comment?bookId=' +
       e.currentTarget.dataset.bookid
     })
   },
+  // 生成图书来源
   getSource: function(buyer, source) {
     // console.log("123")
     var list = ["采购", "捐赠"]
-    return buyer + " " + list[source]
+    return buyer + " " + (list[source] ? list[source]:"")
   },
+  // 借阅或归还
   gotoResult: function(e) {
     var that = this
     // console.log(that.data.bookInfo)
@@ -159,12 +197,13 @@ Page({
       }
     })
   },
-  //控制 pop 的打开关闭
+  //打开评论框
   toggleDialog() {
     this.setData({
       showDialog: !this.data.showDialog
     });
   },
+  // 保存评论
   commitComment: function () {
     if (this.data.commentText.trim().length == 0) {
       wx.showModal({
@@ -195,13 +234,14 @@ Page({
           }
         })
       })
-
   },
+  // 临时保存评论内容
   oninput: function (e) {
     this.setData({
       commentText: e.detail.value
     })
   },
+  // 获取评论（刷新）
   getComments: function () {
     util.rest("GET", "books/" + this.data.bookId + "/comments", {
     }, {

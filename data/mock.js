@@ -123,6 +123,7 @@ const mock = {
           comment: "学习必备，考试必胜！学习必备，考试必胜！学习必备，考试必胜！学习必备，考试必胜！学习必备，考试必胜！学习必备，考试必胜！学习必备，考试必胜！学习必备，考试必胜！学习必备，考试必胜！学习必备，考试必胜！学习必备，考试必胜！学习必备，考试必胜！学习必备，考试必胜！学习必备，考试必胜！",
           commentLikeNum: 10,
           isLiked: '0',
+          id: 1,
           recTime: "2017-12-04 20:01:13.0"
         }, {
           bookId: 1,
@@ -132,6 +133,7 @@ const mock = {
           comment: "学习必备，考试必胜！1",
           commentLikeNum: 10,
           isLiked: '1',
+          id: 2,
           recTime: "2017-12-04 20:01:13.0"
         }, {
           bookId: 1,
@@ -141,6 +143,7 @@ const mock = {
           comment: "学习必备，考试必胜！2",
           commentLikeNum: 10,
           isLiked: '1',
+          id: 3,
           recTime: "2017-12-04 20:01:13.0"
         }, {
           bookId: 1,
@@ -150,6 +153,7 @@ const mock = {
           comment: "学习必备，考试必胜！3",
           commentLikeNum: 10,
           isLiked: '1',
+          id: 4,
           recTime: "2017-12-04 20:01:13.0"
         }, {
           bookId: 1,
@@ -159,6 +163,7 @@ const mock = {
           comment: "学习必备，考试必胜！3",
           commentLikeNum: 10,
           isLiked: '1',
+          id: 5,
           recTime: "2017-12-04 20:01:13.0"
         }, {
           bookId: 1,
@@ -168,6 +173,7 @@ const mock = {
           comment: "学习必备，考试必胜！3",
           commentLikeNum: 10,
           isLiked: '1',
+          id: 6,
           recTime: "2017-12-04 20:01:13.0"
         }, {
           bookId: 1,
@@ -177,6 +183,7 @@ const mock = {
           comment: "学习必备，考试必胜！3",
           commentLikeNum: 10,
           isLiked: '1',
+          id: 7,
           recTime: "2017-12-04 20:01:13.0"
         }, {
           bookId: 1,
@@ -186,6 +193,7 @@ const mock = {
           comment: "学习必备，考试必胜！3",
           commentLikeNum: 10,
           isLiked: '1',
+          id: 8,
           recTime: "2017-12-04 20:01:13.0"
         }, {
           bookId: 1,
@@ -195,6 +203,7 @@ const mock = {
           comment: "学习必备，考试必胜！3",
           commentLikeNum: 10,
           isLiked: '1',
+          id: 9,
           recTime: "2017-12-04 20:01:13.0"
         }, {
           bookId: 1,
@@ -204,6 +213,7 @@ const mock = {
           comment: "学习必备，考试必胜！3",
           commentLikeNum: 10,
           isLiked: '1',
+          id: 10,
           recTime: "2017-12-04 20:01:13.0"
         }, {
           bookId: 1,
@@ -213,6 +223,7 @@ const mock = {
           comment: "学习必备，考试必胜！3",
           commentLikeNum: 10,
           isLiked: '1',
+          id: 11,
           recTime: "2017-12-04 20:01:13.0"
         }, {
           bookId: 1,
@@ -222,6 +233,7 @@ const mock = {
           comment: "学习必备，考试必胜！3",
           commentLikeNum: 10,
           isLiked: '1',
+          id: 12,
           recTime: "2017-12-04 20:01:13.0"
         }, {
           bookId: 1,
@@ -231,6 +243,7 @@ const mock = {
           comment: "学习必备，考试必胜！3",
           commentLikeNum: 10,
           isLiked: '1',
+          id: 13,
           recTime: "2017-12-04 20:01:13.0"
         }
       ]
@@ -311,6 +324,12 @@ const mock = {
     "message": "用户绑定验证错误"
   },
   CustReturnBook: {// 还书－不报错表示成功
+    "result": {},
+    "_isException_": false,
+    "code": "role.invalid_user",
+    "message": "用户绑定验证错误"
+  },
+  CustLikeComment: {// 评论点赞
     "result": {},
     "_isException_": false,
     "code": "role.invalid_user",

@@ -7,7 +7,7 @@
         <text class="comment_time">{{recTime}}</text>
         <view>
           <image wx:if="{{isLiked == '1'}}" src="/image/like_red.png"></image>
-          <image bindtap="thumbupComment" wx:else src="/image/like_white.png"></image>
+          <image bindtap="thumbupComment" data-commentId="{{id}}" wx:else src="/image/like_white.png"></image>
           <text>{{commentLikeNum? commentLikeNum:0}}</text>
         </view>
       </view>

@@ -3,15 +3,19 @@
 <import src="../../template/cell_comment_template.wxml"/>
 <import src="../../template/cell_history_template.wxml"/>
 <view class="container">
+  <!-- 上方三个标签 -->
   <view class="switchTab">
     <view class="{{activeTab==1? 'activeTab':''}}" bindtap='clickTab' data-tabid="{{1}}">图书</view>
     <view class="{{activeTab==2? 'activeTab':''}}" bindtap='clickTab' data-tabid="{{2}}">评价</view>
     <view class="{{activeTab==3? 'activeTab':''}}" bindtap='clickTab' data-tabid="{{3}}">借阅历史</view>
   </view>
+  <!-- 图书详情页 -->
   <view wx:if="{{activeTab == 1}}" class="section" style="width:100%;">
+    <!-- 图书照片 -->
     <view class="book_pic">
       <image class="img_book" src="{{bookInfo.bookImage}}"></image> 
     </view>
+    <!-- 图书简介 -->
     <view class="section" style="width:100%;margin-bottom:50px;">
       <block>
         <!-- <template is="cell" data="{{...bookInfo}}"/> -->
@@ -19,14 +23,15 @@
           <view class="left">
             <span>{{bookInfo.bookName}}</span>
             <text>作者：{{bookInfo.bookWriter}}</text>
-            <text>来源：{{bookInfo.bookBuyer}} {{bookInfo.bookSource==0?'采购':'捐赠'}}</text>
+            <text>来源：{{bookInfo.bresource}}</text>
             <text>类型：{{bookInfo.bookType=='0'?'党建':'技术'}}</text>
             <text>时间：{{bookInfo.bookTime}}</text>
           </view>
+          <!-- 评分点赞 -->
           <view class="right">
             <view class="score">
               <text>图书评分</text>
-              <text class="scorevalue">{{bookInfo.bookScore? bookInfo.bookScore:'无'}}</text>
+              <text class="scorevalue">{{bookInfo.bookScore? bookInfo.bookScore:'_'}}</text>
             </view>
             <view class="thumbup">
               <text>喜欢</text>
@@ -43,6 +48,7 @@
       </block>
     </view>
   </view>
+  <!-- 图书评价 -->
   <view wx:if="{{activeTab == 2}}" class="section" style="width:100%;">
     <block>
       <view class="book_propties">
@@ -58,14 +64,19 @@
         data-bookid="{{bookId}}">评论({{bookInfo.bookCommentNum}})
         </text>
       </view>
+      <!-- 显示所有评论 -->
       <block wx:for="{{commentHistoryList}}" 
       wx:for-item="item" 
       wx:key="item.openid">
         <template is="comment" data="{{...item}}"/>
       </block>
+      <view wx:if="{{commentHistoryList && commentHistoryList.length==0}}" class="mine_tips">
+        <text>暂无评论</text>
+      </view>
       <view style="width:100%; height:66px;"></view>
     </block>
   </view>
+  <!-- 借阅历史 -->
   <view wx:if="{{activeTab == 3}}" class="borrow_history">
     <block wx:for="{{borrowHistoryList}}" 
         wx:for-item="item" 
@@ -80,7 +91,7 @@
     </view>
   </view>
   
-  
+  <!-- 借书还书 -->
   <view class="book_btn" 
    bindtap='gotoResult' 
    data-bookId="{{bookId}}"
@@ -95,6 +106,7 @@
    wx:if="{{activeTab==1 && bookInfo.isBorrowed=='1'}}">
     <text>我要还书</text>
   </view>
+  <!-- 评论 -->
   <view class="book_btn" 
    wx:if="{{activeTab==2}}"
    bindtap='toggleDialog'
@@ -102,6 +114,7 @@
     <text>我有话说</text>
   </view>
 </view>
+<!-- 评论输入框 -->
 <view class="zan-dialog {{ showDialog ? 'zan-dialog--show' : '' }}">
   <view class="zan-dialog__mask" bindtap="toggleDialog" />
   <view class="zan-dialog__container popcon">

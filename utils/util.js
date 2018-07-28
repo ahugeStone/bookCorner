@@ -25,11 +25,22 @@ function wxPromisify(fn) {
   return function (obj = {}) {
     return new Promise((resolve, reject) => {
       obj.success = function (res) {
-        res = res.data
-        console.log("response body", res)
-        log("response body:" + JSON.stringify(res))
+        var data = res.data
+        console.log("response body", data)
+        log("response body:" + JSON.stringify(data))
         hideLoading()
-        resolve(res)  
+        if (!res.statusCode || 200 > res.statusCode || 299 < res.statusCode) {
+          // 没有状态码，或者状态码不再2XX范围内的表示错误
+          console.info('reject', reject)
+          wx.showModal({
+            title: '失败',
+            content: (res.data && res.data.message) || "系统错误，请稍后再试",
+            showCancel: false
+          })
+          reject(data)
+        } else {
+          resolve(data)
+        }
       }
       obj.fail = function (res) {
         console.log("response body fail", res)
@@ -169,14 +180,6 @@ const rest = function (method, resource, param, options) {
           getApp().globalData.userNo = res.data.userNo //员工号
           // getApp().globalData.isBinded = true
           // console.info("token:" + getApp().globalData.token)
-        }
-        if (!res.statusCode || 200 > res.statusCode || 299 < res.statusCode) {
-          // 没有状态码，或者状态码不再2XX范围内的表示错误
-          wx.showModal({
-            title: '失败',
-            content: (res.data && res.data.message) || "系统错误，请稍后再试",
-            showCancel: false
-          })
         }
       }
     })

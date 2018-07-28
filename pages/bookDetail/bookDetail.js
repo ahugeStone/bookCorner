@@ -120,12 +120,14 @@ Page({
           // icon: 'success',
           duration: 1000
         })
-      }).catch(e => {
-        wx.showToast({
-          title: '网络卡了',
-          duration: 1000
-        })
       })
+      // .catch(e => {
+      //   wx.showToast({
+      //     icon: 'none',
+      //     title: '网络卡了',
+      //     duration: 1000
+      //   })
+      // })
     console.info(e.target.dataset.commentid)
   },
   // 切换到图书历史（废弃）

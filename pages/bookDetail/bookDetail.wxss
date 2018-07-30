@@ -95,8 +95,8 @@
   margin-left: 3px;
 }
 .thumbup span image{
-  width: 14px;
-  height: 14px;
+  width: 12px;
+  height: 12px;
 }
 .book_history {
   align-self: center;

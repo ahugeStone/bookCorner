@@ -335,6 +335,35 @@ const mock = {
     "code": "role.invalid_user",
     "message": "用户绑定验证错误"
   },
+  CustqueryMessage: {// 获取最新动态（消息）
+    "result": {
+      "messageList": [{
+        "id": "1",
+        "operationType": "0",
+        "operationContent": "好看",
+        "operationTime": "2018-07-18 18:41:45",
+        "userName": "黄实",
+        "bookName": "中华振兴"
+      },{
+        "id": "1",
+        "operationType": "2",
+        "operationContent": "好看",
+        "operationTime": "2018-07-18 18:41:45",
+        "userName": "黄实",
+        "bookName": "中华振兴"
+      }, {
+        "id": "2",
+        "operationType": "1",
+        "operationContent": "",
+        "operationTime": "2018-07-18 18:41:45",
+        "userName": "黄实",
+        "bookName": "中华崛起"
+      }]
+    },
+    "_isException_": false,
+    "code": "role.invalid_user",
+    "message": "用户绑定验证错误"
+  },
   CustQueryBookBorrowRecord: {// 用户查看自己的借阅记录
     "result": {
       borrowRecordList: [{

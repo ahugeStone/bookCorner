@@ -1,7 +1,14 @@
 <!--shelf.wxml-->
 <import src="../../template/cell_template.wxml"/>
 <view class="container">
+  <view class="book_search">
+    <view class="book_name">
+      <icon type="search" size="16" class="book_search_icon"/>
+      <input placeholder='请输入图书名称' placeholder-class="book_name_placeholder" bindinput="bookNameSearchInput" bindblur="resetBookList"></input>
+    </view>
+  </view>
   <view class="search_btn">
+    <text>图书</text>
     <text bindtap="toggleDialog">筛选</text>
     <image src="/image/search.png"></image> 
   </view>
@@ -26,9 +33,6 @@
 <view class="zan-dialog {{ showDialog ? 'zan-dialog--show' : '' }}">
   <view class="zan-dialog__mask" bindtap="toggleDialog" />
   <view class="zan-dialog__container popcon">
-    <view class="book_name">
-      <input placeholder='书名' bindinput="bookNameSearchInput"></input>
-    </view>
     <text>类型</text>
     <view class="book_propties">
       <view class="{{bookType!='0'&&bookType!='1'?'focus':''}}"
@@ -59,6 +63,6 @@
       data-bookstatus="1">
       <text>在库</text></view>
     </view>
-    <button class="confirm_btn" bindtap="resetBookList">确定</button>
+    <!-- <button class="confirm_btn" bindtap="resetBookList">确定</button> -->
   </view>
 </view>

@@ -28,7 +28,7 @@ function wxPromisify(fn) {
         var data = res.data
         console.log("response body", data)
         log("response body:" + JSON.stringify(data))
-        hideLoading()
+        // hideLoading()
         if (!res.statusCode || 200 > res.statusCode || 299 < res.statusCode) {
           // 没有状态码，或者状态码不再2XX范围内的表示错误
           console.info('reject', reject)
@@ -132,7 +132,9 @@ const rest = function (method, resource, param, options) {
   console.log("request body", json)
   log("request body:" + JSON.stringify(json))
   var requestPromisified = wxPromisify(wx.request)
-  showLoading()
+  if (!options.hideLoading) {
+    showLoading()
+  }
   // 如果是挡板调试模式，则接口调用使用挡板
   if (env.demo) {
     return new Promise((resolve, reject) => {
@@ -144,7 +146,9 @@ const rest = function (method, resource, param, options) {
       } else {
         reject(result.result)
       }
-      hideLoading()
+      if (!options.hideLoading) {
+        hideLoading()
+      }
     })
   } else {// 否则使用后台环境
     var url = env.url[0] + resource
@@ -167,6 +171,9 @@ const rest = function (method, resource, param, options) {
         console.error("fail")
       },
       complete: function (res) {
+        if (!options.hideLoading) {
+          hideLoading()
+        }
         console.info("complete", res)
         if (res && res.header && res.header['Set-Cookie']) {// 如果服务器需要设置会话-已废弃
           getApp().globalData.sessionId = res.header['Set-Cookie']//保存sessionid-已废弃

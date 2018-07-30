@@ -48,7 +48,8 @@ Page({
       bookStatus: this.data.bookStatus,
       num: this.data.nextNum
     }, {
-      method: "CustQueryBookList"
+      method: "CustQueryBookList",
+      hideLoading: true
     }).then(res => {
       var data = res
       for(var book of data.bookList) {
@@ -64,10 +65,10 @@ Page({
         loading: false // 加载完毕
       })
       
-      this.toggleDialog(false)
+      // this.toggleDialog(false)
     }).catch(res => {
       // console.error("error", res)
-      this.toggleDialog(false)
+      // this.toggleDialog(false)
       this.setData({
         loading: false // 加载完毕
       })
@@ -77,17 +78,25 @@ Page({
     this.setData({
       bookStatus: e.currentTarget.dataset.bookstatus
     })
+    this.resetBookList()
   },
   changeBookType(e) {
     this.setData({
       bookType: e.currentTarget.dataset.booktype
     })
+    this.resetBookList()
   },
   //控制 pop 的打开关闭
   toggleDialog(value) {
-    this.setData({
-      showDialog: value==null? !this.data.showDialog : value
-    });
+    if (typeof (value) == "boolean") {
+      this.setData({
+        showDialog: value
+      });
+    } else {
+      this.setData({
+        showDialog: !this.data.showDialog
+      });
+    }
   },
   bookNameSearchInput(e) {
     this.setData({

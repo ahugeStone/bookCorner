@@ -9,17 +9,25 @@
 .search_btn {
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  margin-right: 10px;
+  margin-top: 7px;
+  margin-bottom: 7px;
+  margin-right: 5%;
   font-size: 14px;
   color: #4A89DC;
   flex-shrink: 0;
+  width:95%;
 }
 .search_btn text {
   margin-right: 5px;
+}
+.search_btn text:first-child {
+  flex-grow: 1;
+  font-size: 15px;
+  color: #222222;
+  border-left:2px solid #4A89DC;
+  padding-left:5%;
 }
 .search_btn image {
   width: 11px;
@@ -31,7 +39,7 @@
   justify-content: flex-start;
   width: 90%;
   font-size: 15px;
-
+  margin-bottom:10px;
 }
 .book_propties view {
   width: 90px;
@@ -45,7 +53,7 @@
 }
 .popcon > text {
   margin-left: 5%;
-  margin-top: 20px;
+  margin-top: 10px;
   margin-bottom: 5px;
 }
 .popcon {
@@ -66,14 +74,33 @@
   margin-top: 30px;
   margin-bottom: 20px;
 }
+.book_search {
+  width: 100%;
+  background: #FFFFFF;
+}
 .book_name {
+  display: flex;
+  flex-flow: row;
+  margin: 0 auto;
   margin-top: 15px;
-  margin-left: 5%;
-  width: 90%;
+  margin-bottom: 10px;
+  width: 94%;
+  border-radius: 6px;
+  font-size: 13px;
+  background:#EEEEEE;
 }
 .book_name input {
-  background: #FFFFFF;
-  height: 40px;
+  background: #EEEEEE;
+  height: 28px;
+  border-radius:6px;
+}
+.book_name_placeholder {
+  margin-left: 5px;
+}
+.book_search_icon {
+  margin-top: 6px;
+  margin-left: 10px;
+  margin-right: 5px;
 }
 .focus {
   border: 1px solid #FF6666!important;

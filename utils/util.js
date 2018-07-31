@@ -125,6 +125,7 @@ const post = function (method, param, options) {
   }
 }
 // 调用后台rest方法
+// 123
 const rest = function (method, resource, param, options) {
   var data = param
   var json = JSON.stringify(data)

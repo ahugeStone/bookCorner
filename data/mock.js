@@ -340,14 +340,14 @@ const mock = {
       "messageList": [{
         "id": "1",
         "operationType": "0",
-        "operationContent": "好看",
+        "operationContent": "",
         "operationTime": "2018-07-18 18:41:45",
         "userName": "黄实",
         "bookName": "中华振兴"
       },{
         "id": "1",
         "operationType": "2",
-        "operationContent": "好看",
+          "operationContent": "这是一本非常有意思的书，评价文字请在此区域内显示。这是一本非常有意思的书，评价文字请在此区域内显示。这是一本非常有意思的书，评价文字请在此区域内显示。这是一本非常有意思的书，评价文字请在此区域内显示。",
         "operationTime": "2018-07-18 18:41:45",
         "userName": "黄实",
         "bookName": "中华振兴"

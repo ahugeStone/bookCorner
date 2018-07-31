@@ -1,38 +1,42 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
     "pages/comment/comment",
     "pages/shelf/shelf",
     "pages/borrowHistory/borrowHistory",
     "pages/bookDetail/bookDetail",
     "pages/result/result",
-    "pages/mine/mine", 
-    "pages/logs/logs"
+    "pages/mine/mine",
+    "pages/logs/logs",
+    "pages/message/message"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#F9F9F9",
     "navigationBarTitleText": "开发二部图书角",
-    "navigationBarTextStyle":"black",
-    "backgroundColor":"#F9F9F9"
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#F9F9F9"
   },
-  "tabBar":{
+  "tabBar": {
     "color": "#666666",
-    "selectedColor":"#4A89DC",
-    "backgroundColor":"#F9F9F9",
-    "borderStyle":"black",
+    "selectedColor": "#4A89DC",
+    "backgroundColor": "#F9F9F9",
+    "borderStyle": "black",
     "position": "bottom",
-    "list":[{
-      "pagePath":"pages/shelf/shelf",
-      "text":"书架",
-      "iconPath":"/image/shelf_black.png",
-      "selectedIconPath":"/image/shelf_blue.png"
-    },{
-      "pagePath": "pages/mine/mine",
-      "text": "我的",
-      "iconPath": "/image/mine_black.png",
-      "selectedIconPath": "/image/mine_blue.png"
-    }]
+    "list": [
+      {
+        "pagePath": "pages/shelf/shelf",
+        "text": "书架",
+        "iconPath": "/image/shelf_black.png",
+        "selectedIconPath": "/image/shelf_blue.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "/image/mine_black.png",
+        "selectedIconPath": "/image/mine_blue.png"
+      }
+    ]
   },
   "debug": false
 }

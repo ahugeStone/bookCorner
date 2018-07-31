@@ -7,6 +7,19 @@
       <input placeholder='请输入图书名称' placeholder-class="book_name_placeholder" bindinput="bookNameSearchInput" bindblur="resetBookList"></input>
     </view>
   </view>
+  <view class="book_messages" bindtap="gotoMessage">
+    <view class="messages_left">
+      <image src="/image/clock.png"></image>
+    </view>
+    <view class="messages_right">
+     <ul>
+      <block wx:if="{{messageList && messageList.length > 0}}" wx:for="{{messageList}}" wx:for-item="item" wx:key="{{item.id}}" wx:for-index="index" >
+        <li wx:if="{{index<2}}"><em>●</em>{{item.userName}} {{item.actiontime}} {{item.action}}《{{item.bookName}}》</li>
+      </block>
+     </ul> 
+     <view class="message_arrow"><image src="/image/arrow.png"></image></view>
+    </view>
+  </view>
   <view class="search_btn">
     <text>图书</text>
     <text bindtap="toggleDialog">筛选</text>

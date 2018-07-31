@@ -14,13 +14,15 @@ Page({
     showDialog: false,
     nextNum: 0,//下一页开始序号
     isLastPage: false,//是否为最后一页
-    loading: false//是否正在加载
+    loading: false,//是否正在加载
+    messageList: [] // 最新消息
   },
   onLoad() {
     // this.searchBookList()
   },
   onShow() {
     this.resetBookList()
+    this.getMessages()
     // this.searchBookList()
   },
   showMore(){
@@ -28,6 +30,22 @@ Page({
     if(!this.data.isLastPage) {
       this.searchBookList()
     }
+  },
+  getMessages() {
+    util.rest("GET", "messages", {
+      num: 2
+    }, {
+        method: "CustqueryMessage"
+      }).then(res => {
+        var cont = ['借阅', '归还', '评论']
+        for (var message of res.messageList) {
+          message.action = cont[message.operationType]
+          message.actiontime = message.operationTime.slice(0, 10)
+        }
+        this.setData({
+          messageList: res.messageList
+        })
+      })
   },
   resetBookList() {
     this.setData({
@@ -107,6 +125,11 @@ Page({
     wx.navigateTo({
       url: '../bookDetail/bookDetail?bookId=' +
       e.currentTarget.dataset.bookid
+    })
+  },
+  gotoMessage(e) {
+    wx.navigateTo({
+      url: '../message/message'
     })
   }
 })

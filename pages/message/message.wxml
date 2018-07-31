@@ -1,0 +1,24 @@
+<!--pages/message/message.wxml-->
+<view class="container">
+  <block wx:if="{{messageList && messageList.length > 0}}" wx:for="{{messageList}}" wx:for-item="item" wx:key="{{item.id}}" wx:for-index="index" >
+    <view class="message_item">
+      <!-- 消息概览 -->
+      <view class="message_top">
+        <view class="message_icon">
+          <image wx:if="{{item.operationType==0}}" src="/image/borrow.png"></image>
+          <image wx:if="{{item.operationType==1}}" src="/image/return.png"></image>
+          <image wx:if="{{item.operationType==2}}" src="/image/comment.png"></image>
+        </view>
+        <view class="message_review">
+          <view class="detail_top">
+            <span>{{item.action}}</span>
+            <em>{{item.actiontime}}</em>
+          </view>
+          <view class="detail_bottom">{{item.userName}}{{item.action}}《{{item.bookName}}》</view>
+        </view>
+      </view>
+      <!-- 评价详情 -->
+      <view class="message_detail">{{item.operationContent}}</view>
+    </view>
+  </block>
+</view>

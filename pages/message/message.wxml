@@ -12,7 +12,7 @@
         <view class="message_review">
           <view class="detail_top">
             <span>{{item.action}}</span>
-            <em>{{item.actiontime}}</em>
+            <em>{{item.operationTime}}</em>
           </view>
           <view class="detail_bottom">{{item.userName}}{{item.action}}《{{item.bookName}}》</view>
         </view>
@@ -20,5 +20,8 @@
       <!-- 评价详情 -->
       <view class="message_detail">{{item.operationContent}}</view>
     </view>
+  </block>
+  <block wx:if="{{!messageList || messageList.length==0}}">
+    暂无消息
   </block>
 </view>

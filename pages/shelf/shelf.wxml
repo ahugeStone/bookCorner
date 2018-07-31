@@ -16,6 +16,7 @@
       <block wx:if="{{messageList && messageList.length > 0}}" wx:for="{{messageList}}" wx:for-item="item" wx:key="{{item.id}}" wx:for-index="index" >
         <li wx:if="{{index<2}}"><em>●</em>{{item.userName}} {{item.actiontime}} {{item.action}}《{{item.bookName}}》</li>
       </block>
+      <span wx:if="{{!messageList || messageList.length==0}}">暂无消息</span>
      </ul> 
      <view class="message_arrow"><image src="/image/arrow.png"></image></view>
     </view>

@@ -33,7 +33,7 @@ Page({
   },
   getMessages() {
     util.rest("GET", "messages", {
-      num: 2
+      num: 10
     }, {
         method: "CustqueryMessage"
       }).then(res => {

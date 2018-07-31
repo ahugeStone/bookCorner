@@ -17,7 +17,7 @@ const mock = {
   },
   CustQueryIsBinded: {// 查询用户是否绑定
     "result": {
-      isBinded: "0",// 0未绑定 1已绑定
+      isBinded: "1",// 0未绑定 1已绑定
       openid: "123123123123123123",
       userName: "老员工",
       userNo: "3693"
@@ -92,7 +92,7 @@ const mock = {
       bookId: 3,
       bookName: "党的十九大报告3",
       bookWriter: "习近平",
-      bookBrief: "党的十九大报告简介",
+      bookBrief: "党的十九大报告简介,党的十九大报告简介党的十九大报告简介党的十九大报告简介党的十九大报告简介党的十九大报告简介党的十九大报告简介党的十九大报告简介党的十九大报告简介党的十九大报告简介党的十九大报告简介党的十九大报告简介党的十九大报告简介党的十九大报告简介党的十九大报告简介党的十九大报告简介党的十九大报告简介党的十九大报告简介党的十九大报告简介党的十九大报告简介党的十九大报告简介党的十九大报告简介党的十九大报告简介党的十九大报告简介",
       bookType: "0",// 0党建 1技术
       bookStatus: "1", //0借出 1在库
       bookSource: "党员捐赠", // 图书来源
@@ -105,6 +105,7 @@ const mock = {
       isBorrowed: "0", // 0没有借阅 1正在借阅
       isLiked: "0", // 是否点赞 0否 1是
       isCommented: "1", //是否评论 0否1 是
+      bookScore: "9.0",
       id: 100 // 借书id，只有在isBorrowed＝＝1是有此字段
     },
     "_isException_": false,
@@ -119,7 +120,10 @@ const mock = {
           openid: "321321321",
           headImageUrl: "111",
           userName: "讲讲啦",
-          comment: "学习必备，考试必胜！",
+          comment: "学习必备，考试必胜！学习必备，考试必胜！学习必备，考试必胜！学习必备，考试必胜！学习必备，考试必胜！学习必备，考试必胜！学习必备，考试必胜！学习必备，考试必胜！学习必备，考试必胜！学习必备，考试必胜！学习必备，考试必胜！学习必备，考试必胜！学习必备，考试必胜！学习必备，考试必胜！",
+          commentLikeNum: 10,
+          isLiked: '0',
+          id: 1,
           recTime: "2017-12-04 20:01:13.0"
         }, {
           bookId: 1,
@@ -127,6 +131,9 @@ const mock = {
           headImageUrl: "111",
           userName: "讲讲啦",
           comment: "学习必备，考试必胜！1",
+          commentLikeNum: 10,
+          isLiked: '1',
+          id: 2,
           recTime: "2017-12-04 20:01:13.0"
         }, {
           bookId: 1,
@@ -134,6 +141,9 @@ const mock = {
           headImageUrl: "111",
           userName: "讲讲啦",
           comment: "学习必备，考试必胜！2",
+          commentLikeNum: 10,
+          isLiked: '1',
+          id: 3,
           recTime: "2017-12-04 20:01:13.0"
         }, {
           bookId: 1,
@@ -141,6 +151,99 @@ const mock = {
           headImageUrl: "111",
           userName: "讲讲啦",
           comment: "学习必备，考试必胜！3",
+          commentLikeNum: 10,
+          isLiked: '1',
+          id: 4,
+          recTime: "2017-12-04 20:01:13.0"
+        }, {
+          bookId: 1,
+          openid: "321321321",
+          headImageUrl: "111",
+          userName: "讲讲啦",
+          comment: "学习必备，考试必胜！3",
+          commentLikeNum: 10,
+          isLiked: '1',
+          id: 5,
+          recTime: "2017-12-04 20:01:13.0"
+        }, {
+          bookId: 1,
+          openid: "321321321",
+          headImageUrl: "111",
+          userName: "讲讲啦",
+          comment: "学习必备，考试必胜！3",
+          commentLikeNum: 10,
+          isLiked: '1',
+          id: 6,
+          recTime: "2017-12-04 20:01:13.0"
+        }, {
+          bookId: 1,
+          openid: "321321321",
+          headImageUrl: "111",
+          userName: "讲讲啦",
+          comment: "学习必备，考试必胜！3",
+          commentLikeNum: 10,
+          isLiked: '1',
+          id: 7,
+          recTime: "2017-12-04 20:01:13.0"
+        }, {
+          bookId: 1,
+          openid: "321321321",
+          headImageUrl: "111",
+          userName: "讲讲啦",
+          comment: "学习必备，考试必胜！3",
+          commentLikeNum: 10,
+          isLiked: '1',
+          id: 8,
+          recTime: "2017-12-04 20:01:13.0"
+        }, {
+          bookId: 1,
+          openid: "321321321",
+          headImageUrl: "111",
+          userName: "讲讲啦",
+          comment: "学习必备，考试必胜！3",
+          commentLikeNum: 10,
+          isLiked: '1',
+          id: 9,
+          recTime: "2017-12-04 20:01:13.0"
+        }, {
+          bookId: 1,
+          openid: "321321321",
+          headImageUrl: "111",
+          userName: "讲讲啦",
+          comment: "学习必备，考试必胜！3",
+          commentLikeNum: 10,
+          isLiked: '1',
+          id: 10,
+          recTime: "2017-12-04 20:01:13.0"
+        }, {
+          bookId: 1,
+          openid: "321321321",
+          headImageUrl: "111",
+          userName: "讲讲啦",
+          comment: "学习必备，考试必胜！3",
+          commentLikeNum: 10,
+          isLiked: '1',
+          id: 11,
+          recTime: "2017-12-04 20:01:13.0"
+        }, {
+          bookId: 1,
+          openid: "321321321",
+          headImageUrl: "111",
+          userName: "讲讲啦",
+          comment: "学习必备，考试必胜！3",
+          commentLikeNum: 10,
+          isLiked: '1',
+          id: 12,
+          recTime: "2017-12-04 20:01:13.0"
+        }, {
+          bookId: 1,
+          openid: "321321321",
+          headImageUrl: "111",
+          userName: "讲讲啦",
+          comment: "学习必备，考试必胜！3",
+          commentLikeNum: 10,
+          isLiked: '1',
+          id: 13,
           recTime: "2017-12-04 20:01:13.0"
         }
       ]
@@ -166,6 +269,7 @@ const mock = {
       borrowHistoryList: [{
         bookId: '1',
         bookStatus: '0', //0借出 1在库
+        borrowStatus: '0', // 本条借阅记录状态 0:已借出 1:已归还
         openid: 'adsfasdf',
         headImgUrl: "123",
         userName: '一个借阅人',
@@ -174,6 +278,7 @@ const mock = {
       }, {
         bookId: '1',
         bookStatus: '1', //0借出 1在库
+        borrowStatus: '1', // 本条借阅记录状态 0:已借出 1:已归还
         openid: 'adsfasdf',
         headImgUrl: "123",
         userName: '一个借阅人2',
@@ -182,6 +287,7 @@ const mock = {
       },{
         bookId: '1',
         bookStatus: '1', //0借出 1在库
+        borrowStatus: '1', // 本条借阅记录状态 0:已借出 1:已归还
         openid: 'adsfasdf',
         headImgUrl: "123",
         userName: '一个借阅人3',
@@ -190,6 +296,7 @@ const mock = {
       }, {
         bookId: '1',
         bookStatus: '1', //0借出 1在库
+        borrowStatus: '1', // 本条借阅记录状态 0:已借出 1:已归还
         openid: 'adsfasdf',
         headImgUrl: "123",
         userName: '一个借阅人4',
@@ -198,6 +305,7 @@ const mock = {
       }, {
         bookId: '1',
         bookStatus: '1', //0借出 1在库
+        borrowStatus: '1', // 本条借阅记录状态 0:已借出 1:已归还
         openid: 'adsfasdf',
         headImgUrl: "123",
         userName: '一个借阅人5',
@@ -217,6 +325,41 @@ const mock = {
   },
   CustReturnBook: {// 还书－不报错表示成功
     "result": {},
+    "_isException_": false,
+    "code": "role.invalid_user",
+    "message": "用户绑定验证错误"
+  },
+  CustLikeComment: {// 评论点赞
+    "result": {},
+    "_isException_": false,
+    "code": "role.invalid_user",
+    "message": "用户绑定验证错误"
+  },
+  CustqueryMessage: {// 获取最新动态（消息）
+    "result": {
+      "messageList": [{
+        "id": "1",
+        "operationType": "0",
+        "operationContent": "好看",
+        "operationTime": "2018-07-18 18:41:45",
+        "userName": "黄实",
+        "bookName": "中华振兴"
+      },{
+        "id": "1",
+        "operationType": "2",
+        "operationContent": "好看",
+        "operationTime": "2018-07-18 18:41:45",
+        "userName": "黄实",
+        "bookName": "中华振兴"
+      }, {
+        "id": "2",
+        "operationType": "1",
+        "operationContent": "",
+        "operationTime": "2018-07-18 18:41:45",
+        "userName": "黄实",
+        "bookName": "中华崛起"
+      }]
+    },
     "_isException_": false,
     "code": "role.invalid_user",
     "message": "用户绑定验证错误"

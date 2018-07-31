@@ -8,11 +8,12 @@
         </view>
       </view>
       <view wx:if="{{borrowStatus=='0'}}" class="history_right">
-        <text class='green'>已借出</text>
+        <text class='oringe'>已借出</text>
         <text>{{borrowTime}}</text>
       </view>
       <view wx:else class="history_right">
-        <text>归还日期：{{returnTime}}</text>
+        <text>已归还</text>
+        <text>{{returnTime}}</text>
       </view>
     </view>   
   </block>

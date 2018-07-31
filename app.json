@@ -18,7 +18,7 @@
   },
   "tabBar":{
     "color": "#666666",
-    "selectedColor":"#FF7878",
+    "selectedColor":"#4A89DC",
     "backgroundColor":"#F9F9F9",
     "borderStyle":"black",
     "position": "bottom",
@@ -26,12 +26,12 @@
       "pagePath":"pages/shelf/shelf",
       "text":"书架",
       "iconPath":"/image/shelf_black.png",
-      "selectedIconPath":"/image/shelf_red.png"
+      "selectedIconPath":"/image/shelf_blue.png"
     },{
       "pagePath": "pages/mine/mine",
       "text": "我的",
       "iconPath": "/image/mine_black.png",
-      "selectedIconPath": "/image/mine_red.png"
+      "selectedIconPath": "/image/mine_blue.png"
     }]
   },
   "debug": false

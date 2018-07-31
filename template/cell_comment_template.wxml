@@ -2,16 +2,19 @@
 <template name="comment">
   <block>
     <view class="comment_item">
-      <view class="comment_left">
-        <view class="comment_title">
-          <text>{{userName}}</text>
+      <view class="comment_top">
+        <text>{{userName}}</text>
+        <text class="comment_time">{{recTime}}</text>
+        <view>
+          <image wx:if="{{isLiked == '1'}}" src="/image/like_red.png"></image>
+          <image bindtap="thumbupComment" data-commentId="{{id}}" wx:else src="/image/like_white.png"></image>
+          <text>{{commentLikeNum? commentLikeNum:0}}</text>
         </view>
+      </view>
+      <view class="comment_bottom">
         <view class="comment_sub_title">
           <text>{{comment}}</text>
         </view>
-      </view>
-      <view class="comment_right">
-        <text>{{recTime}}</text>
       </view>
     </view>   
   </block>

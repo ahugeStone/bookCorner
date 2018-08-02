@@ -179,7 +179,7 @@ Page({
             that.data.bookInfo.isBorrowed = action == "borrow" ? "1" : "0"
             that.data.bookInfo.bookStatus = action == "borrow" ? "0" : "1"
             if(action == "borrow") {
-              that.data.bookInfo.id = res.result.id
+              that.data.bookInfo.id = that.data.bookInfo.bookId
             }
             
             that.setData({

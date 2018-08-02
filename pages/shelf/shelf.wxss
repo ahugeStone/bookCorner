@@ -126,13 +126,15 @@
   justify-content: space-between;
   width: 100%;
   margin: 0 auto;
-  height: 60px;
+  min-height: 42px;
   background-color: #FFFFFF;
   margin-top:5px;
   padding-top:5px;
 }
 .messages_left {
   width: 32px;
+  flex: none;
+  /* flex-shrink: 0; */
   height: 38px;
   margin-left:5%;
 }
@@ -143,16 +145,18 @@
 .messages_right {
   display: flex;
   flex-direction: row;
-  flex-grow: 1;
+  flex: auto;
+  /* flex-grow: 1; */
   margin-left: 10px;
   margin-right: 5%;
 }
 .messages_right ul{
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
+  flex: auto;
   font-size: 12px;
   color: #222222;
+  width: 0;
 }
 .messages_right ul em {
   font-size: 7px;
@@ -160,6 +164,10 @@
 }
 .messages_right ul li {
   margin-bottom: 3px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden; 
+  width: 100%;
 }
 .message_arrow {
   width: 14px;

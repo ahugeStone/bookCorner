@@ -25,7 +25,7 @@
             <text>作者：{{bookInfo.bookWriter}}</text>
             <text>来源：{{bookInfo.bresource}}</text>
             <text>类型：{{bookInfo.bookType=='0'?'党建':'技术'}}</text>
-            <text>时间：{{bookInfo.bookTime}}</text>
+            <text>时间：{{bookInfo.bookDate}}</text>
           </view>
           <!-- 评分点赞 -->
           <view class="right">

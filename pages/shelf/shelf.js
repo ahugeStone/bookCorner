@@ -26,12 +26,14 @@ Page({
     this.refreshBookId() // 刷新刚访问过的图书信息
     // this.searchBookList()
   },
+  // 加载更多图书
   showMore(){
     // console.info("111");
     if(!this.data.isLastPage) {
       this.searchBookList()
     }
   },
+  // 获取最新消息
   getMessages() {
     util.rest("GET", "messages", {
       num: 2
@@ -48,11 +50,13 @@ Page({
         })
       })
   },
+  // 刷新图书状态，可以防止更新整个图书列表
   refreshBookId() {
     var edBookId = app.globalData.edBookId
     if (edBookId && edBookId.length > 0) {
       // 遍历所有用户访问过的图书，调用接口刷新其数据
-      for (var index of edBookId) {
+      var index
+      while (index = app.globalData.edBookId.pop()) {
         util.rest("GET", "books/" + index, {
         }, {
             method: "CustQueryBookDetail"
@@ -71,9 +75,9 @@ Page({
             })
           })
       }
-      app.globalData.edBookId = [] // 刷新数据后清空待处理图书列表
     }
   },
+  // 重置图书列表
   resetBookList() {
     this.setData({
       bookList: [],
@@ -82,6 +86,7 @@ Page({
     })
     this.searchBookList()
   },
+  // 搜索图书，增量添加到图书列表
   searchBookList() {
     this.setData({
       loading: true //正在加载
@@ -119,12 +124,14 @@ Page({
       })
     })
   },
+  // 搜索指定状态图书
   changeBookStatus(e) {
     this.setData({
       bookStatus: e.currentTarget.dataset.bookstatus
     })
     this.resetBookList()
   },
+  // 搜索指定类型图书
   changeBookType(e) {
     this.setData({
       bookType: e.currentTarget.dataset.booktype
@@ -143,17 +150,20 @@ Page({
       });
     }
   },
+  // 搜索指定关键字图书
   bookNameSearchInput(e) {
     this.setData({
       bookNameSearch: e.detail.value
     })
   },
+  // 进入图书详情页面
   gotoDetail(e) {
     wx.navigateTo({
       url: '../bookDetail/bookDetail?bookId=' +
       e.currentTarget.dataset.bookid
     })
   },
+  // 进入消息详情页
   gotoMessage(e) {
     wx.navigateTo({
       url: '../message/message'

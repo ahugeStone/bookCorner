@@ -69,6 +69,7 @@ Page({
       var data = res
       data.bresource = this.getSource(data.bookBuyer, data.bookSource)
       data.bookImage = env.imgurl + data.bookId + '.png'
+      data.bookDate = data.bookTime?data.bookTime.substring(0,10):""
       this.setData({
         bookInfo: data,
         bookName: data.bookName

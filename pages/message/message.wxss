@@ -4,8 +4,10 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  overflow: auto;
 }
 .message_item {
+  flex: none;
   width: 100%;
   margin-top: 3px;
   display: flex;

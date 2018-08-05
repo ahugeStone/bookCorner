@@ -166,7 +166,7 @@ const rest = function (method, resource, param, options) {
         console.error("fail")
       },
       complete: function (res) {
-        console.info("complete", res)
+        // console.info("complete", res)
         if (options && !options.hideLoading) {
           hideLoading()
         }
@@ -234,7 +234,7 @@ const restDouban = function (method, resource, param, options) {
       if (options && !options.hideLoading) {
         hideLoading()
       }
-      console.info("complete", res)
+      // console.info("complete", res)
       if (res && res.header && res.header['Set-Cookie']) {// 如果服务器需要设置会话-已废弃
         getApp().globalData.sessionIdDouban = res.header['Set-Cookie']//保存sessionid-已废弃
         // console.info("set-cookie:" + getApp().globalData.sessionId)

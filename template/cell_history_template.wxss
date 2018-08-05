@@ -16,8 +16,6 @@
   justify-content: center;
   margin-left: 5%;
   flex-grow:1;
-  max-width:30%;
-  min-width:30%;
 }
 .history_right {
   display: flex;

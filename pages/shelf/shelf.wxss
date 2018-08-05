@@ -93,6 +93,7 @@
   background: #EEEEEE;
   height: 28px;
   border-radius:6px;
+  width:100%;
 }
 .book_name_placeholder {
   margin-left: 5px;

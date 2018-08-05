@@ -19,13 +19,37 @@ Page({
   // 获取传入参数
   onLoad: function (options) {
     // console.info(options.bookId)
+    var pages = getCurrentPages()
+
     this.setData({
       bookId: parseInt(options.bookId)
     })
+    app.globalData.edBookId.push(this.data.bookId)
   },
   // 每次展示刷新图书详情
   onShow: function () {
     this.searchBookDetail()
+  },
+  // 替换父页面的bookList
+  changeBookList: function() {
+    // var pages = getCurrentPages()
+    // console.info(pages)
+    // console.info("pages length:", pages.length)
+    // for (var page of pages) {
+    //   //如果父页面有booklist则进行替换
+    //   var bookList = page.data.bookList
+    //   if (bookList) {
+    //     for (var i = 0; i < bookList.length; i++) {
+    //       if (bookList[i].bookId == this.data.bookId) {
+    //         break;
+    //       }
+    //     }
+    //     bookList.splice(i, 1, this.data.bookInfo)
+    //     page.setData({
+    //       bookList: bookList
+    //     })
+    //   }
+    // }
   },
   // 切换标签
   clickTab: function(e) {
@@ -45,6 +69,7 @@ Page({
       var data = res
       data.bresource = this.getSource(data.bookBuyer, data.bookSource)
       data.bookImage = env.imgurl + data.bookId + '.png'
+      data.bookDate = data.bookTime?data.bookTime.substring(0,10):""
       this.setData({
         bookInfo: data,
         bookName: data.bookName
@@ -59,6 +84,24 @@ Page({
       this.setData({
         commentHistoryList: data.commentHistoryList
       })
+      // 满足条件调用豆瓣api获取豆瓣用户评论
+      if (this.data.bookInfo.isbn13) {
+        util.restDouban("GET", "book/isbn/"+this.data.bookInfo.isbn13+"/comments", {
+          count: 10
+        }).then(res2 => {
+          var comments = res2.comments
+          for(var comment of comments) {
+            comment.userName = '豆瓣用户-' + comment.author.name
+            comment.comment = comment.summary
+            comment.recTime = comment.published
+            comment.isDouban = true
+          }
+          var comments = this.data.commentHistoryList.concat(comments)
+          this.setData({
+            commentHistoryList: comments
+          })
+        })
+      }
     })
     // 获取图书评论历史
     util.rest("GET", "books/" + this.data.bookId + "/history", {}, {
@@ -188,7 +231,7 @@ Page({
           }).catch(e => {
             wx.navigateTo({
               url: '../result/result?bookId=' +
-              e.currentTarget.dataset.bookid +
+              that.data.bookInfo.bookId +
               '&action=' + action +
               '&success=false'
             })

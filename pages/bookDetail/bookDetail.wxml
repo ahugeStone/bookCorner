@@ -25,13 +25,13 @@
             <text>作者：{{bookInfo.bookWriter}}</text>
             <text>来源：{{bookInfo.bresource}}</text>
             <text>类型：{{bookInfo.bookType=='0'?'党建':'技术'}}</text>
-            <text>时间：{{bookInfo.bookTime}}</text>
+            <text>时间：{{bookInfo.bookDate}}</text>
           </view>
           <!-- 评分点赞 -->
           <view class="right">
             <view class="score">
               <text>图书评分</text>
-              <text class="scorevalue">{{bookInfo.bookScore? bookInfo.bookScore:'_'}}</text>
+              <text class="scorevalue">{{bookInfo.bookScore&&'0.0'!=bookInfo.bookScore? bookInfo.bookScore:'暂无'}}</text>
             </view>
             <view class="thumbup">
               <text>喜欢</text>
@@ -61,7 +61,7 @@
         wx:if="{{bookInfo.isCommented == '0'}}"
         src="/image/comment_white.png"></image> -->
         <text bindtap='gotoComment'
-        data-bookid="{{bookId}}">评论({{bookInfo.bookCommentNum}})
+        data-bookid="{{bookId}}">行内评论({{bookInfo.bookCommentNum}})
         </text>
       </view>
       <!-- 显示所有评论 -->

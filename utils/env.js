@@ -8,14 +8,17 @@ const url = [// 只使用第1项环境
 'http://localhost:8080/bookCorner/v1/'// 本地调试环境
 ]
 const imgurl = 'https://cvm.ahuangtongxue.cn/images/' // 图书图片的根路径
+const doubanApi = 'https://cvm.ahuangtongxue.cn/douban/v2/' // 豆瓣api代理的url
+// 'https://api.douban.com/v2/' // 豆瓣api的url
 const debug = "false" // 是否跳过腾讯oauth-废弃
-const demo = true //是否使用挡板数据数据
+const demo = false //是否使用挡板数据数据
 const springboot = true // 是否使用springboot-废弃
 
 module.exports = {
-  url: url,
-  imgurl: imgurl,
-  debug: debug,
-  demo: demo,
-  springboot
+  url,
+  imgurl,
+  debug,
+  demo,
+  springboot,
+  doubanApi
 }

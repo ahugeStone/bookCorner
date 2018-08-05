@@ -32,11 +32,6 @@ function wxPromisify(fn) {
         if (!res.statusCode || 200 > res.statusCode || 299 < res.statusCode) {
           // 没有状态码，或者状态码不再2XX范围内的表示错误
           console.info('reject', reject)
-          wx.showModal({
-            title: '失败',
-            content: (res.data && res.data.message) || "系统错误，请稍后再试",
-            showCancel: false
-          })
           reject(data)
         } else {
           resolve(data)
@@ -125,7 +120,6 @@ const post = function (method, param, options) {
   }
 }
 // 调用后台rest方法
-// 123
 const rest = function (method, resource, param, options) {
   var data = param
   var json = JSON.stringify(data)
@@ -133,7 +127,7 @@ const rest = function (method, resource, param, options) {
   console.log("request body", json)
   log("request body:" + JSON.stringify(json))
   var requestPromisified = wxPromisify(wx.request)
-  if (!options.hideLoading) {
+  if (options && !options.hideLoading) {
     showLoading()
   }
   // 如果是挡板调试模式，则接口调用使用挡板
@@ -147,7 +141,7 @@ const rest = function (method, resource, param, options) {
       } else {
         reject(result.result)
       }
-      if (!options.hideLoading) {
+      if (options && !options.hideLoading) {
         hideLoading()
       }
     })
@@ -172,26 +166,81 @@ const rest = function (method, resource, param, options) {
         console.error("fail")
       },
       complete: function (res) {
-        if (!options.hideLoading) {
+        console.info("complete", res)
+        if (options && !options.hideLoading) {
           hideLoading()
         }
-        console.info("complete", res)
-        if (res && res.header && res.header['Set-Cookie']) {// 如果服务器需要设置会话-已废弃
-          getApp().globalData.sessionId = res.header['Set-Cookie']//保存sessionid-已废弃
-          // console.info("set-cookie:" + getApp().globalData.sessionId)
+        if (!res.statusCode || 200 > res.statusCode || 299 < res.statusCode) {
+          wx.showModal({
+            title: '失败',
+            content: (res.data && res.data.message) || "系统错误，请稍后再试",
+            showCancel: false
+          })
+        } else {
+          if (res && res.header && res.header['Set-Cookie']) {// 如果服务器需要设置会话-已废弃
+            getApp().globalData.sessionId = res.header['Set-Cookie']//保存sessionid-已废弃
+            // console.info("set-cookie:" + getApp().globalData.sessionId)
+          }
+          if (res && res.data && res.data.token) {
+            // 使用token进行用户登陆管理
+            // console.info('token' + res)
+            getApp().globalData.token = res.data.token//保存token
+            getApp().globalData.userName = res.data.userName // 员工姓名
+            getApp().globalData.userNo = res.data.userNo //员工号
+            // getApp().globalData.isBinded = true
+            // console.info("token:" + getApp().globalData.token)
+          }
         }
-        if (res && res.data && res.data.token) {
-          // 使用token进行用户登陆管理
-          // console.info('token' + res)
-          getApp().globalData.token = res.data.token//保存token
-          getApp().globalData.userName = res.data.userName // 员工姓名
-          getApp().globalData.userNo = res.data.userNo //员工号
-          // getApp().globalData.isBinded = true
-          // console.info("token:" + getApp().globalData.token)
-        }
+        
       }
     })
   }
+}
+
+const restDouban = function (method, resource, param, options) {
+  var data = param
+  var json = JSON.stringify(data)
+
+  console.log("request body", json)
+  log("request body:" + JSON.stringify(json))
+  var requestPromisified = wxPromisify(wx.request)
+  if (options && !options.hideLoading) {
+    showLoading()
+  }
+  // 否则使用后台环境
+  var url = env.doubanApi + resource
+
+  var header = {
+    'content-type': 'application/xml;'
+  }
+  if (getApp().globalData.sessionIdDouban) {
+    header.Cookie = getApp().globalData.sessionIdDouban
+  }
+
+  return requestPromisified({
+    url: url,
+    //上线的话必须是https 
+    data: data,
+    method: method,
+    // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT  
+    header: header, // 设置请求的 header  
+    success: function (res) {
+      console.info("success")
+    },
+    fail: function (e) {
+      console.error("fail")
+    },
+    complete: function (res) {
+      if (options && !options.hideLoading) {
+        hideLoading()
+      }
+      console.info("complete", res)
+      if (res && res.header && res.header['Set-Cookie']) {// 如果服务器需要设置会话-已废弃
+        getApp().globalData.sessionIdDouban = res.header['Set-Cookie']//保存sessionid-已废弃
+        // console.info("set-cookie:" + getApp().globalData.sessionId)
+      }
+    }
+  })
 }
 
 const log = function(logText) {
@@ -222,5 +271,6 @@ module.exports = {
   // wxPromisify: wxPromisify,
   post,
   log,
-  rest
+  rest,
+  restDouban
 }

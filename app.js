@@ -66,6 +66,7 @@ App({
     // })
   },
   globalData: {
-    userInfo: {}
+    userInfo: {},
+    edBookId: [] // 刚访问过的bookId序列
   }
 })

@@ -18,11 +18,12 @@ Page({
     messageList: [] // 最新消息
   },
   onLoad() {
-    // this.searchBookList()
+    this.resetBookList()    
   },
   onShow() {
-    this.resetBookList()
+    // this.resetBookList()
     this.getMessages()
+    this.refreshBookId() // 刷新刚访问过的图书信息
     // this.searchBookList()
   },
   showMore(){
@@ -46,6 +47,32 @@ Page({
           messageList: res.messageList
         })
       })
+  },
+  refreshBookId() {
+    var edBookId = app.globalData.edBookId
+    if (edBookId && edBookId.length > 0) {
+      // 遍历所有用户访问过的图书，调用接口刷新其数据
+      for (var index of edBookId) {
+        util.rest("GET", "books/" + index, {
+        }, {
+            method: "CustQueryBookDetail"
+          }).then(res => {
+            var data = res
+            data.bookImage = env.imgurl + data.bookId + '.png'
+            var bookList = this.data.bookList
+            for (var i = 0; i < bookList.length; i++) {
+              if (bookList[i] && bookList[i].bookId == data.bookId) {
+                break;
+              }
+            }
+            bookList.splice(i, 1, data)
+            this.setData({
+              bookList: bookList
+            })
+          })
+      }
+      app.globalData.edBookId = [] // 刷新数据后清空待处理图书列表
+    }
   },
   resetBookList() {
     this.setData({
@@ -131,5 +158,11 @@ Page({
     wx.navigateTo({
       url: '../message/message'
     })
+    // 允许从相机和相册扫码
+    // wx.scanCode({
+    //   success: (res) => {
+    //     console.log(res)
+    //   }
+    // })
   }
 })

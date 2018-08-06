@@ -34,7 +34,8 @@
 .message_review {
   display: flex;
   flex-direction: column;
-  margin-left:10px;
+  margin-left: 10px;
+  margin-right: 5%;
 }
 .message_detail {
   font-size: 13px;
@@ -55,6 +56,7 @@
 .detail_bottom {
   font-size: 13px;
   color: #666666;
+  word-break: break-all;
 }
 .message_helpless {
   display:flex;

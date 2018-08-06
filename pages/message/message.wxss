@@ -56,3 +56,17 @@
   font-size: 13px;
   color: #666666;
 }
+.message_helpless {
+  display:flex;
+  justify-content: center;
+}
+.message_helpless image{
+  display:flex;
+  width:35px;
+  height:35px; 
+  margin-right:10px;
+}
+.message_helpless text{
+  font-size: 18px;
+  margin-top:5px;
+}

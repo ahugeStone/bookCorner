@@ -343,7 +343,7 @@ const mock = {
         "operationContent": "",
         "operationTime": "2018-07-18 18:41:45",
         "userName": "黄实",
-        "bookName": "中华振兴"
+        "bookName": "中华民族伟大振兴事业"
       },{
         "id": "1",
         "operationType": "2",

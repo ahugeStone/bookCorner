@@ -70,9 +70,10 @@
   border-radius: 4px;
   background: #F8F8F8;
   flex-grow: 1;
-  box-shadow:0px 0px 3px #888888;
+  box-shadow:0px 0px 2px #888888;
   align-items:center;
   justify-content:space-around;
+  border-bottom: 1rpx dotted;
 }
 .scorevalue {
   font-size: 20px;
@@ -85,7 +86,7 @@
   justify-content:center;
   border-radius: 4px;
   background: #F8F8F8;
-  box-shadow:0px 1px 3px #888888;
+  box-shadow:0px 1px 1px #888888;
   align-items:center;
   height:20px;
 }

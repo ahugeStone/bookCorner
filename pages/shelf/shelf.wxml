@@ -16,9 +16,8 @@
       <block wx:if="{{messageList && messageList.length > 0}}" wx:for="{{messageList}}" wx:for-item="item" wx:key="{{item.id}}" wx:for-index="index" >
         <li wx:if="{{index<2}}"><em>●</em>{{item.userName}} {{item.actiontime}} {{item.action}}《{{item.bookName}}》</li>
       </block>
-      <span wx:if="{{!messageList || messageList.length==0}}">    
+      <span wx:if="{{messageList && messageList.length==0}}">    
        <view class="message_helpless"><text>这里什么都没有 ╮(╯_╰)╭ </text>
-       <!--image src="/image/helpless.png"></image-->
        </view>
        </span>
      </ul> 

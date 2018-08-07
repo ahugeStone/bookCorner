@@ -59,6 +59,8 @@
 .message_helpless {
   display:flex;
   justify-content: center;
+  width:100%;
+  margin-top:30px;
 }
 .message_helpless image{
   display:flex;

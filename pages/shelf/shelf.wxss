@@ -147,7 +147,6 @@
   display: flex;
   flex-direction: row;
   flex: auto;
-  /* flex-grow: 1; */
   margin-left: 10px;
   margin-right: 5%;
 }
@@ -157,7 +156,8 @@
   flex: auto;
   font-size: 12px;
   color: #222222;
-  width: 0;
+  width: 10vw;
+  /* max-width: 70%; */
 }
 .messages_right ul em {
   font-size: 7px;
@@ -168,7 +168,6 @@
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden; 
-  width: 100%;
 }
 .message_arrow {
   width: 14px;
@@ -178,4 +177,19 @@
   width: 100%;
   height: 100%;
   transform:rotate(90deg);
+}
+.message_helpless {
+  display:flex;
+  justify-content: center;
+}
+.message_helpless image{
+  display:flex;
+  width:30px;
+  height:30px; 
+  margin-right:10px;
+  margin-left:10px;
+}
+.message_helpless text{
+  font-size: 16px;
+  margin-top:5px;
 }

@@ -34,7 +34,8 @@
 .message_review {
   display: flex;
   flex-direction: column;
-  margin-left:10px;
+  margin-left: 10px;
+  margin-right: 5%;
 }
 .message_detail {
   font-size: 13px;
@@ -55,4 +56,19 @@
 .detail_bottom {
   font-size: 13px;
   color: #666666;
+  word-break: break-all;
+}
+.message_helpless {
+  display:flex;
+  justify-content: center;
+}
+.message_helpless image{
+  display:flex;
+  width:35px;
+  height:35px; 
+  margin-right:10px;
+}
+.message_helpless text{
+  font-size: 18px;
+  margin-top:5px;
 }

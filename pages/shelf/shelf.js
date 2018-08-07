@@ -15,7 +15,9 @@ Page({
     nextNum: 0,//下一页开始序号
     isLastPage: false,//是否为最后一页
     loading: false,//是否正在加载
-    messageList: [] // 最新消息
+    messageList: [] ,// 最新消息
+    bookLikeNum: "",
+    bookCommentNum: ""
   },
   onLoad() {
     this.resetBookList()    

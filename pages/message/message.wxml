@@ -21,7 +21,7 @@
       <view class="message_detail">{{item.operationContent}}</view>
     </view>
   </block>
-  <block wx:if="{{!messageList || messageList.length==0}}">
+  <block wx:if="{{messageList && messageList.length==0}}">
   <view class="message_helpless"><image src="/image/helpless.png"></image>
     <text>都说了什么都没有了你还不信</text>
   </view>

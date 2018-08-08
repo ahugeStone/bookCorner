@@ -28,6 +28,13 @@ Page({
     this.refreshBookId() // 刷新刚访问过的图书信息
     // this.searchBookList()
   },
+  // 清空输入内容
+  clearInput() {
+    this.setData({
+      bookNameSearch: ''
+    })
+    this.resetBookList()
+  },
   // 加载更多图书
   showMore(){
     // console.info("111");

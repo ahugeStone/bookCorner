@@ -105,7 +105,7 @@ Page({
     }).then(res => {
       var data = res
       for(var book of data.bookList) {
-        book.bookImage = env.imgurl + book.bookId + '.png'
+        book.bookImage = env.imgurl + book.bookId + '.png' 
       }
       
       let list = this.data.bookList.concat(data.bookList)

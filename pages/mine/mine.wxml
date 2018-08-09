@@ -5,7 +5,7 @@
     <text>在读</text>
   </view>
   <view wx:if="{{readingList.length > 0}}" style="width:100%;">
-    <block wx:for="{{readingList}}" 
+    <block wx:for="{{readingList}}"  
     wx:for-item="item" 
     wx:key="item.bookId" >
       <template is="cell" data="{{...item}}"/>

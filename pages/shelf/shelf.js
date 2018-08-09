@@ -17,7 +17,8 @@ Page({
     loading: false,//是否正在加载
     messageList: null ,// 最新消息
     bookLikeNum: "",
-    bookCommentNum: ""
+    bookCommentNum: "",
+    showMask: false //显示蒙版
   },
   onLoad() {
     this.resetBookList()    
@@ -183,5 +184,20 @@ Page({
     //     console.log(res)
     //   }
     // })
+  },
+  focusInput(e) {
+    this.setData({
+      showMask: true
+    })
+  },
+  blurInput(e) {
+    this.setData({
+      showMask: false
+    })
+  },
+  toggleInput(e) {
+    this.setData({
+      showMask: false
+    })
   }
 })

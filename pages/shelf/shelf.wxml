@@ -1,21 +1,14 @@
 <!--shelf.wxml-->
 <import src="../../template/cell_template.wxml"/>
 <view class="container">
-  <view class="book_search">
-    <view class="book_name">
-      <image class="book_search_icon" src="../../image/search_icon.png"/>
-      <input placeholder='请输入图书名称' confirm-type="search" placeholder-class="book_name_placeholder" bindinput="bookNameSearchInput" bindconfirm="resetBookList" value="{{bookNameSearch}}"></input>
-      <image class="book_clear_icon" bindtap="clearInput" wx:if="{{!!bookNameSearch}}" src="../../image/clear.png"/>
-    </view>
-  </view>
   <view class="book_messages" bindtap="gotoMessage">
     <view class="messages_left">
-      <image src="/image/clock.png"></image>
+      <image src="/image/alert.png"></image>
     </view>
     <view class="messages_right">
      <ul>
       <block wx:if="{{messageList && messageList.length > 0}}" wx:for="{{messageList}}" wx:for-item="item" wx:key="{{item.id}}" wx:for-index="index" >
-        <li wx:if="{{index<2}}"><em>●</em>{{item.userName}} {{item.actiontime}} {{item.action}}《{{item.bookName}}》</li>
+        <li wx:if="{{index<1}}">{{item.actiontime}} {{item.userName}} {{item.action}}《{{item.bookName}}》</li>
       </block>
       <span wx:if="{{messageList && messageList.length==0}}">    
        <view class="message_helpless"><text>这里什么都没有 ╮(╯_╰)╭ </text>
@@ -23,6 +16,13 @@
        </span>
      </ul> 
      <view class="message_arrow"><image src="/image/arrow.png"></image></view>
+    </view>
+  </view>
+  <view class="book_search">
+    <view class="book_name">
+      <image class="book_search_icon" src="../../image/search_icon.png"/>
+      <input placeholder='请输入图书名称' confirm-type="search" placeholder-class="book_name_placeholder" bindinput="bookNameSearchInput" bindconfirm="resetBookList" bindfocus='focusInput' bindblur='blurInput' value="{{bookNameSearch}}"></input>
+      <image class="book_clear_icon" bindtap="clearInput" wx:if="{{!!bookNameSearch}}" src="../../image/clear.png"/>
     </view>
   </view>
   <view class="search_btn">
@@ -86,3 +86,4 @@
     <!-- <button class="confirm_btn" bindtap="resetBookList">确定</button> -->
   </view>
 </view>
+<view class="input_mask" bindtap="toggleInput" wx:if="{{showMask}}"/>

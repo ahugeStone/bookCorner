@@ -3,8 +3,9 @@
 <view class="container">
   <view class="book_search">
     <view class="book_name">
-      <icon type="search" size="16" class="book_search_icon"/>
-      <input placeholder='请输入图书名称' placeholder-class="book_name_placeholder" bindinput="bookNameSearchInput" bindblur="resetBookList"></input>
+      <image class="book_search_icon" src="../../image/search_icon.png"/>
+      <input placeholder='请输入图书名称' confirm-type="search" placeholder-class="book_name_placeholder" bindinput="bookNameSearchInput" bindconfirm="resetBookList" value="{{bookNameSearch}}"></input>
+      <image class="book_clear_icon" bindtap="clearInput" wx:if="{{!!bookNameSearch}}" src="../../image/clear.png"/>
     </view>
   </view>
   <view class="book_messages" bindtap="gotoMessage">
@@ -36,7 +37,9 @@
       <template is="cell" data="{{...item}}"/>
     </block>
     <view wx:if="{{!loading && bookList.length == 0}}" class="mine_tips">
-      <text>没有相关记录</text>
+      <image class="no_result" src="../../image/no_result.png"/>
+      <text>没有找到您想要的图书</text>
+      <text>换个搜索词试试</text>
     </view>
     <view wx:if="{{isLastPage == false}}" class="mine_tips">
       <image class="loading" src='../../image/loading.gif'/>

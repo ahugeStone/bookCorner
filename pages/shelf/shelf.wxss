@@ -95,27 +95,45 @@
   border-radius:6px;
   width:100%;
 }
+.book_clear_icon {
+  width: 28px;
+  height: 28px;
+  flex:none;
+  opacity:0.3
+}
 .book_name_placeholder {
   margin-left: 5px;
 }
 .book_search_icon {
+  width: 16px;
+  height: 16px;
   margin-top: 6px;
   margin-left: 10px;
   margin-right: 5px;
+  flex:none;
 }
 .focus {
   border: 1px solid #4A89DC!important;
   color: #4A89DC;
 }
 .mine_tips {
+  display: flex;
+  flex-direction:column;
   text-align: center;
   color: #666666;
   font-size: 13px;
   flex-shrink: 0;
-  display: flex;
   justify-content:center;
   align-items:center;
-  height: 80rpx;
+}
+.mine_tips text {
+  color: #999999;
+  font-size: 15px;
+}
+.no_result {
+  width: 104px;
+  height: 63px;
+  margin: 0 auto;
 }
 .loading {
   width: 60rpx;

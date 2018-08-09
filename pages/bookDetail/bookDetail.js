@@ -288,6 +288,7 @@ Page({
   },
   // 获取评论（刷新）
   getComments: function () {
+    // 获取图书评论
     util.rest("GET", "books/" + this.data.bookId + "/comments", {
     }, {
         method: "CustQueryBookCommentHistory"
@@ -296,6 +297,26 @@ Page({
         this.setData({
           commentHistoryList: data.commentHistoryList
         })
+        // 满足条件调用豆瓣api获取豆瓣用户评论
+        if (this.data.bookInfo.isbn13) {
+           util.restDouban("GET", "book/isbn/" + this.data.bookInfo.isbn13 + "/comments", {
+            count: 10
+          }).then(res2 => {
+            var comments = res2.comments
+            for (var comment of comments) {
+              comment.userName = '豆瓣用户-' + comment.author.name
+              comment.comment = comment.summary
+              comment.recTime = comment.published
+              comment.isDouban = true
+            }
+            var comments = this.data.commentHistoryList.concat(comments)
+            this.setData({
+              commentHistoryList: comments
+            })
+          })
+        }
       })
+
+
   }
 })

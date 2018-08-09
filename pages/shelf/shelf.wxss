@@ -113,15 +113,15 @@
   flex:none;
 }
 .focus {
-  border: 1px solid #FF6666!important;
-  color: #FF6666;
+  border: 1px solid #4A89DC!important;
+  color: #4A89DC;
 }
 .mine_tips {
   display: flex;
   flex-direction:column;
   text-align: center;
-  color: #444444;
-  font-size: 16px;
+  color: #666666;
+  font-size: 13px;
   flex-shrink: 0;
   justify-content:center;
   align-items:center;

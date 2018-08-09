@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  /* height: 66px; */
+  height: 110px; 
   background-color: #FFF;
   width: 100%;
   margin: 0 auto;
@@ -12,8 +12,8 @@
 .cell_left {
   display: flex;
   flex: none;
-  width: 85px;
-  height: 85px;
+  width: 95px;
+  height: 95px;
   background-color: #333333;
   margin-left: 5%;
 }
@@ -30,10 +30,11 @@
 }
 .cell_title {
   display: flex;
-  font-size: 16px;
+  font-size: 15px;
   color: #222222;
   width: 100%;
   margin-top:14px;
+  height:40px;
 }
 .cell_sub_title {
   display: flex;
@@ -62,4 +63,5 @@
   margin-top:7px;
   margin-left:7px;
   margin-right:7px;
+  width:10px;
 }

@@ -31,7 +31,7 @@
           <view class="right">
             <view class="score">
               <text>图书评分</text>
-              <text class="scorevalue">{{bookInfo.bookScore&&'0.0'!=bookInfo.bookScore? bookInfo.bookScore:'暂无'}}</text>
+              <text class="scorevalue"style="color:{{bookInfo.bookScore&&'0.0'!=bookInfo.bookScore? '#FC720B':'#999999'}};font-size:{{bookInfo.bookScore&&'0.0'!=bookInfo.bookScore? '20px':'13px'}}">{{bookInfo.bookScore&&'0.0'!=bookInfo.bookScore? bookInfo.bookScore:'暂无评分'}}</text>
             </view>
             <view class="thumbup">
               <text>喜欢</text>

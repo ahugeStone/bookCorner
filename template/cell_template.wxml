@@ -14,8 +14,8 @@
           <text>{{bookName}}</text>
         </view>
         <view wx:if="{{bookStatus}}" class="cell_sub_title" 
-        style="color:{{bookStatus==0? '#999999':'#37BC9B'}};">
-          <text>{{bookStatus==0? "已借出":"在库"}}</text>
+        style="color:{{bookStatus==0? '#999999':'#46C3A1'}};">
+          <text>{{bookStatus==0? "已借出":"在库"}}</text> 
         </view>
        <view class="cell_right_bottom"><image class="thumbup_white"    src="/image/thumbup_white.png"></image>
        <text>{{bookLikeNum}}</text>

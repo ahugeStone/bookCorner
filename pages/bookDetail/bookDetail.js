@@ -74,12 +74,13 @@ Page({
         bookInfo: data,
         bookName: data.bookName
       })
+      return util.rest("GET", "books/" + this.data.bookId + "/comments", {
+      }, {
+          method: "CustQueryBookCommentHistory"
+        })
     })
     // 获取图书评论
-    util.rest("GET", "books/" + this.data.bookId + "/comments", {
-    }, {
-      method: "CustQueryBookCommentHistory"
-    }).then(res => {
+    .then(res => {
       var data = res
       this.setData({
         commentHistoryList: data.commentHistoryList

@@ -77,13 +77,14 @@
 .book_search {
   width: 100%;
   background: #FFFFFF;
+  z-index: 9;
 }
 .book_name {
   display: flex;
   flex-flow: row;
   margin: 0 auto;
-  margin-top: 15px;
-  margin-bottom: 10px;
+  margin-top: 8px;
+  margin-bottom: 8px;
   width: 94%;
   border-radius: 6px;
   font-size: 13px;
@@ -146,16 +147,16 @@
   justify-content: space-between;
   width: 100%;
   margin: 0 auto;
-  min-height: 42px;
+  min-height: 35px;
   background-color: #FFFFFF;
   margin-top:5px;
   padding-top:5px; 
+  margin-bottom:3px;
 }
 .messages_left {
-  width: 26px;
+  width: 15px;
   flex: none;
-  /* flex-shrink: 0; */
-  height: 30px;
+  height: 15px;
   margin-left:5%;
   margin-top:3px;
 }
@@ -170,13 +171,12 @@
   margin-left: 10px;
   margin-right: 5%;
   align-items: center;
-  padding-bottom: 7px;
 }
 .messages_right ul{
   display: flex;
   flex-direction: column;
   flex: auto;
-  font-size: 12px;
+  font-size: 14px;
   color: #222222;
   width: 10vw;
   /* max-width: 70%; */
@@ -191,10 +191,9 @@
   text-overflow: ellipsis;
   overflow: hidden; 
 }
-/* .message_arrow {
-  width: 14px;
-  height: 8px;
-} */
+.message_arrow {
+  height: 100%;
+}
 .message_arrow image {
   width: 14px;
   height: 8px;
@@ -209,4 +208,14 @@
 
 .message_helpless text{
   font-size: 16px;
+}
+.input_mask {
+  display:block;
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  z-index:8;
+  background:rgba(0, 0, 0, 0.4);
 }

@@ -40,7 +40,6 @@
 .message_detail {
   font-size: 13px;
   color: #222222;
-  margin-left:12%;
   margin-right:5%;
   margin-bottom:10px;
 }

@@ -40,9 +40,9 @@
 .message_detail {
   font-size: 13px;
   color: #222222;
-  margin-left:12%;
   margin-right:5%;
   margin-bottom:10px;
+  margin-top:5px;
 }
 .detail_top span{
   font-size: 15px;
@@ -57,6 +57,7 @@
   font-size: 13px;
   color: #666666;
   word-break: break-all;
+  margin-top:5px;
 }
 .message_helpless {
   display:flex;

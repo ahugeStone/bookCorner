@@ -167,11 +167,7 @@
 }
 .Tab_border{
   border-bottom: solid; 
-  margin-left:42px; 
-}  
-.Tab_border3{
-  border-bottom: solid;
-  margin-left:25px;
+  margin: 0 auto;
 }  
 .borrow_history {
   display: flex;

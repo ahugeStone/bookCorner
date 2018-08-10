@@ -126,16 +126,17 @@
   flex-shrink: 0;
   justify-content:center;
   align-items:center;
-  margin-top:10px;
 }
 .mine_tips text {
   color: #999999;
   font-size: 15px;
+  margin-top:10px;
 }
 .no_result {
   width: 104px;
   height: 63px;
   margin: 0 auto;
+  margin-top:110px;
 }
 .loading {
   width: 60rpx;
@@ -191,12 +192,12 @@
 .message_arrow {
   display: flex;
   height: 100%;
+  
 }
 .message_arrow image {
   width: 14px;
   height: 8px;
   transform:rotate(90deg);
-
 }
 .message_helpless {
   display:flex;
@@ -210,7 +211,7 @@
 .input_mask {
   display:block;
   position:fixed;
-  top:0;
+  top:80px;
   left:0;
   right:0;
   bottom:0;

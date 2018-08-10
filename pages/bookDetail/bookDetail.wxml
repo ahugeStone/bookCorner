@@ -12,7 +12,7 @@
      <view class="Tab_border" style="color:{{activeTab==2? '#4A89DC':'#FFFFFF'}}"></view> 
     </view>
     <view class="{{activeTab==3? 'activeTab':''}}" bindtap='clickTab' data-tabid="{{3}}">借阅历史
-     <view class="Tab_border3" style="color:{{activeTab==3? '#4A89DC':'#FFFFFF'}};width:60%;"></view> 
+     <view class="Tab_border" style="color:{{activeTab==3? '#4A89DC':'#FFFFFF'}};width:60%;"></view> 
     </view>
   </view>
   <!-- 图书详情页 -->

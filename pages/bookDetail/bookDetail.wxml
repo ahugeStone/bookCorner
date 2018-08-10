@@ -5,9 +5,15 @@
 <view class="container">
   <!-- 上方三个标签 -->
   <view class="switchTab">
-    <view class="{{activeTab==1? 'activeTab':''}}" bindtap='clickTab' data-tabid="{{1}}">图书</view>
-    <view class="{{activeTab==2? 'activeTab':''}}" bindtap='clickTab' data-tabid="{{2}}">评价</view>
-    <view class="{{activeTab==3? 'activeTab':''}}" bindtap='clickTab' data-tabid="{{3}}">借阅历史</view>
+    <view class="{{activeTab==1? 'activeTab':''}}" bindtap='clickTab' data-tabid="{{1}}">图书
+     <view class="Tab_border" style="color:{{activeTab==1? '#4A89DC':'#FFFFFF'}}"></view> 
+    </view>
+    <view class="{{activeTab==2? 'activeTab':''}}" bindtap='clickTab' data-tabid="{{2}}">评价
+     <view class="Tab_border" style="color:{{activeTab==2? '#4A89DC':'#FFFFFF'}}"></view> 
+    </view>
+    <view class="{{activeTab==3? 'activeTab':''}}" bindtap='clickTab' data-tabid="{{3}}">借阅历史
+     <view class="Tab_border3" style="color:{{activeTab==3? '#4A89DC':'#FFFFFF'}};width:60%;"></view> 
+    </view>
   </view>
   <!-- 图书详情页 -->
   <view wx:if="{{activeTab == 1}}" class="section" style="width:100%;">
@@ -31,7 +37,7 @@
           <view class="right">
             <view class="score">
               <text>图书评分</text>
-              <text class="scorevalue"style="color:{{bookInfo.bookScore&&'0.0'!=bookInfo.bookScore? '#FC720B':'#999999'}};font-size:{{bookInfo.bookScore&&'0.0'!=bookInfo.bookScore? '20px':'13px'}}">{{bookInfo.bookScore&&'0.0'!=bookInfo.bookScore? bookInfo.bookScore:'暂无评分'}}</text>
+              <text class="scorevalue"style="color:{{bookInfo.bookScore&&'0.0'!=bookInfo.bookScore? '#FC720B':'#666666'}};font-size:{{bookInfo.bookScore&&'0.0'!=bookInfo.bookScore? '20px':'12px'}}">{{bookInfo.bookScore&&'0.0'!=bookInfo.bookScore? bookInfo.bookScore:'暂无评分'}}</text>
             </view>
             <view class="thumbup">
               <text>喜欢</text>

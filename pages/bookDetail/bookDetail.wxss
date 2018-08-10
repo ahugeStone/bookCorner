@@ -52,6 +52,8 @@
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  width:150px;
+  padding-right:10px;
 }
 .book_detail .right {
   display: flex;
@@ -74,6 +76,7 @@
   align-items:center;
   justify-content:space-around;
   border-bottom: 1rpx dotted;
+  color:#666666;
 }
 .scorevalue {
   font-size: 20px;
@@ -161,8 +164,15 @@
 }
 .activeTab {
   color:#4A89DC;
-  border-bottom: solid;
 }
+.Tab_border{
+  border-bottom: solid; 
+  margin-left:42px; 
+}  
+.Tab_border3{
+  border-bottom: solid;
+  margin-left:25px;
+}  
 .borrow_history {
   display: flex;
   flex-direction: column;

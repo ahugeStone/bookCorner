@@ -294,9 +294,12 @@ Page({
     }, {
         method: "CustQueryBookCommentHistory"
       }).then(res => {
+
+        this.data.bookInfo.bookCommentNum++
         var data = res
         this.setData({
-          commentHistoryList: data.commentHistoryList
+          commentHistoryList: data.commentHistoryList,
+          bookInfo: this.data.bookInfo
         })
         // 满足条件调用豆瓣api获取豆瓣用户评论
         if (this.data.bookInfo.isbn13) {

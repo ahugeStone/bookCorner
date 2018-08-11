@@ -46,7 +46,7 @@ Page({
   // 获取最新消息
   getMessages() {
     util.rest("GET", "messages", {
-      num: 2
+      num: 5
     }, {
         method: "CustqueryMessage"
       }).then(res => {

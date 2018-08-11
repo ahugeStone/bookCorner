@@ -7,8 +7,8 @@
     </view>
     <view class="messages_right">
      <ul>
-      <swiper indicator-dots="{{false}}" autoplay="true" circular="true" vertical="true" interval="2000" duration="500" previous-margin="0px" next-margin="0px">
-        <block wx:if="{{messageList && messageList.length > 0}}" wx:for="{{messageList}}" wx:for-item="item" wx:key="{{item.id}}" wx:for-index="index" >
+      <swiper wx:if="{{messageList && messageList.length > 0}}"  indicator-dots="{{false}}" autoplay="true" circular="true" vertical="true" interval="2000" duration="500" previous-margin="0px" next-margin="0px">
+        <block wx:for="{{messageList}}" wx:for-item="item" wx:key="{{item.id}}" wx:for-index="index" >
           <swiper-item wx:if="{{index<2}}">
             <li>{{item.actiontime}} {{item.userName}} {{item.action}}《{{item.bookName}}》</li>
           </swiper-item>

@@ -185,6 +185,7 @@
   margin-right:5px;
 }
 .messages_right ul li {
+  line-height:30px;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden; 
@@ -217,4 +218,7 @@
   bottom:0;
   z-index:8;
   background:rgba(0, 0, 0, 0.4);
+}
+.messages_right swiper {
+  height: 30px;
 }

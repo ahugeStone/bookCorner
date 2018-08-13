@@ -7,13 +7,17 @@
     </view>
     <view class="messages_right">
      <ul>
-      <block wx:if="{{messageList && messageList.length > 0}}" wx:for="{{messageList}}" wx:for-item="item" wx:key="{{item.id}}" wx:for-index="index" >
-        <li wx:if="{{index<1}}">{{item.actiontime}} {{item.userName}} {{item.action}}《{{item.bookName}}》</li>
-      </block>
+      <swiper wx:if="{{messageList && messageList.length > 0}}"  indicator-dots="{{false}}" autoplay="true" circular="true" vertical="true" interval="2000" duration="500" previous-margin="0px" next-margin="0px">
+        <block wx:for="{{messageList}}" wx:for-item="item" wx:key="{{item.id}}" wx:for-index="index" >
+          <swiper-item wx:if="{{index<2}}">
+            <li>{{item.actiontime}} {{item.userName}} {{item.action}}《{{item.bookName}}》</li>
+          </swiper-item>
+        </block>
+      </swiper>
       <span wx:if="{{messageList && messageList.length==0}}">    
-       <view class="message_helpless"><text>这里什么都没有 ╮(╯_╰)╭ </text>
-       </view>
-       </span>
+      <view class="message_helpless"><text>这里什么都没有 ╮(╯_╰)╭ </text>
+      </view>
+      </span>
      </ul> 
      <view class="message_arrow"><image src="/image/arrow.png"></image></view>
     </view>

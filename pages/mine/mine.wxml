@@ -8,7 +8,7 @@
     <block wx:for="{{readingList}}"  
     wx:for-item="item" 
     wx:key="item.bookId" >
-      <template is="cell" data="{{...item}}"/>
+      <template is="cell" data="{{...item,cantDel:true}}"/>
     </block>
   </view>
   <view wx:if="{{readingList.length==0}}" class="mine_tips">

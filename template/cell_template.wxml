@@ -1,28 +1,34 @@
 <!--cell_template.wxml-->
 <template name="cell">
   <block>
-    <view class="cell_item" 
-    bindtap="gotoDetail"
-    data-bookId="{{bookId}}">
-      <view class="cell_left">
-        <image class="img_book"
-        src="{{bookImage}}"
-        ></image>
-      </view>
-      <view class="cell_right">
-        <view class="cell_title">
-          <text>{{bookName}}</text>
+    <movable-area class="book_cell {{confirmDel?'book_cell_del':''}}">
+      <movable-view disabled="{{cantDel}}" out-of-bounds="true" direction="horizontal" x="{{xmove}}" 
+          inertia="true" 
+          data-bookIndex="{{bookIndex}}"
+          bindchange="handleMovableChange"
+          bindtouchend="handleTouchend">
+        <view class="cell_item"  bindtap="gotoDetail" data-bookIndex="{{bookIndex}}" data-bookId="{{bookId}}">
+          <view class="cell_left">
+            <image class="img_book" src="{{bookImage}}"></image>
+          </view>
+          <view class="cell_right">
+            <view class="cell_title">
+              <text>{{bookName}}</text>
+            </view>
+            <view wx:if="{{bookStatus}}" class="cell_sub_title" 
+            style="color:{{bookStatus==0? '#999999':'#46C3A1'}};">
+              <text>{{bookStatus==0? "已借出":"在库"}}</text> 
+            </view>
+          <view class="cell_right_bottom"><image class="thumbup_white"    src="/image/thumbup_white.png"></image>
+          <text>{{bookLikeNum}}</text>
+          <image class="thumbup_white" src="/image/message.png"></image>
+          <text>{{bookCommentNum}}</text>
+          </view>
+          </view>
         </view>
-        <view wx:if="{{bookStatus}}" class="cell_sub_title" 
-        style="color:{{bookStatus==0? '#999999':'#46C3A1'}};">
-          <text>{{bookStatus==0? "已借出":"在库"}}</text> 
-        </view>
-       <view class="cell_right_bottom"><image class="thumbup_white"    src="/image/thumbup_white.png"></image>
-       <text>{{bookLikeNum}}</text>
-       <image class="thumbup_white" src="/image/message.png"></image>
-       <text>{{bookCommentNum}}</text>
-       </view>
-      </view>
-    </view>   
+      </movable-view>
+      <view class="delete-btn {{confirmDel?'confirm':'normal'}}" data-bookId="{{bookId}}" data-bookIndex="{{bookIndex}}"bindtap="handleDeleteProduct">{{confirmDel?'确认删除':'删除'}}</view>
+    </movable-area>
+       
   </block>
 </template>

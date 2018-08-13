@@ -18,7 +18,8 @@ Page({
     messageList: null ,// 最新消息
     bookLikeNum: "",
     bookCommentNum: "",
-    showMask: false //显示蒙版
+    showMask: false, //显示蒙版
+    cantDel: false // 可否删除（需动态判断）
   },
   onLoad() {
     this.resetBookList()    
@@ -73,6 +74,8 @@ Page({
           }).then(res => {
             var data = res
             data.bookImage = env.imgurl + data.bookId + '.png'
+            data.xmove = 0
+            data.confirmDel = false
             var bookList = this.data.bookList
             for (var i = 0; i < bookList.length; i++) {
               if (bookList[i] && bookList[i].bookId == data.bookId) {
@@ -114,6 +117,8 @@ Page({
       var data = res
       for(var book of data.bookList) {
         book.bookImage = env.imgurl + book.bookId + '.png' 
+        book.xmove = 0
+        book.confirmDel = false
       }
       
       let list = this.data.bookList.concat(data.bookList)
@@ -199,5 +204,85 @@ Page({
     this.setData({
       showMask: false
     })
-  }
+  },
+  // 滑动删除处理
+  handleMovableChange(e) {
+    this.data.bookList[e.currentTarget.dataset.bookindex].xmove = e.detail.x
+    // if (e.detail.source === 'friction') {
+    //   if (e.detail.x < -30) {
+    //     this.showDeleteButton(e)
+    //   } else {
+    //     this.hideDeleteButton(e)
+    //   }
+    // } else if (e.detail.source === 'out-of-bounds' && e.detail.x === 0) {
+    //   this.hideDeleteButton(e)
+    // }
+    // console.info(e.detail.source)
+  },
+  handleTouchend(e) {
+    let bookIndex = e.currentTarget.dataset.bookindex
+    let bookList = this.data.bookList
+    // if (bookList[bookIndex].xmove < -30) {
+    //   this.showDeleteButton(e)
+    // } else {
+    //   this.hideDeleteButton(e)
+    // }
+    for (var bookIdx in bookList) {
+      if (bookIdx != bookIndex && bookList[bookIdx].xmove < 0) {
+        this.setXmove(bookIdx, 0)
+      }
+    }
+  },
+  /**
+   * 点击删除按钮
+   */
+  handleDeleteProduct(e) {
+    let bookIndex = e.currentTarget.dataset.bookindex
+    let bookList = this.data.bookList
+    if (bookList[bookIndex].confirmDel) {
+      this.setXmove(bookIndex, 0)
+      bookList[bookIndex].confirmDel = false
+      this.setData({
+        bookList: bookList
+      })
+      // 调用接口删除
+    } else {
+      for (var bookIdx in bookList) {
+        bookList[bookIdx].confirmDel = false
+      }
+      bookList[bookIndex].confirmDel = true
+      this.setData({
+        bookList: bookList
+      })
+      this.setXmove(bookIndex, -120)
+    }
+  },
+  /**
+   * 显示删除按钮
+   */
+  showDeleteButton: function (e) {
+    let bookIndex = e.currentTarget.dataset.bookindex
+    if (this.data.bookList[bookIndex].confirmDel) {
+      this.setXmove(bookIndex, -120)
+    } else {
+      this.setXmove(bookIndex, -65)
+    }
+  },
+  /**
+   * 隐藏删除按钮
+   */
+  hideDeleteButton: function (e) {
+    let bookIndex = e.currentTarget.dataset.bookindex
+    this.setXmove(bookIndex, 0)
+  },
+  /**
+   * 设置movable-view位移
+   */
+  setXmove: function (bookIndex, xmove) {
+    let bookList = this.data.bookList
+    bookList[bookIndex].xmove = xmove
+    this.setData({
+      bookList: bookList
+    })
+  },
 })

@@ -37,8 +37,8 @@
   <scroll-view style="height: 100vh;" scroll-y scroll-with-animation="true" enable-back-to-top="true" class="book_list" bindscrolltolower="showMore">
     <block wx:for="{{bookList}}" 
     wx:for-item="item" 
-    wx:key="item.bookId" >
-      <template is="cell" data="{{...item}}"/>
+    wx:key="item.bookId" wx:for-index="bookIndex">
+      <template is="cell" data="{{...item,bookIndex,cantDel}}"/>
     </block>
     <view wx:if="{{!loading && bookList.length == 0}}" class="mine_tips">
       <image class="no_result" src="../../image/no_result.png"/>

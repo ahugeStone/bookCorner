@@ -67,3 +67,37 @@
   margin-right:7px;
   width:10px;
 }
+.book_cell {
+  width: calc(100vw - 60px);
+  height: 100px;
+}
+.book_cell_del {
+  width: calc(100vw - 120px);
+}
+.book_cell movable-view {
+  width: 100vw;
+  height: 100px;
+  z-index: 1;
+}
+.delete-btn {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  /* right: -60px; 
+  width: 60px; */
+  font-family: PingFangSC-Regular;
+  font-size: 18px;
+  color: #FFFFFF;
+  line-height: 100px;
+  z-index: 0;
+  background: #E66671;
+  text-align: center;
+}
+.normal {
+  right: -60px; 
+  width: 60px;
+}
+.confirm {
+  right: -120px; 
+  width: 120px;
+}

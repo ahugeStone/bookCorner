@@ -34,7 +34,8 @@ Page({
   // 清空输入内容
   clearInput() {
     this.setData({
-      bookNameSearch: ''
+      bookNameSearch: '',
+      bookCodeSearch: ''
     })
     this.resetBookList()
   },
@@ -180,9 +181,12 @@ Page({
         console.log(res)
         console.log(res.result)
         this.setData({
-          bookCodeSearch: res.result
+          bookCodeSearch: res.result,
         })
         this.resetBookList()
+        this.setData({
+          bookNameSearch: res.result
+        })
       }
     })
   },

@@ -78,6 +78,9 @@
   width: 100%;
   background: #FFFFFF;
   z-index: 9;
+  display:flex;
+  flex-flow: row;
+  height:55px;
 }
 .book_name {
   display: flex;
@@ -85,10 +88,12 @@
   margin: 0 auto;
   margin-top: 8px;
   margin-bottom: 8px;
-  width: 94%;
+  width: 86%;
   border-radius: 6px;
   font-size: 13px;
   background:#EEEEEE;
+  margin-left:10px;
+  height:28px;
 }
 .book_name input {
   background: #EEEEEE;
@@ -112,6 +117,24 @@
   margin-left: 10px;
   margin-right: 5px;
   flex:none;
+}
+.book_code{
+  display:flex;
+  flex-direction: column;
+  width:35px;
+}
+.book_code text{
+  color:#4A89DC;
+  font-size: 7px;
+  margin-top: 2px;
+  margin-left: 5px;
+}
+.scancode_icon{
+  width: 16px;
+  height: 16px;
+  flex:none;
+  margin-top:9px;
+  margin-left: 7px;
 }
 .focus {
   border: 1px solid #4A89DC!important;
@@ -162,6 +185,7 @@
 .messages_left image {
   width: 15px;
   height: 15px;
+  margin-top:3px;
 }
 .messages_right {
   display: flex;

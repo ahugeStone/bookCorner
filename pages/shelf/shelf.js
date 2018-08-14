@@ -8,6 +8,7 @@ Page({
   data: {
     bookList:[],
     bookNameSearch: "",
+    bookCodeSearch:"",
     bookType: "",
     bookStatus: "",
     env: env,
@@ -109,6 +110,7 @@ Page({
       bookName: this.data.bookNameSearch,
       bookType: this.data.bookType,
       bookStatus: this.data.bookStatus,
+      isbn13: this.data.bookCodeSearch,
       num: this.data.nextNum
     }, {
       method: "CustQueryBookList",
@@ -171,6 +173,19 @@ Page({
       bookNameSearch: e.detail.value
     })
   },
+  // 允许从相机和相册扫码
+  bookcodesearch(e) {
+    wx.scanCode({
+      success: (res) => {
+        console.log(res)
+        console.log(res.result)
+        this.setData({
+          bookCodeSearch: res.result
+        })
+        this.resetBookList()
+      }
+    })
+  },
   // 进入图书详情页面
   gotoDetail(e) {
     wx.navigateTo({
@@ -183,12 +198,6 @@ Page({
     wx.navigateTo({
       url: '../message/message'
     })
-    // 允许从相机和相册扫码
-    // wx.scanCode({
-    //   success: (res) => {
-    //     console.log(res)
-    //   }
-    // })
   },
   focusInput(e) {
     this.setData({

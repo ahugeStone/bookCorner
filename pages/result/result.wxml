@@ -5,7 +5,8 @@
     <view>
       <text wx:if="{{action=='borrow'}}">借阅成功！</text>
       <text wx:if="{{action=='return'}}">归还成功！</text>
-      <text>请爱护我们的书籍，方便小伙伴们传阅学习。</text>
+      <text wx:if="{{action=='borrow'}}">请爱护我们的书籍，并于一个月内归还。</text>
+      <text wx:if="{{action=='return'}}">感谢您的配合，欢迎再次借书学习。</text>
     </view>
   </view>
   <view wx:else class="result_msg">

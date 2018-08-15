@@ -20,7 +20,7 @@ Page({
     bookLikeNum: "",
     bookCommentNum: "",
     showMask: false, //显示蒙版
-    cantDel: false // 可否删除（需动态判断）
+    cantDel: true, // 可否删除（需动态判断）默认不可删除
   },
   onLoad() {
     this.resetBookList()    
@@ -30,11 +30,18 @@ Page({
     this.getMessages()
     this.refreshBookId() // 刷新刚访问过的图书信息
     // this.searchBookList()
+    if (app.globalData.isAdmin=="1"){
+      this.setData({
+        cantDel: false
+      })
+    }
+
   },
   // 清空输入内容
   clearInput() {
     this.setData({
-      bookNameSearch: ''
+      bookNameSearch: '',
+      bookCodeSearch: ''
     })
     this.resetBookList()
   },
@@ -180,9 +187,12 @@ Page({
         console.log(res)
         console.log(res.result)
         this.setData({
-          bookCodeSearch: res.result
+          bookCodeSearch: res.result,
         })
         this.resetBookList()
+        this.setData({
+          bookNameSearch: res.result
+        })
       }
     })
   },
@@ -228,6 +238,7 @@ Page({
     // }
     // console.info(e.detail.source)
   },
+  // 处理手指抬起动作
   handleTouchend(e) {
     let bookIndex = e.currentTarget.dataset.bookindex
     let bookList = this.data.bookList
@@ -295,3 +306,4 @@ Page({
     })
   },
 })
+

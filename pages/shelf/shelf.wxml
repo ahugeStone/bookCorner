@@ -25,7 +25,7 @@
   <view class="book_search">
     <view class="book_name">
       <image class="book_search_icon" src="../../image/search_icon.png"/>
-      <input placeholder='请输入图书名称' confirm-type="search" placeholder-class="book_name_placeholder" bindinput="bookNameSearchInput" bindconfirm="resetBookList" bindfocus='focusInput' bindblur='blurInput' value="{{bookNameSearch}}"></input>
+      <input placeholder='请输入图书名称或扫描条形码' confirm-type="search" placeholder-class="book_name_placeholder" bindinput="bookNameSearchInput" bindconfirm="resetBookList" bindfocus='focusInput' bindblur='blurInput' value="{{bookNameSearch}}"></input>
       <image class="book_clear_icon" bindtap="clearInput" wx:if="{{!!bookNameSearch}}" src="../../image/clear.png"/>
     </view>
     <view class="book_code">

@@ -6,13 +6,12 @@ import env from '../../utils/env.js'
 Page({
   data: {
     historyList: null,
-    readingList: null
+    readingList: null,
   },
   onLoad: function () {
     
   },
   onShow: function () {
-    // console.log("show mine")
     util.rest("GET", "users/" + app.globalData.userNo + "/history" , {
     }, {
       method: "CustQueryBookBorrowRecord"
@@ -29,6 +28,8 @@ Page({
         }
       }
       this.setData({
+        userName: app.globalData.userName,
+        headImgUrl: app.globalData.headImgUrl,
         historyList: this.data.historyList,
         readingList: this.data.readingList
       })
@@ -39,5 +40,10 @@ Page({
       url: '../bookDetail/bookDetail?bookId=' +
       e.currentTarget.dataset.bookid
     })
+  },
+  // 滑动删除处理(空)
+  handleMovableChange(e) {
+  },
+  handleTouchend(e) {
   }
 })

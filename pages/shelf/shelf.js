@@ -260,20 +260,19 @@ Page({
     let bookIndex = e.currentTarget.dataset.bookindex
     let bookList = this.data.bookList
     if (bookList[bookIndex].confirmDel) {
+      //确认删除-真正删除
       this.setXmove(bookIndex, 0)
       bookList[bookIndex].confirmDel = false
       this.setData({
-        bookList: bookList
+        bookList
       })
       // 调用接口删除
     } else {
+      // 删除-确认删除
       for (var bookIdx in bookList) {
         bookList[bookIdx].confirmDel = false
       }
       bookList[bookIndex].confirmDel = true
-      this.setData({
-        bookList: bookList
-      })
       this.setXmove(bookIndex, -120)
     }
   },
@@ -302,7 +301,7 @@ Page({
     let bookList = this.data.bookList
     bookList[bookIndex].xmove = xmove
     this.setData({
-      bookList: bookList
+      bookList
     })
   },
 })

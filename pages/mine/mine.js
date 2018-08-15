@@ -40,5 +40,10 @@ Page({
       url: '../bookDetail/bookDetail?bookId=' +
       e.currentTarget.dataset.bookid
     })
+  },
+  // 滑动删除处理(空)
+  handleMovableChange(e) {
+  },
+  handleTouchend(e) {
   }
 })

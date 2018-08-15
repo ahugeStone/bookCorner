@@ -20,7 +20,7 @@ Page({
     bookLikeNum: "",
     bookCommentNum: "",
     showMask: false, //显示蒙版
-    cantDel: false // 可否删除（需动态判断）
+    cantDel: true // 可否删除（需动态判断）默认不可删除
   },
   onLoad() {
     this.resetBookList()    
@@ -232,6 +232,7 @@ Page({
     // }
     // console.info(e.detail.source)
   },
+  // 处理手指抬起动作
   handleTouchend(e) {
     let bookIndex = e.currentTarget.dataset.bookindex
     let bookList = this.data.bookList

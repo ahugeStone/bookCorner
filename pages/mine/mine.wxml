@@ -1,8 +1,15 @@
 <!--mine.wxml-->
 <import src="../../template/cell_template.wxml"/>
 <view class="container">
+  <view class="userInfo">
+    <image src="{{headImgUrl}}"></image>
+    <view>
+      <text>Hi,{{userName}}</text>
+      <text>欢迎开启你的阅读之旅</text>
+    </view>
+  </view>
   <view class="mine_title">
-    <text>在读</text>
+    <text>我的在读</text>
   </view>
   <view wx:if="{{readingList.length > 0}}" style="width:100%;">
     <block wx:for="{{readingList}}"  
@@ -32,5 +39,8 @@
   </view>
   <view wx:if="{{historyList==null}}" class="mine_tips">
     <text>载入中...</text>
+  </view>
+  <view class="moreInfo" bindtap='findMoreInfo'>
+    <text>查看更多</text>
   </view>
 </view>

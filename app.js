@@ -36,6 +36,8 @@ App({
             that.globalData.userName = data.userName // 员工姓名
             that.globalData.userNo = data.userNo //员工号
             that.globalData.isBinded = true
+            that.globalData.headImgUrl = data.headImgUrl
+            that.globalData.isAdmin = data.isAdmin
           } else {
             console.info('NOTBINDED')
           }

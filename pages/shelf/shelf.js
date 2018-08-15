@@ -20,7 +20,7 @@ Page({
     bookLikeNum: "",
     bookCommentNum: "",
     showMask: false, //显示蒙版
-    cantDel: true // 可否删除（需动态判断）默认不可删除
+    cantDel: true, // 可否删除（需动态判断）默认不可删除
   },
   onLoad() {
     this.resetBookList()    
@@ -30,6 +30,12 @@ Page({
     this.getMessages()
     this.refreshBookId() // 刷新刚访问过的图书信息
     // this.searchBookList()
+    if (app.globalData.isAdmin=="1"){
+      this.setData({
+        cantDel: false
+      })
+    }
+
   },
   // 清空输入内容
   clearInput() {
@@ -300,3 +306,4 @@ Page({
     })
   },
 })
+

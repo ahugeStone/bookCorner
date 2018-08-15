@@ -90,7 +90,7 @@
   color: #FFFFFF;
   line-height: 100px;
   z-index: 0;
-  background: #E66671;
+  background: #FF4444;
   text-align: center;
 }
 .normal {

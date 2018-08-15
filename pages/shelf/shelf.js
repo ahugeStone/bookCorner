@@ -20,7 +20,7 @@ Page({
     bookLikeNum: "",
     bookCommentNum: "",
     showMask: false, //显示蒙版
-    cantDel: true // 可否删除（需动态判断）默认不可删除
+    cantDel: false // 可否删除（需动态判断）默认不可删除
   },
   onLoad() {
     this.resetBookList()    
@@ -220,7 +220,7 @@ Page({
   },
   // 滑动删除处理
   handleMovableChange(e) {
-    this.data.bookList[e.currentTarget.dataset.bookindex].xmove = e.detail.x
+    // this.data.bookList[e.currentTarget.dataset.bookindex].xmove = e.detail.x
     // if (e.detail.source === 'friction') {
     //   if (e.detail.x < -30) {
     //     this.showDeleteButton(e)
@@ -234,26 +234,27 @@ Page({
   },
   // 处理手指抬起动作
   handleTouchend(e) {
-    let bookIndex = e.currentTarget.dataset.bookindex
-    let bookList = this.data.bookList
-    // if (bookList[bookIndex].xmove < -30) {
-    //   this.showDeleteButton(e)
-    // } else {
-    //   this.hideDeleteButton(e)
+    // let bookIndex = e.currentTarget.dataset.bookindex
+    // let bookList = this.data.bookList
+    // // if (bookList[bookIndex].xmove < -30) {
+    // //   this.showDeleteButton(e)
+    // // } else {
+    // //   this.hideDeleteButton(e)
+    // // }
+    // for (var bookIdx in bookList) {
+    //   if (bookIdx != bookIndex && bookList[bookIdx].xmove < 0) {
+    //     this.setXmove(bookIdx, 0)
+    //   }
     // }
-    for (var bookIdx in bookList) {
-      if (bookIdx != bookIndex && bookList[bookIdx].xmove < 0) {
-        this.setXmove(bookIdx, 0)
-      }
-    }
   },
   /**
    * 点击删除按钮
    */
-  handleDeleteProduct(e) {
+  handleDeleteBook(e) {
     let bookIndex = e.currentTarget.dataset.bookindex
     let bookList = this.data.bookList
     if (bookList[bookIndex].confirmDel) {
+      // 确认删除-真正删除
       this.setXmove(bookIndex, 0)
       bookList[bookIndex].confirmDel = false
       this.setData({
@@ -261,14 +262,18 @@ Page({
       })
       // 调用接口删除
     } else {
+      // 待确认删除-确认删除
       for (var bookIdx in bookList) {
-        bookList[bookIdx].confirmDel = false
+        if (bookIdx != bookIndex) {
+          bookList[bookIdx].confirmDel = false
+          bookList[bookIdx].xmove = 0
+        }
       }
       bookList[bookIndex].confirmDel = true
+      bookList[bookIndex].xmove = -120
       this.setData({
         bookList: bookList
       })
-      this.setXmove(bookIndex, -120)
     }
   },
   /**

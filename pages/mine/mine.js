@@ -7,6 +7,8 @@ Page({
   data: {
     historyList: null,
     readingList: null,
+    indx: null,
+    historyListLength: null
   },
   onLoad: function () {
     
@@ -31,7 +33,9 @@ Page({
         userName: app.globalData.userName,
         headImgUrl: app.globalData.headImgUrl,
         historyList: this.data.historyList,
-        readingList: this.data.readingList
+        readingList: this.data.readingList,
+        historyListLength: this.data.historyList.length,
+        indx: 2
       })
     })
   },
@@ -45,5 +49,13 @@ Page({
   handleMovableChange(e) {
   },
   handleTouchend(e) {
+  },
+  findMoreInfo(){
+    this.setData({
+      //将list长度赋值给indx，使前台展示全部数据
+      indx: this.data.historyList.length,
+      //长度设为0 ，前台判断后不再显示“查看更多”
+      historyListLength: 0
+    })
   }
 })

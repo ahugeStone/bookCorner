@@ -3,7 +3,7 @@
   <block>
     <movable-area class="book_cell {{confirmDel?'book_cell_del':''}}">
       <movable-view disabled="{{cantDel}}" out-of-bounds="true" direction="horizontal" x="{{xmove}}" 
-          inertia="true" 
+          inertia="false" 
           data-bookIndex="{{bookIndex}}"
           bindchange="handleMovableChange"
           bindtouchend="handleTouchend">
@@ -27,7 +27,7 @@
           </view>
         </view>
       </movable-view>
-      <view class="delete-btn {{confirmDel?'confirm':'normal'}}" data-bookId="{{bookId}}" data-bookIndex="{{bookIndex}}"bindtap="handleDeleteProduct">{{confirmDel?'确认删除':'删除'}}</view>
+      <view class="delete-btn {{confirmDel?'confirm':'normal'}}" data-bookId="{{bookId}}" data-bookIndex="{{bookIndex}}"bindtap="handleDeleteBook">{{confirmDel?'确认删除':'删除'}}</view>
     </movable-area>
        
   </block>

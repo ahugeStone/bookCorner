@@ -69,7 +69,7 @@
 }
 .book_cell {
   width: calc(100vw - 60px);
-  height: 100px;
+  height: 106px;
 }
 .book_cell_del {
   width: calc(100vw - 120px);

@@ -224,7 +224,7 @@ Page({
       showMask: false
     })
   },
-  // 滑动删除处理
+  // 滑动删除处理,第二次滑动时取消前一次滑动
   handleMovableChange(e) {
     this.data.bookList[e.currentTarget.dataset.bookindex].xmove = e.detail.x
     // if (e.detail.source === 'friction') {
@@ -263,9 +263,18 @@ Page({
       //确认删除-真正删除
       this.setXmove(bookIndex, 0)
       bookList[bookIndex].confirmDel = false
-      this.setData({
-        bookList
-      })
+
+      util.rest("POST", "books/" + bookList[bookIndex].bookId, {
+         action: "DELETE"
+      }, {
+      }).then(
+        this.data.bookList.pop(bookList[bookIndex]),
+        //  this.setData({
+        //    bookList: this.data.bookList
+        //  })
+        this.resetBookList()
+        )
+
       // 调用接口删除
     } else {
       // 删除-确认删除

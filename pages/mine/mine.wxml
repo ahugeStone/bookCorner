@@ -30,7 +30,8 @@
   <view wx:if="{{historyList.length > 0}}" style="width:100%;">
     <block wx:for="{{historyList}}" 
     wx:for-item="item" 
-    wx:key="item.bookId" >
+    wx:key="item.bookId"
+    wx:if="{{index<indx}}">
       <template is="cell" data="{{...item}}"/>
     </block>
   </view>
@@ -40,7 +41,7 @@
   <view wx:if="{{historyList==null}}" class="mine_tips">
     <text>载入中...</text>
   </view>
-  <view class="moreInfo" bindtap='findMoreInfo'>
+  <view wx:if="{{historyListLength>2}}" class="moreInfo" bindtap='findMoreInfo'>
     <text>查看更多</text>
   </view>
 </view>

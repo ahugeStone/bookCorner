@@ -32,7 +32,7 @@
     wx:for-item="item" 
     wx:key="item.bookId"
     wx:if="{{index<indx}}">
-      <template is="cell" data="{{...item}}"/>
+      <template is="cell" data="{{...item,cantDel:true}}"/>
     </block>
   </view>
   <view wx:if="{{historyList.length == 0}}" class="mine_tips">

@@ -1,7 +1,7 @@
 <!--cell_template.wxml-->
 <template name="cell">
   <block>
-    <movable-area class="book_cell {{confirmDel?'book_cell_del':''}}">
+    <movable-area class="book_cells {{confirmDel?'book_cell_del':'book_cell'}}">
       <movable-view disabled="{{cantDel}}" out-of-bounds="true" direction="horizontal" x="{{xmove}}" 
           inertia="false" 
           data-bookIndex="{{bookIndex}}"

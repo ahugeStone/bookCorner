@@ -72,9 +72,10 @@
   height: 106px;
 }
 .book_cell_del {
-  width: calc(100vw - 120px);
+  width: calc(100vw - 120px)!important;
+  height: 106px;
 }
-.book_cell movable-view {
+.book_cells movable-view {
   width: 100vw;
   height: 100px;
   z-index: 1;

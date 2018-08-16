@@ -266,15 +266,13 @@ Page({
 
       util.rest("POST", "books/" + bookList[bookIndex].bookId, {
          action: "DELETE"
-      }, {
-      }).then(
-        this.data.bookList.pop(bookList[bookIndex]),
-        //  this.setData({
-        //    bookList: this.data.bookList
-        //  })
-        this.resetBookList()
-        )
-
+      }, {}).then(res => {
+        bookList.splice(bookIndex, 1)//在数组中删除所选项
+        this.setData({
+          bookList
+        })
+        // this.resetBookList()
+      })
       // 调用接口删除
     } else {
       // 删除-确认删除

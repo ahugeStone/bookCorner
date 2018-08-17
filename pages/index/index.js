@@ -30,6 +30,14 @@ Page({
     })
   },
   empLogin: function() {
+    if (!app.globalData.userInfo || !app.globalData.userInfo.nickName) {
+      wx.showModal({
+        title: '失败',
+        content: "请点击点我授权按钮并允许授权",
+        showCancel: false
+      })
+      return;
+    }
     if (!this.data.userNo) {
       wx.showModal({
         title: '失败',
@@ -173,7 +181,18 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
-    // console.log("getUserInfo",this.data.userInfo)
+    console.log("getUserInfo",this.data.userInfo)
+    // 用户信息更新
+    util.rest("POST", "users/" + this.data.userNo, {
+      userNo: this.data.userNo,
+      userName: this.data.userName,
+      nickName: app.globalData.userInfo.nickName,
+      headImgUrl: app.globalData.userInfo.avatarUrl
+    }, {
+        method: "CustBind"
+      }).then(res => {
+        console.info("用户信息更新成功")
+      })
     this.gotoIsBinded()
   }
 })

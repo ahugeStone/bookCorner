@@ -83,6 +83,8 @@ Page({
         userInfo: app.globalData.userInfo,
         hasUserInfo: true
       })
+      // 用户信息更新
+      this.updateUserInfo()
       this.gotoIsBinded()
       // console.log("onLoad1", this.data.userInfo)
     } else if (this.data.canIUse){
@@ -93,78 +95,16 @@ Page({
           userInfo: res.userInfo,
           hasUserInfo: true
         })
+        // 用户信息更新
+        this.updateUserInfo()
         this.gotoIsBinded()
         // console.log("onLoad2", this.data.userInfo)
       }
     } else {
       // 在没有 open-type=getUserInfo 版本的兼容处理
-      // wx.openSetting({
-      //   success: (res) => {
-      //     /*
-      //      * res.authSetting = {
-      //      *   "scope.userInfo": true,
-      //      *   "scope.userLocation": true
-      //      * }
-      //      */
-      //     if (!res.authSetting['scope.userInfo']) {
-      //       wx.showModal({
-      //         title: '提示',
-      //         content: "请点击上方按钮授权",
-      //         showCancel: false
-      //       })
-      //     } 
-      //   }
-      // })
-      // wx.authorize({
-      //   scope: 'scope.userInfo',
-      //   success() {
-      //     // 用户已经同意小程序
-      //     console.log("authorize ok")
-      //     wx.getUserInfo({
-      //       success: res => {
-      //         app.globalData.userInfo = res.userInfo
-      //         this.setData({
-      //           userInfo: res.userInfo,
-      //           hasUserInfo: true
-      //         })
-      //         this.gotoIsBinded()
-      //         // console.log("onLoad3", this.data.userInfo)
-      //       }
-      //     })
-      //   },
-      //   fail() {
-      //     wx.showModal({
-      //       title: '提示',
-      //       content: "请点击上方按钮授权",
-      //       showCancel: false
-      //     })
-      //   }
-      // })
     }
   },
   onShow: function () {
-  //   wx.openSetting({
-  //     success: (res) => {
-  //       if (!res.authSetting['scope.userInfo']) {
-  //         wx.showModal({
-  //           title: '提示',
-  //           content: "请点击上方按钮授权",
-  //           showCancel: false
-  //         })
-  //       }
-  //     }
-  //   })
-    // wx.getUserInfo({
-    //   success: res => {
-    //     app.globalData.userInfo = res.userInfo
-    //     this.setData({
-    //       userInfo: res.userInfo,
-    //       hasUserInfo: true
-    //     })
-    //     this.gotoIsBinded()
-    //     // console.log("onLoad3", this.data.userInfo)
-    //   }
-    // })
   },
   gotoIsBinded: function() {
     if (app.globalData.isBinded) {
@@ -183,16 +123,24 @@ Page({
     })
     console.log("getUserInfo",this.data.userInfo)
     // 用户信息更新
-    util.rest("POST", "users/" + this.data.userNo, {
-      userNo: this.data.userNo,
-      userName: this.data.userName,
-      nickName: app.globalData.userInfo.nickName,
-      headImgUrl: app.globalData.userInfo.avatarUrl
-    }, {
-        method: "CustBind"
-      }).then(res => {
-        console.info("用户信息更新成功")
-      })
+    this.updateUserInfo()
     this.gotoIsBinded()
+  },
+  /**
+   * 更新用户信息
+   */
+  updateUserInfo() {
+    if (app.globalData.userInfo && app.globalData.userInfo.nickName) {
+      util.rest("POST", "users/" + this.data.userNo, {
+        userNo: this.data.userNo,
+        userName: this.data.userName,
+        nickName: app.globalData.userInfo.nickName,
+        headImgUrl: app.globalData.userInfo.avatarUrl
+      }, {
+          method: "CustBind"
+        }).then(res => {
+          console.info("用户信息更新成功")
+        })
+    }
   }
 })

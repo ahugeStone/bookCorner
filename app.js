@@ -30,9 +30,11 @@ App({
           //that.globalData.openid = data.openid
           if(data.isBinded == "1") {
             console.info('ISBINDED')
-            wx.switchTab({
-              url: '/pages/shelf/shelf',
-            })
+            if (data && data.headImgUrl) {
+              wx.switchTab({
+                url: '/pages/shelf/shelf',
+              })
+            }
             that.globalData.userName = data.userName // 员工姓名
             that.globalData.userNo = data.userNo //员工号
             that.globalData.isBinded = true

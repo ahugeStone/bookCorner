@@ -242,11 +242,11 @@ Page({
   handleTouchend(e) {
     let bookIndex = e.currentTarget.dataset.bookindex
     let bookList = this.data.bookList
-    // if (bookList[bookIndex].xmove < -30) {
-    //   this.showDeleteButton(e)
-    // } else {
-    //   this.hideDeleteButton(e)
-    // }
+    if (bookList[bookIndex].xmove < -30) {
+      this.showDeleteButton(e)
+    } else {
+      this.hideDeleteButton(e)
+    }
     for (var bookIdx in bookList) {
       if (bookIdx != bookIndex && bookList[bookIdx].xmove < 0) {
         this.setXmove(bookIdx, 0)

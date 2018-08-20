@@ -31,7 +31,10 @@
       <view class="comment_btn cancel" bindtap="toggleDialog">
       取消
       </view>
-      <view class="comment_btn confirm" bindtap="commitComment">
+      <view wx:if="{{commentText.length!=0}}" class="comment_btn confirm" bindtap="commitComment" >
+      提交
+      </view>
+      <view wx:if="{{commentText.length==0}}" class="comment_btn confirm2" bindtap="commitComment" >
       提交
       </view>
     </view>  

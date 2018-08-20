@@ -42,13 +42,14 @@
 }
 .popcon>view{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: flex-end;
   align-items: center;
   height: 52px;
-  border-top: 1px solid #dddddd;
+  /* border-top: 1px solid #dddddd; */
   width: 90%;
   margin-left: 5%;
+  margin-right: 5%;
 }
 .pholder {
   margin-left: 10px;
@@ -56,20 +57,35 @@
   font-size: 16px;
 }
 .comment_btn {
-  background: #FFFFFF;
-  border: 0px;
-  width: 74px;
-  height: 36px;
-  margin-left: 5%;
-  text-align: center;
-  line-height: 36px;
-  font-size: 14px;
+position:absolute;
+width:90%;
+height:50px;
+color:#FFFFFF;
+text-align:center;
+font-size:17px;
+line-height:50px;
+
 }
 .confirm {
-  color: #FF6666;
+  background-color:#4A89DC;
+  color: #FFFFFF;
+  bottom:50%;
+  border: 0.5px solid #4A89DC;
+  border-radius: 3px;
+}
+.confirm2 {
+  background-color:rgba(74,137,220,0.60);
+  color: rgba(255,255,255,0.60);
+  bottom:50%;
+  border: 0.5px solid rgba(74,137,220,0.60);
+  border-radius: 3px;
 }
 .cancel {
-  color: #999999;
+  background-color:#FFFFFF;
+  color: #222222 ;
+  bottom:40%;
+  border: 0.5px solid #ACACAC;
+  border-radius: 3px;
 }
 .counter {
   align-self: flex-end;

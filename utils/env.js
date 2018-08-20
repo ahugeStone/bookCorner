@@ -11,13 +11,7 @@ const imgurl = 'https://cvm.ahuangtongxue.cn/images/' // 图书图片的根路�
 const doubanApi = 'https://cvm.ahuangtongxue.cn/douban/v2/' // 豆瓣api代理的url
 // 'https://api.douban.com/v2/' // 豆瓣api的url
 const debug = "false" // 是否跳过腾讯oauth-废弃
-<<<<<<< HEAD
-//const demo = true //是使用挡板数据数据
-const demo = false //否使用挡板数据数据
-
-=======
 const demo = false //是否使用挡板数据数据
->>>>>>> b3963e30eea4bdcccb41038d3496da35ca3d305d
 const springboot = true // 是否使用springboot-废弃
 
 module.exports = {

@@ -135,7 +135,7 @@
       <view class="comment_btn cancel" bindtap="toggleDialog">
       取消
       </view>
-      <view class="comment_btn confirm" bindtap="commitComment">
+      <view class="comment_btn {{commentText.length?'confirm':'confirm2'}}" bindtap="commitComment">
       提交
       </view>
     </view>  

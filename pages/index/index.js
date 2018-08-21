@@ -139,6 +139,7 @@ Page({
       }, {
           method: "CustBind"
         }).then(res => {
+          app.globalData.headImgUrl = app.globalData.userInfo.avatarUrl
           console.info("用户信息更新成功")
         })
     }

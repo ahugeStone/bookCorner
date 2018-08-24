@@ -22,8 +22,8 @@
 }
 .mine_tips {
   align-self: center;
-  color: #444444;
-  font-size: 16px;
+  color: #999999;
+  font-size: 14px;
   flex-shrink: 0;
 }
 .userInfo{
@@ -50,6 +50,9 @@
   color: #222222;
   font-size: 15px;
   margin-left: 15px;
+}
+.username{
+  font-weight: bold;
 }
 .moreInfo{
   margin-top: 15px;

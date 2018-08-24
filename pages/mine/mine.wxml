@@ -4,7 +4,7 @@
   <view class="userInfo">
     <image src="{{headImgUrl}}"></image>
     <view>
-      <text>Hi,{{userName}}</text>
+      <text class="username">Hi,{{userName}}</text>
       <text>欢迎开启你的阅读之旅</text>
     </view>
   </view>

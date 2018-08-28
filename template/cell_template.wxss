@@ -31,12 +31,15 @@
   margin-right: 5%;
 }
 .cell_title {
-  display: flex;
+  display: -webkit-box;
   font-size: 15px;
   color: #222222;
   width: 100%;
-  /* margin-top:14px; */
-  /* height:40px; */
+  height:40px; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp:2;
 }
 .cell_sub_title {
   display: flex;

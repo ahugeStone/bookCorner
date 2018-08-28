@@ -8,6 +8,10 @@
       <text>欢迎开启你的阅读之旅</text>
     </view>
   </view>
+  <view class="add_book">
+  <image src="/image/addbook.png"></image>
+  <text>新增图书</text>
+  </view>
   <view class="mine_title">
     <text>我的在读</text>
   </view>

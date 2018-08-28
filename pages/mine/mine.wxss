@@ -66,3 +66,19 @@
   flex-shrink: 0;
   width: 100%
 }
+.add_book{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  height:50px;
+  width:85%;
+  border:1px dashed #999999;
+  margin-left:7.5%;
+  margin-top:15px;
+  font-size: 15px;
+  color: #4A89DC;
+}
+.add_book image{
+  height: 18px;
+  width:18px;
+}

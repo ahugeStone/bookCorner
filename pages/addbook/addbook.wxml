@@ -1,0 +1,57 @@
+<!--pages/addbook/addbook.wxml-->
+<view class="container">
+  <view class="bookName">
+   <text>图书名称</text>
+   <input class="input" placeholder='请输入' confirm-type="search" placeholder-class="bookName_placeholder" bindinput="bookNameInput" bindconfirm="resetBookList" bindfocus='focusInput' bindblur='blurInput' value="{{bookName}}"></input>
+   <image class="book_clear_icon" bindtap="clearNameInput" wx:if="{{!!bookName}}" src="../../image/clear.png"/>
+  </view>
+  <view class="bookName">
+  <text>作者</text>
+   <input class="input" placeholder='请输入' confirm-type="search" placeholder-class="bookName_placeholder" bindinput="bookWriterInput" bindconfirm="resetBookList" bindfocus='focusInput' bindblur='blurInput' value="{{bookWriter}}"></input>
+   <image class="book_clear_icon" bindtap="clearWriterInput" wx:if="{{!!bookWriter}}" src="../../image/clear.png"/>
+  </view>
+  <view class="bookName">
+  <text>评分</text>
+   <input class="input" placeholder='请输入' confirm-type="search" placeholder-class="bookName_placeholder" bindinput="bookScoreInput" bindconfirm="resetBookList" bindfocus='focusInput' bindblur='blurInput' value="{{bookScore}}"></input>
+   <image class="book_clear_icon" bindtap="clearScoreInput" wx:if="{{!!bookScore}}" src="../../image/clear.png"/>
+  </view>
+
+<!--设置监听器，当点击radio时调用-->
+<view class="bookType">
+<text>类型</text>
+<radio-group style="margin-left:3.5%;width:62%;" bindchange="listenerRadioGroup">
+<!--label通常与radio和checkbox结合使用-->
+    <label style="display: flex;font-size:16px;" wx:for-items="{{array}}">
+        <radio class="radio-group radio" style="  transform:scale(0.8);margin-right:5%;margin-bottom:20px;color: #00c192;" value="{{item.name}}" checked="{{item.checked}}"/><text>{{item.value}}</text>
+    </label>
+</radio-group>
+</view>
+<view class="bookType1"></view>
+
+  <view class="bookName">
+  <text>时间</text>
+   <input class="input" placeholder='请输入' confirm-type="search" placeholder-class="bookName_placeholder" bindinput="bookTimeInput" bindconfirm="resetBookList" bindfocus='focusInput' bindblur='blurInput' value="{{bookTime}}"></input>
+   <image class="book_clear_icon" bindtap="clearTimeInput" wx:if="{{!!bookTime}}" src="../../image/clear.png"/>
+  </view>
+  <view class="bookName">
+  <text>来源</text>
+   <input class="input" placeholder='请输入' confirm-type="search" placeholder-class="bookName_placeholder" bindinput="bookBuyerInput" bindconfirm="resetBookList" bindfocus='focusInput' bindblur='blurInput' value="{{bookBuyer}}"></input>
+   <image class="book_clear_icon" bindtap="clearBuyerInput" wx:if="{{!!bookBuyer}}" src="../../image/clear.png"/>
+  </view>
+  <!-- 图书简介筐 -->
+  <view class="bookBrief"><textarea placeholder="请输入图书简介" placeholder-class="pholder"
+    value="{{bookBrief}}" bindinput="oninput"/>
+  </view>
+  <!-- 添加图片筐 -->
+   <view class="bookImage_input" bindtap="chooseImage">
+    <image class="input_image" src="/image/camera.png"></image>
+    <text>添加图片</text>
+   </view>
+   <view class="bookImage_preview" bindtap="previewImage">
+    <image class="previewImage" src="{{item}}" mode="aspectFill"></image>
+    <!-- <image src="/image/delete.png" bindtap='clearImg' data-index="{{index}}" class="delete_img"></image> -->
+   </view>
+
+
+    <view  class="submit" bindtap="submitbook"><text>提交</text></view>
+</view>

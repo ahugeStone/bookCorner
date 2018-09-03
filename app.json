@@ -8,7 +8,8 @@
     "pages/result/result",
     "pages/mine/mine",
     "pages/logs/logs",
-    "pages/message/message"
+    "pages/message/message",
+    "pages/addbook/addbook"
   ],
   "window": {
     "backgroundTextStyle": "light",

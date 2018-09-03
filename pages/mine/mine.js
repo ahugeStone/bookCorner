@@ -57,5 +57,10 @@ Page({
       //长度设为0 ，前台判断后不再显示“查看更多”
       historyListLength: 0
     })
+  },
+    gotoAddbook(e) {
+    wx.navigateTo({
+      url: '../addbook/addbook'
+    })
   }
 })

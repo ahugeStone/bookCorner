@@ -8,7 +8,7 @@
       <text>欢迎开启你的阅读之旅</text>
     </view>
   </view>
-  <view class="add_book" wx:if="{{app.globalData.isAdmin=='1'}}" bindtap='gotoAddbook'>
+  <view class="add_book" wx:if="{{canAdd}}" bindtap='gotoAddbook'>
   <image src="/image/addbook.png"></image>
   <text>新增图书</text>
   </view>

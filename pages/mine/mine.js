@@ -8,7 +8,8 @@ Page({
     historyList: null,
     readingList: null,
     indx: null,
-    historyListLength: null
+    historyListLength: null,
+    canAdd: false,
   },
   onLoad: function () {
     
@@ -38,6 +39,11 @@ Page({
         indx: 2
       })
     })
+      if (app.globalData.isAdmin == "1") {
+      this.setData({
+        canAdd: true,
+      })
+    }
   },
   gotoDetail(e) {
     wx.navigateTo({

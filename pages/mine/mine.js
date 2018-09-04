@@ -64,9 +64,15 @@ Page({
       historyListLength: 0
     })
   },
-    gotoAddbook(e) {
-    wx.navigateTo({
-      url: '../addbook/addbook'
+  gotoAddbook(e) {
+    wx.scanCode({
+      success: (res) => {
+        console.log(res)
+        console.log(res.result)
+        wx.navigateTo({
+          url: '../addbook/addbook'
+        })
+      }
     })
-  }
+  },
 })

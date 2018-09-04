@@ -40,7 +40,7 @@
   </view>
   <!-- 图书简介筐 -->
   <view class="bookBrief"><textarea placeholder="请输入图书简介" placeholder-class="pholder"
-    value="{{bookBrief}}" bindinput="oninput"/>
+    value="{{bookBrief}}" bindinput="oninput" maxlength="2000"/>
   </view>
   <!-- 添加图片筐 -->
    <view class="bookImage_input" bindtap="chooseImage">

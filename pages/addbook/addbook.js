@@ -1,4 +1,5 @@
 // pages/addbook/addbook.js
+import util from '../../utils/util'
 var filePaths = '';
 const app = getApp()
 Page({
@@ -54,6 +55,7 @@ Page({
       bookBuyer: '',
     })
   },
+
 
   //输入框的值
   bookNameInput: function (e) {
@@ -165,10 +167,22 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var temp = option.isbn13;
-    this.setData({
-      isbn13: temp
-    })
+    //通过isbn码调用豆瓣API获取图书信息
+    var isbn13 = '9787508669274'
+    console.info(isbn13)
+    if (isbn13) {
+      util.restDouban("GET", "book/isbn/" + isbn13, {
+        count: 1
+      }).then(res => {
+
+        this.setData({
+          bookName: res.title,
+          bookWriter: res.author,
+          bookBrief: res.summary,
+          bookScore:res.rating.average
+        })
+      })
+    }
   },
 
   /**

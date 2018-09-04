@@ -67,8 +67,8 @@ Page({
   gotoAddbook(e) {
     wx.scanCode({
       success: (res) => {
-        console.log(res)
-        console.log(res.result)
+      //  console.log(res)
+      //  console.log(res.result)
         wx.navigateTo({
           url: '../addbook/addbook?isbn13=' + res.result
         })

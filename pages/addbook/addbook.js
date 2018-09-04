@@ -6,16 +6,20 @@ Page({
    * 页面的初始数据
    */
   data: {
-    bookName:"",
+    bookName: '',
     bookWriter: '',
     bookScore: '',
     bookTime: '',
     bookBuyer: '',
-    array: [
+    bookType: [
       { name: 'bookType', value: '党建', checked: 'true' },
       { name: 'bookType', value: '技术' },
     ],
-    files: [],
+    file: [],
+    isbn13: '',
+    bookSource: '',
+    bookBrief: ''
+
   },
   /**
   * radio监听事件
@@ -73,9 +77,17 @@ Page({
     })
   },
   bookBuyerInput: function (e) {
-    this.setData({
-      bookBuyer: e.detail.value
-    })
+    if (e.detail.value=="开发二部"){
+      this.setData({
+        bookBuyer: e.detail.value,
+        bookSource:"0"
+      })
+    }else{
+      this.setData({
+        bookBuyer: e.detail.value,
+        bookSource: "1"
+      })
+    } 
   },
   oninput: function (e) {
     this.setData({
@@ -90,8 +102,10 @@ Page({
       success: function (res) {
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
         filePaths = (res.tempFilePaths);
+        console.log(filePaths)
+        
         that.setData({
-          files: that.data.files.concat(res.tempFilePaths)
+          file: that.data.file.concat(res.tempFilePaths)
         });
       }
     })
@@ -99,41 +113,8 @@ Page({
   previewImage: function (e) {
     wx.previewImage({
       current: e.currentTarget.id, // 当前显示图片的http链接
-      urls: this.data.files // 需要预览的图片http链接列表
+      urls: this.data.file // 需要预览的图片http链接列表
     })
-  },
-//图书详情上传
-  commitbookBrief: function () {
-    if (this.data.bookBrief.trim().length == 0) {
-      wx.showModal({
-        title: '注意',
-        content: '请输入有效的评论内容',
-        showCancel: false
-      })
-      return
-    }
-    util.rest("POST", "books/" + this.data.bookId + "/comments", {
-      comment: this.data.commentText
-    }, {
-        method: "CustCommentBook"
-      }).then(res => {
-        wx.showToast({
-          title: '发布成功',
-          mask: true,
-          // icon: 'success',
-          duration: 2000,
-          success: () => {
-            this.toggleDialog()
-            this.setData({
-              commentText: ""
-            })
-            setTimeout(() => {
-              this.getComments()
-            }, 2000)
-          }
-        })
-      })
-
   },
   //删除图片
   clearImg: function (e) {
@@ -146,12 +127,48 @@ Page({
     })
     this.upLoadImg(img);
   },
+  //提交信息
+  submitbook(){
+    util.rest("POST", "books", {
+
+      bookName: this.data.bookName,
+      bookWriter: this.data.bookWriter,
+      bookScore: this.data.bookScore,
+      bookTime: this.data.bookTime,
+      bookBuyer: this.data.bookBuyer,
+      bookType: this.data.bookType,
+      file: this.data.file,
+      isbn13: this.data.isbn13,
+      bookSource: this.data.bookSource,
+      bookBrief: this.data.bookBrief
+     
+    }, {
+        method: "custAddBook"
+      }).then(res => {
+        wx.showToast({
+          title: '新增图书成功',
+          mask: true,
+          // icon: 'success',
+          duration: 2000,
+          success: () => {
+           
+          console.info("提交成功")
+          }
+        })
+      })
+
+
+
+  },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var temp = option.isbn13;
+    this.setData({
+      isbn13: temp
+    })
   },
 
   /**

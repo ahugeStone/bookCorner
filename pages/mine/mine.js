@@ -70,7 +70,7 @@ Page({
         console.log(res)
         console.log(res.result)
         wx.navigateTo({
-          url: '../addbook/addbook'
+          url: '../addbook/addbook?isbn13=' + res.result
         })
       }
     })

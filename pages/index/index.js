@@ -33,7 +33,7 @@ Page({
     if (!app.globalData.userInfo || !app.globalData.userInfo.nickName) {
       wx.showModal({
         title: '失败',
-        content: "请点击点我授权按钮并允许授权",
+        content: "请点击\"点我授权\"按钮并允许授权",
         showCancel: false
       })
       return;

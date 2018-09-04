@@ -30,7 +30,7 @@ App({
           //that.globalData.openid = data.openid
           if(data.isBinded == "1") {
             console.info('ISBINDED')
-            if (data && data.headImgUrl) {
+            if (data && data.headImgUrl && "undefined" != data.headImgUrl) {
               wx.switchTab({
                 url: '/pages/shelf/shelf',
               })

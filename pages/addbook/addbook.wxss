@@ -71,7 +71,6 @@
 
 .bookBrief {
   align-items: flex-start;
-  overflow: scroll;
   width: 100%;
   background: white;
   /* transform: translateY(150%);

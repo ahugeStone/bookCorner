@@ -3,7 +3,7 @@
 .container {
   align-items: flex-start;
   overflow: scroll;
-  height: 100%；
+  height: 100%;
 } 
 .mine_title {
   margin-top: 10px;

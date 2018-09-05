@@ -107,6 +107,7 @@
   height: 50px;
   border-radius: 3px;
   margin-bottom: 88px;
+  z-index: 12;
 }
 .submit text{
   font-size: 17px;
@@ -126,7 +127,6 @@
   height: 80px;
   border:1px dashed #979797;
   margin-top: 15px;
-  margin-right: 74%;
   justify-content: center;
   align-items: center;
   z-index: 12;
@@ -144,7 +144,6 @@
   width: 80px;
   height: 80px;
   margin-top: 15px;
-  margin-right: 74%;
   z-index: 12;
 }
 .previewImage{
@@ -154,4 +153,9 @@
 .delete_img{
   width: 14px;
   height: 14px;
+}
+.picture{
+  display: flex;
+  flex-direction: row;
+  margin-right: 52%;
 }

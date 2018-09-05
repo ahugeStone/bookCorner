@@ -10,12 +10,12 @@ Page({
     bookWriter: '',
     bookScore: '',
     bookTime: '',
-    bookBuyer: '',
+    bookBuyer: '开发二部',
     bookType: [
       { name: 'bookType', value: '党建', checked: 'true' },
       { name: 'bookType', value: '技术' },
     ],
-    file: [],
+    file: '',
     isbn13: '',
     bookSource: '',
     bookBrief: ''
@@ -98,7 +98,7 @@ Page({
         console.log(filePaths)
         
         that.setData({
-          file: that.data.file.concat(res.tempFilePaths)
+          file: filePaths
         });
       }
     })
@@ -121,7 +121,7 @@ Page({
     this.upLoadImg(img);
   },
   //提交信息
-  submitbook(){
+  submitbook: function (){
     if (this.data.bookBuyer=="开发二部"){
       this.data.bookSource= "0"
     }else{

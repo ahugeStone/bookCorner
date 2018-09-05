@@ -1,4 +1,3 @@
-// pages/addbook/addbook.js
 import util from '../../utils/util'
 var filePaths = '';
 const app = getApp()
@@ -79,18 +78,10 @@ Page({
     })
   },
   bookBuyerInput: function (e) {
-    if (e.detail.value=="开发二部"){
-      this.setData({
-        bookBuyer: e.detail.value,
-        bookSource:"0"
-      })
-    }else{
-      this.setData({
-        bookBuyer: e.detail.value,
-        bookSource: "1"
-      })
-    } 
-  },
+    this.setData({
+      bookBuyer: e.detail.value
+    })
+   },
   oninput: function (e) {
     this.setData({
       bookBrief: e.detail.value
@@ -131,6 +122,16 @@ Page({
   },
   //提交信息
   submitbook(){
+    if (this.data.bookBuyer=="开发二部"){
+      this.data.bookSource= "0"
+    }else{
+      this.data.bookSource= "1"
+    } 
+    if (this.data.bookType == "党建"){
+      this.data.bookType = "0"
+    }else{
+      this.data.bookType = "1"
+    }
     util.rest("POST", "books", {
 
       bookName: this.data.bookName,
@@ -168,21 +169,48 @@ Page({
    */
   onLoad: function (options) {
     //通过isbn码调用豆瓣API获取图书信息
-    var isbn13 = '9787508669274'
-    console.info(isbn13)
-    if (isbn13) {
-      util.restDouban("GET", "book/isbn/" + isbn13, {
-        count: 1
-      }).then(res => {
-
+    wx.scanCode({
+      success: (res) => {
+        console.log(res)
+        console.log(res.result)
         this.setData({
-          bookName: res.title,
-          bookWriter: res.author,
-          bookBrief: res.summary,
-          bookScore:res.rating.average
+          isbn13: res.result
         })
-      })
-    }
+        //console.info(this.data.isbn13)
+        if (this.data.isbn13) {
+          util.restDouban("GET", "book/isbn/" + this.data.isbn13, {
+            count: 1
+          }).then(res => {
+
+            this.setData({
+              bookName: res.title,
+              bookWriter: res.author,
+              bookBrief: res.summary,
+              bookScore: res.rating.average
+            })
+          })
+        }
+      }
+    })
+    //获取当前时间
+    var now = new Date();
+    var year = now.getFullYear();
+    var month = now.getMonth() + 1;
+    var day = now.getDate();
+    if (month < 10) {
+      month = '0' + month;
+    };
+    if (day < 10) {
+      day = '0' + day;
+    };
+    //  如果需要时分秒，就放开
+    // var h = now.getHours();
+    // var m = now.getMinutes();
+    // var s = now.getSeconds();
+    var formatDate = year + '-' + month + '-' + day;
+    this.setData({
+      bookTime: formatDate
+    })
   },
 
   /**

@@ -22,7 +22,7 @@
 <radio-group style="margin-left:3.5%;width:62%;" bindchange="listenerRadioGroup">
 <!--label通常与radio和checkbox结合使用-->
     <label style="display: flex;font-size:16px;" wx:for-items="{{bookType}}">
-        <radio class="radio-group radio" style="  transform:scale(0.8);margin-right:5%;margin-bottom:20px;color: #00c192;" value="{{item.name}}" checked="{{item.checked}}"/><text>{{item.value}}</text>
+        <radio class="radio-group radio" style="  transform:scale(0.8);margin-right:5%;margin-bottom:20px;" color="#00c192" value="{{item.name}}" checked="{{item.checked}}"/><text>{{item.value}}</text>
     </label>
 </radio-group>
 </view>

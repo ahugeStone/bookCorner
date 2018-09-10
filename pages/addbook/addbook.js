@@ -94,11 +94,11 @@ Page({
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
       success: function (res) {
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-        filePaths = (res.tempFilePaths);
-        console.log(filePaths)
+        filePaths = res.tempFilePaths;
+        console.log(filePaths[0])
         
         that.setData({
-          file: filePaths
+          file: filePaths[0]
         });
       }
     })
@@ -120,7 +120,57 @@ Page({
     })
     this.upLoadImg(img);
   },
-  //提交信息
+  //提交给后台
+  submit:function(){
+    wx.uploadFile({
+      url: 'http://localhost:8081/bookCorner/v1/books',//仅为示例，非真实的接口地址//接口连接
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+        'Cookie': getApp().globalData.sessionId, // 设置sessionid，保持会话-已废弃
+        'Authorization': 'Bearer ' + getApp().globalData.token// 设置token
+      }, // 设置请求的 header  
+      filePath: this.data.file,
+      name: 'file',
+      formData: {
+        'bookName': this.data.bookName,
+        'bookWriter': this.data.bookWriter,
+        'bookScore': this.data.bookScore,
+        'bookTime': this.data.bookTime,
+        'bookBuyer': this.data.bookBuyer,
+        'bookType': this.data.bookType,
+        'isbn13': this.data.isbn13,
+        'bookSource': this.data.bookSource,
+        'bookBrief': this.data.bookBrief
+      },
+      success: function (res) {
+        console.info(res.data)
+        //获取全局变量，给isNew赋值
+        app.globalData.isNew = 1     
+        //跳转到首页
+        wx.showToast({
+          title: '操作成功',//提示文字
+          duration: 2000,//显示时长
+          mask: true,//是否显示透明蒙层，防止触摸穿透，默认：false  
+          icon: 'success', //图标
+          success(){
+            wx.switchTab({
+              url: '../shelf/shelf',
+            })
+          }
+        })
+       
+      },
+      fail:function(){
+        wx.showToast({
+          title: '出错了',//提示文字
+          duration: 2000,//显示时长
+          mask: true,//是否显示透明蒙层，防止触摸穿透，默认：false  
+          icon: 'loading', //图标  
+        })
+      }
+    })
+  },
+  //点击提交按钮
   submitbook: function (){
     if (this.data.bookBuyer=="开发二部"){
       this.data.bookSource= "0"
@@ -132,38 +182,21 @@ Page({
     }else{
       this.data.bookType = "1"
     }
-    util.rest("POST", "books", {
-
-      bookName: this.data.bookName,
-      bookWriter: this.data.bookWriter,
-      bookScore: this.data.bookScore,
-      bookTime: this.data.bookTime,
-      bookBuyer: this.data.bookBuyer,
-      bookType: this.data.bookType,
-      file: this.data.file,
-      isbn13: this.data.isbn13,
-      bookSource: this.data.bookSource,
-      bookBrief: this.data.bookBrief
-     
-    }, {
-        method: "custAddBook"
-      }).then(res => {
-        wx.showToast({
-          title: '新增图书成功',
-          mask: true,
-          // icon: 'success',
-          duration: 2000,
-          success: () => {
-           
-          console.info("提交成功")
-          }
-        })
-      })
-
-
-
+    var that = this
+    wx.showModal({
+      title: '提示',
+      content: '检查每一项都填好了哦',
+      success: function (res) {
+        if (res.confirm) {
+          console.log('用户点击确定')
+          //执行submit函数
+          that.submit()
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    })
   },
-
   /**
    * 生命周期函数--监听页面加载
    */

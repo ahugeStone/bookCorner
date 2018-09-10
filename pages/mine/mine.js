@@ -66,7 +66,7 @@ Page({
   },
   gotoAddbook(e) {
     wx.navigateTo({
-      url: '../addbook/addbook?isbn13='
+      url: '../addbook/addbook'
     })
   },
 })

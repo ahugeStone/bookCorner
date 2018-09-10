@@ -26,10 +26,17 @@ Page({
     this.resetBookList()    
   },
   onShow() {
-    // this.resetBookList()
+    //获得公告栏信息
     this.getMessages()
-    this.refreshBookId() // 刷新刚访问过的图书信息
-    // this.searchBookList()
+    //是否刚刚新增图书
+    const a = getApp().globalData.isNew
+    if(a==1){
+      this.resetBookList()//重新获取图书列表
+      app.globalData.isNew = 0
+    }else{
+      this.refreshBookId() // 刷新刚访问过的图书信息
+    }
+    //判断是否是管理员，是的话就具有删除功能
     if (app.globalData.isAdmin=="1"){
       this.setData({
         cantDel: false

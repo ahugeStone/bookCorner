@@ -71,6 +71,7 @@ App({
   },
   globalData: {
     userInfo: {},
-    edBookId: [] // 刚访问过的bookId序列
+    edBookId: [], // 刚访问过的bookId序列
+    isNew:0
   }
 })

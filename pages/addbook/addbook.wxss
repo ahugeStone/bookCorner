@@ -140,22 +140,27 @@
   color: #999999;
 }
 .bookImage_preview{
-  display: flex;
-  width: 80px;
-  height: 80px;
+  /* display: flex; */
   margin-top: 15px;
   z-index: 12;
+  position: relative;
 }
 .previewImage{
   width: 80px;
   height: 80px;
+  position: absolute;
+  margin-top:8px;
 }
 .delete_img{
-  width: 14px;
-  height: 14px;
+  width: 20px;
+  height: 20px;
+  margin-left:70px;
+  z-index: 15;
+  position:absolute;
 }
 .picture{
   display: flex;
   flex-direction: row;
-  margin-right: 52%;
+  width: 95%;
+  height: 120px;
 }

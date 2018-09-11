@@ -18,7 +18,8 @@ Page({
     file: '',
     isbn13: '',
     bookSource: '',
-    bookBrief: ''
+    bookBrief: '',
+    flag:0
 
   },
   /**
@@ -98,7 +99,8 @@ Page({
         console.log(filePaths[0])
         
         that.setData({
-          file: filePaths[0]
+          file: filePaths[0],
+          flag:1
         });
       }
     })
@@ -111,14 +113,12 @@ Page({
   },
   //删除图片
   clearImg: function (e) {
-    var index = e.currentTarget.dataset.index;
-    var evalList = this.data.evalList;
-    var img = evalList[0].tempFilePaths;
-    img.splice(index, 1);
+    
     this.setData({
-      evalList: evalList
+      file: '',
+      flag: 0
     })
-    this.upLoadImg(img);
+    
   },
   //提交给后台
   submit:function(){

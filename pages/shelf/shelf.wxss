@@ -5,6 +5,8 @@
 .book_list {
   width:100%;
   overflow: scroll;
+  /* height: 100vh; */
+  height: 100%;
 }
 .search_btn {
   display: flex;
@@ -154,6 +156,7 @@
   color: #999999;
   font-size: 15px;
   margin-top:10px;
+  margin-bottom: 130px;
 }
 .no_result {
   width: 104px;

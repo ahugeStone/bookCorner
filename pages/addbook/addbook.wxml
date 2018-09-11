@@ -44,14 +44,14 @@
   </view>
   <!-- 添加图片筐 -->
   <view class="picture">
-   <view class="bookImage_input" bindtap="chooseImage">
+   <view wx:if="{{file!=''}}" class="bookImage_preview" bindtap="previewImage">
+    <image class="previewImage" src="{{file}}" mode="aspectFill"></image> 
+    <image src="/image/delete.png" bindtap='clearImg' class="delete_img"></image> 
+   </view>  
+   <view  wx:if="{{flag==0}}" class="bookImage_input" bindtap="chooseImage">
     <image class="input_image" src="/image/camera.png"></image>
     <text>添加图片</text>
    </view>
-    <view class="bookImage_preview" bindtap="previewImage">
-    <image class="previewImage" src="{{file}}" mode="aspectFill"></image> 
-    <!-- <image src="/image/delete.png" bindtap='clearImg' data-index="{{index}}" class="delete_img"></image> -->
-    </view>    
   </view>
 
 

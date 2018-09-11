@@ -1,4 +1,5 @@
 import util from '../../utils/util'
+import env from '../../utils/env.js'
 var filePaths = '';
 const app = getApp()
 Page({
@@ -122,8 +123,9 @@ Page({
   },
   //提交给后台
   submit:function(){
+    console.info("图片路径：" + this.data.file)
     wx.uploadFile({
-      url: 'http://localhost:8081/bookCorner/v1/books',//仅为示例，非真实的接口地址//接口连接
+      url: env.url[0] + 'books',//仅为示例，非真实的接口地址//接口连接
       header: {
         'content-type': 'application/x-www-form-urlencoded',
         'Cookie': getApp().globalData.sessionId, // 设置sessionid，保持会话-已废弃
@@ -160,12 +162,17 @@ Page({
         })
        
       },
-      fail:function(){
-        wx.showToast({
-          title: '出错了',//提示文字
-          duration: 2000,//显示时长
-          mask: true,//是否显示透明蒙层，防止触摸穿透，默认：false  
-          icon: 'loading', //图标  
+      fail:function(e){
+        console.error(e)
+        // wx.showToast({
+        //   title: '出错了' + e.errMsg,//提示文字
+        //   duration: 2000,//显示时长
+        //   mask: true,//是否显示透明蒙层，防止触摸穿透，默认：false  
+        //   icon: 'loading', //图标  
+        // })
+        wx.showModal({
+          title: '错误',
+          content: e.errMsg
         })
       }
     })
@@ -197,10 +204,8 @@ Page({
       }
     })
   },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
+  loadISBN: function() {
+    console.info("加载摄像头")
     //通过isbn码调用豆瓣API获取图书信息
     wx.scanCode({
       success: (res) => {
@@ -217,7 +222,7 @@ Page({
 
             this.setData({
               bookName: res.title,
-              bookWriter: res.author,
+              bookWriter: res.author.toString(),
               bookBrief: res.summary,
               bookScore: res.rating.average
             })
@@ -244,6 +249,12 @@ Page({
     this.setData({
       bookTime: formatDate
     })
+  },
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    this.loadISBN()
   },
 
   /**

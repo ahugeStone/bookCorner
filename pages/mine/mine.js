@@ -10,13 +10,13 @@ Page({
     indx: null,
     historyListLength: null,
     canAdd: false,
+    isbn13: ''
   },
-  onLoad: function () {
-    
+  onLoad: function() {
+
   },
-  onShow: function () {
-    util.rest("GET", "users/" + app.globalData.userNo + "/history" , {
-    }, {
+  onShow: function() {
+    util.rest("GET", "users/" + app.globalData.userNo + "/history", {}, {
       method: "CustQueryBookBorrowRecord"
     }).then(res => {
       this.data.historyList = []
@@ -39,7 +39,7 @@ Page({
         indx: 2
       })
     })
-      if (app.globalData.isAdmin == "1") {
+    if (app.globalData.isAdmin == "1") {
       this.setData({
         canAdd: true,
       })
@@ -48,15 +48,13 @@ Page({
   gotoDetail(e) {
     wx.navigateTo({
       url: '../bookDetail/bookDetail?bookId=' +
-      e.currentTarget.dataset.bookid
+        e.currentTarget.dataset.bookid
     })
   },
   // 滑动删除处理(空)
-  handleMovableChange(e) {
-  },
-  handleTouchend(e) {
-  },
-  findMoreInfo(){
+  handleMovableChange(e) {},
+  handleTouchend(e) {},
+  findMoreInfo() {
     this.setData({
       //将list长度赋值给indx，使前台展示全部数据
       indx: this.data.historyList.length,
@@ -65,8 +63,17 @@ Page({
     })
   },
   gotoAddbook(e) {
-    wx.navigateTo({
-      url: '../addbook/addbook'
+    wx.scanCode({
+      success: (res) => {
+        console.log(res)
+        console.log(res.result)
+        this.setData({
+          isbn13: res.result
+        })
+        wx.navigateTo({
+          url: '../addbook/addbook?isbn13=' + this.data.isbn13
+        })
+      }
     })
   },
 })

@@ -62,6 +62,7 @@ Page({
       historyListLength: 0
     })
   },
+  //新增图书，扫描isbn码后跳转页面
   gotoAddbook(e) {
     wx.scanCode({
       success: (res) => {

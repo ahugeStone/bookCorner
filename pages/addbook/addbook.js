@@ -26,8 +26,7 @@ Page({
     isbn13: '',
     bookSource: '',
     bookBrief: '',
-    flag: 0
-
+    flag: 0 //判断是否已选择图片：0为未上传，1为已上传
   },
   /**
    * radio监听事件
@@ -95,10 +94,11 @@ Page({
       bookBrief: e.detail.value
     })
   },
+  //选择图片
   chooseImage: function(e) {
     var that = this;
     wx.chooseImage({
-      count: 1,
+      count: 1,//允许选择的图片数量
       sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
       success: function(res) {
@@ -120,12 +120,13 @@ Page({
       }
     })
   },
+  //预览图片
   previewImage: function(e) {
     var arr = []
     arr[0] = this.data.file
     wx.previewImage({
       current: e.currentTarget.id, // 当前显示图片的http链接
-      urls: arr // 需要预览的图片http链接列表
+      urls: arr // 需要预览的图片http链接列表，urls需要一个Array数组
     })
   },
   //删除图片
@@ -174,7 +175,6 @@ Page({
             })
           }
         })
-
       },
       fail: function(e) {
         console.error(e)
@@ -206,7 +206,7 @@ Page({
     var that = this
     wx.showModal({
       title: '提示',
-      content: '检查每一项都填好了哦',
+      content: '确认提交信息？',
       success: function(res) {
         if (res.confirm) {
           console.log('用户点击确定')
@@ -222,11 +222,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    //this.loadISBN()
+    //获取mine页面传来的isbn13码
     var isbn = options.isbn13
     this.setData({
       isbn13: isbn
     })
+    //从豆瓣API获取图书相关信息
     if (this.data.isbn13) {
       util.restDouban("GET", "book/isbn/" + this.data.isbn13, {
         count: 1
@@ -250,7 +251,7 @@ Page({
     if (day < 10) {
       day = '0' + day;
     };
-    //  如果需要时分秒，就放开
+    // 如果需要时分秒
     // var h = now.getHours();
     // var m = now.getMinutes();
     // var s = now.getSeconds();

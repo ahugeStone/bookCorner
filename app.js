@@ -72,6 +72,6 @@ App({
   globalData: {
     userInfo: {},
     edBookId: [], // 刚访问过的bookId序列
-    isNew:0
+    isNew:0 // 是否有上传新书，有的话重置图书列表
   }
 })

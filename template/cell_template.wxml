@@ -9,7 +9,8 @@
           bindtouchend="handleTouchend">
         <view class="cell_item"  bindtap="gotoDetail" data-bookIndex="{{bookIndex}}" data-bookId="{{bookId}}">
           <view class="cell_left">
-            <image class="img_book" src="{{bookImage}}"></image>
+            <!-- <image class="img_book" src="{{bookImage}}"></image> -->
+            <image class="img_book" src="{{bookImage!=''? bookImage : '/image/book.png'}}"></image> 
           </view>
           <view class="cell_right">
             <view class="cell_title">

@@ -19,7 +19,7 @@
   <view wx:if="{{activeTab == 1}}" class="section" style="width:100%;">
     <!-- 图书照片 -->
     <view class="book_pic">
-      <image class="img_book" src="{{bookInfo.bookImage}}"></image> 
+      <image class="img_book" src="{{bookInfo.bookImage!=''? bookInfo.bookImage : '/image/book.png'}}"></image> 
     </view>
     <!-- 图书简介 -->
     <view class="section" style="width:100%;margin-bottom:50px;">

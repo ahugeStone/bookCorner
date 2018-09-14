@@ -49,7 +49,7 @@
   margin-top:6px;
 }
 .img_book {
-  background-image: url(https://shanximokey.cn/images/book.png);
+  /* background-image: url(../image/book.png); */
   background-repeat: no-repeat;
   background-size: cover;
 }

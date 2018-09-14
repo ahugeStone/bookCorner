@@ -53,7 +53,7 @@
       <image class="loading" src='../../image/loading.gif'/>
       <text>载入中...</text>
     </view>
-    <view wx:if="{{isLastPage == true && bookList.length > 0}}" class="mine_tips">
+    <view wx:if="{{isLastPage == true && bookList.length > 0}}" class="shelf_tips">
       <text>到底了，往上看٩(•̤̀ᵕ•̤́๑)</text>
     </view>
   </scroll-view>

@@ -14,7 +14,7 @@
   flex: none;
   width: 95px;
   height: 95px;
-  background-color: #333333;
+  background-color: #ffffff;
   margin-left: 5%;
   margin-top:5px;
   margin-bottom: 5px;
@@ -49,7 +49,7 @@
   margin-top:6px;
 }
 .img_book {
-  /* background-image: url(../image/book.png); */
+  background-image: url(https://cvm.ahuangtongxue.cn/images/book.png);
   background-repeat: no-repeat;
   background-size: cover;
 }

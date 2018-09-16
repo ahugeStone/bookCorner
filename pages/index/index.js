@@ -130,7 +130,7 @@ Page({
    * 更新用户信息
    */
   updateUserInfo() {
-    if (app.globalData.userInfo && app.globalData.userInfo.nickName) {
+    if (app.globalData.userInfo && app.globalData.userInfo.nickName && app.globalData.isBinded) {
       util.rest("POST", "users/" + this.data.userNo, {
         userNo: this.data.userNo,
         userName: this.data.userName,
